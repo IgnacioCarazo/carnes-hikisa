@@ -1,14 +1,19 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google"; 
 import localFont from "next/font/local";
 
 import "./globals.css";
-import Footer from "../components/common/(Footer)/Footer"; 
-import Navbar from "../components/common/Navbar";
+import Footer from "../components/common/(Footer)/Footer";
+import Navbar from "../components/common/(NavBar)/Navbar";
 
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
 
-const myCustomFont = localFont({
+const bernard = localFont({
   src: "../assets/fonts/Bernard_MT_Condensed_Regular.ttf",
-  variable: "--font-custom",
+  variable: "--font-bernard",
 });
 
 export const metadata: Metadata = {
@@ -23,14 +28,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body className={`${myCustomFont.variable} ${myCustomFont.className}`}>
+      <body
+        className={`${bernard.variable} ${inter.variable} ${inter.className}`}
+      >
         <Navbar />
-
-        <main style={{ minHeight: "calc(100vh - var(--nav-height) - 300px)" }}>
+        <main style={{ minHeight: "calc(100vh - var(--nav-height) - 400px)" }}>
           {children}
         </main>
-
-        <Footer /> 
+        <Footer />
       </body>
     </html>
   );
