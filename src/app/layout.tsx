@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google"; 
+import { Inter } from "next/font/google";
 import localFont from "next/font/local";
 
 import "./globals.css";
+import FloatingActions from "../components/common/(FloatingActions)/FloatingActions";
 import Footer from "../components/common/(Footer)/Footer";
 import Navbar from "../components/common/(NavBar)/Navbar";
 
@@ -35,6 +36,7 @@ export default function RootLayout({
         <main style={{ minHeight: "calc(100vh - var(--nav-height) - 400px)" }}>
           {children}
         </main>
+        <FloatingActions />
         <Footer />
       </body>
     </html>

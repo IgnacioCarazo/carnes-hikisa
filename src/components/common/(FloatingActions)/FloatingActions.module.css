@@ -1,0 +1,100 @@
+.container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 15px;
+  z-index: 2000;
+}
+
+.whatsappBtn {
+  position: relative;
+  transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.whatsappBtn:hover {
+  transform: scale(1.1);
+}
+
+.waIcon {
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+}
+
+.tooltip {
+  position: absolute;
+  right: 75px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: white;
+  padding: 8px 15px;
+  border-radius: 8px;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.85rem;
+  white-space: nowrap;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  color: #333;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.whatsappBtn:hover .tooltip {
+  opacity: 1;
+}
+
+.scrollTop {
+  background-color: var(--background);
+  border: 1px solid #eee;
+  padding: 10px 15px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.4s ease;
+}
+
+.scrollTop.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scrollTop:hover {
+  border-color: var(--red-hikisa);
+  background-color: #fff;
+}
+
+.arrow {
+  font-size: 0.7rem;
+  color: var(--red-hikisa);
+}
+
+.textArriba {
+  font-family: var(--font-bernard), sans-serif;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .container {
+    bottom: 20px;
+    right: 20px;
+  }
+
+  .waIcon {
+    width: 50px;
+    height: 50px;
+  }
+
+  .tooltip {
+    display: none;
+  }
+}
