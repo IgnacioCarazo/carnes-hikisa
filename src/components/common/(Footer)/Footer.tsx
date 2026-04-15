@@ -3,23 +3,19 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-
-// Iconos locales
 import iconFb from "@/assets/icons/Facebook.webp";
 import iconIg from "@/assets/icons/Instagram.webp";
 import iconTk from "@/assets/icons/Tiktok.webp";
 import iconWa from "@/assets/icons/Whatsapp.webp";
 import logoHikisa from "@/assets/imgs/CarnesHikisa_RB.webp";
-
+import { SOCIAL_LINKS } from "@/constants/links";
 
 import styles from "./Footer.module.css";
-
 
 const Footer = () => {
   const [openSection, setOpenSection] = useState<string | null>(null);
 
   const toggleSection = (section: string) => {
-    // Solo permitimos toggle en móvil (el CSS se encarga de la visibilidad)
     setOpenSection(openSection === section ? null : section);
   };
 
@@ -44,7 +40,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Contáctenos */}
         <div
           className={`${styles.column} ${openSection === "contacto" ? styles.isOpen : ""}`}
         >
@@ -67,7 +62,6 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Menú - Ahora en Inter */}
         <div
           className={`${styles.column} ${openSection === "paginas" ? styles.isOpen : ""}`}
         >
@@ -108,16 +102,36 @@ const Footer = () => {
             </a>
           </div>
           <div className={styles.socials}>
-            <a href="https://www.facebook.com/carneshikisa/?locale=es_LA" className={styles.socialIcon}>
+            <a
+              href={SOCIAL_LINKS.facebook}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.socialIcon}
+            >
               <Image src={iconFb} alt="FB" width={20} height={20} />
             </a>
-            <a href="https://www.instagram.com/carnes_hikisa?fbclid=IwY2xjawRMHi5leHRuA2FlbQIxMABicmlkETE4ekRHaW9uaVhxNkZEWktzc3J0YwZhcHBfaWQQMjIyMDM5MTc4ODIwMDg5MgABHhmAlIvr2sud8VijMHWk6EPOm5CQu8dHL_owwfyj45klDWGxSvKN9l5-qoyy_aem_5eMV1pYQrtSXElK-ci0kGA" className={styles.socialIcon}>
+            <a
+              href={SOCIAL_LINKS.instagram}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.socialIcon}
+            >
               <Image src={iconIg} alt="IG" width={20} height={20} />
             </a>
-            <a href="https://wa.me/50625530564" className={styles.socialIcon}>
+            <a
+              href={SOCIAL_LINKS.whatsapp}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.socialIcon}
+            >
               <Image src={iconWa} alt="WA" width={20} height={20} />
             </a>
-            <a href="https://www.tiktok.com/@carnes.hikisa" className={styles.socialIcon}>
+            <a
+              href={SOCIAL_LINKS.tiktok}
+              target="_blank"
+              rel="noreferrer"
+              className={styles.socialIcon}
+            >
               <Image src={iconTk} alt="TK" width={20} height={20} />
             </a>
           </div>
