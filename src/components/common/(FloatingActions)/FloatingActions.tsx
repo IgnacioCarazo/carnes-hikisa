@@ -7,6 +7,7 @@ import { SOCIAL_LINKS } from "@/constants/links";
 
 import styles from "./FloatingActions.module.css";
 
+
 const FloatingActions = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 

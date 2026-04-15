@@ -11,9 +11,14 @@
   z-index: 1000;
 }
 
-.navLeft {
+.navLeft,
+.navRight {
   display: flex;
   align-items: center;
+}
+
+.navRight {
+  justify-content: flex-end;
 }
 
 .navbarLinks {
@@ -47,7 +52,6 @@
 .active {
   color: var(--red-hikisa) !important;
 }
-
 .navbarLinks a:hover::after,
 .active::after {
   width: 100%;
@@ -57,19 +61,12 @@
   display: flex;
   justify-content: center;
 }
-
 .logoImg {
   height: auto;
   width: 170px;
 }
 
-.navRight {
-  display: flex;
-  justify-content: flex-end;
-  padding-right: 0.5rem;
-}
-
-.searchContainer {
+.searchContainerDesktop {
   display: flex;
   align-items: center;
   background: #f5f5f7;
@@ -80,7 +77,7 @@
   transition: all 0.3s ease;
 }
 
-.searchContainer:focus-within {
+.searchContainerDesktop:focus-within {
   width: 280px;
   background: #fff;
   border-color: var(--red-hikisa);
@@ -93,75 +90,57 @@
   margin-right: 10px;
   color: #999;
 }
-
-.searchContainer:focus-within .searchIcon {
+.searchContainerDesktop:focus-within .searchIcon {
   color: var(--red-hikisa);
 }
 
-.searchContainer input {
+.searchContainerDesktop input {
   border: none;
   background: transparent;
   outline: none;
   width: 100%;
   font-family: var(--font-inter), sans-serif;
   font-size: 0.9rem;
-  color: #333;
 }
 
-.hamburger {
+.hamburger,
+.searchButtonMobile,
+.searchPanelMobile {
   display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
-
-/* --- MOBILE --- */
-@media (max-width: 1024px) {
-  .navbar {
-    padding: 0 1.5rem;
-  }
 }
 
 @media (max-width: 768px) {
   .navbar {
     grid-template-columns: auto 1fr auto;
     padding: 0 1rem;
+    gap: 10px;
   }
 
-  .hamburger {
+  .hamburger,
+  .searchButtonMobile {
     display: block;
+    background: none;
+    border: none;
   }
-
-  .logoImg {
-    width: 130px;
+  .navLeft {
+    grid-order: 1;
   }
-
-  .searchContainer {
-    width: 42px;
-    padding: 0;
-    justify-content: center;
-    background: transparent;
+  .navbarLogo {
+    grid-order: 2;
   }
-
-  .searchIcon {
-    margin-right: 0;
+  .navRight {
+    grid-order: 3;
   }
-
-  .searchContainer input {
+  .searchContainerDesktop {
     display: none;
   }
-
-  .searchContainer:focus-within {
-    position: absolute;
-    right: 1rem;
-    width: calc(100% - 2rem);
-    background: #fff;
-    padding: 0.5rem 1rem;
-    z-index: 1001;
+  .logoImg {
+    width: 120px;
   }
-
-  .searchContainer:focus-within input {
-    display: block;
+  .searchIcon {
+    margin-right: 0;
+    width: 24px;
+    height: 24px;
   }
 
   .navbarLinks {
@@ -169,15 +148,90 @@
     top: var(--nav-height);
     left: -100%;
     flex-direction: column;
-    background: #fff;
+    background: #ffffff;
     width: 280px;
     height: calc(100vh - var(--nav-height));
     padding: 2.5rem 2rem;
     box-shadow: 15px 0 25px rgba(0, 0, 0, 0.05);
     transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    gap: 1.5rem;
   }
 
   .navbarLinks.show {
     left: 0;
+  }
+  .navbarLinks a {
+    font-size: 1.4rem;
+    border-bottom: 1px solid #f9f9f9;
+    padding-bottom: 0.5rem;
+  }
+  .navbarLinks a::after {
+    display: none;
+  }
+
+  .searchPanelMobile {
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #ffffff;
+    z-index: 2000;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  .searchPanelMobile.showPanel {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .searchPanelHeader {
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    border-bottom: 1px solid #eeeeee;
+    gap: 1rem;
+  }
+
+  .searchField {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    background-color: #f5f5f7;
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
+  }
+
+  .searchField input {
+    border: none;
+    background: transparent;
+    outline: none;
+    width: 100%;
+    font-family: var(--font-inter), sans-serif;
+    font-size: 1rem;
+  }
+
+  .closePanel {
+    background: none;
+    border: none;
+    font-family: var(--font-bernard), sans-serif;
+    font-size: 0.9rem;
+    color: #666;
+    text-transform: uppercase;
+  }
+
+  .searchPanelContent {
+    padding: 3rem 1rem;
+    text-align: center;
+  }
+  .searchPlaceholderText {
+    color: #999;
+    font-size: 0.9rem;
   }
 }
