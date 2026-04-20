@@ -12,6 +12,7 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+
 const bernard = localFont({
   src: "../assets/fonts/Bernard_MT_Condensed_Regular.ttf",
   variable: "--font-bernard",
