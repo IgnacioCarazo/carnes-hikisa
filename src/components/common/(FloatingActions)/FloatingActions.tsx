@@ -32,7 +32,6 @@ const FloatingActions = () => {
         aria-label="Volver arriba"
       >
         <span className={styles.arrow}>▲</span>
-        <span className={styles.textArriba}>ARRIBA</span>
       </button>
 
       <a
