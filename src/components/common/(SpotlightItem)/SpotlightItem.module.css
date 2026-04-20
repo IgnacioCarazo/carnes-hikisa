@@ -1,0 +1,180 @@
+.spotlightItem {
+  display: flex;
+  width: 80%;
+  height: 420px;
+
+  gap: 100px;
+
+  background: transparent;
+  align-items: flex-start;
+  padding-left: 5%;
+}
+
+/* IMAGE */
+.spotlightItemImage {
+  flex: 0 0 420px;
+  width: 420px;
+  aspect-ratio: 1 / 1;
+
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 6px;
+  margin-top: 20px;
+
+  /* ✔️ sombra real del objeto */
+  box-shadow: 0px 25px 60px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.1s ease,
+    opacity 0.9s ease;
+  /* mejora percepción de “objeto flotante” */
+  position: relative;
+  z-index: 2;
+}
+
+/* TEXT */
+.spotlightItemTextContent {
+  flex: 1 1 0;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+
+  padding-top: 5%;
+  gap: 16px;
+
+  color: white;
+}
+
+/* STAGGER */
+.spotlightItemTitle {
+  font-size: 32px;
+  margin: 0;
+
+  animation: textIn 0.45s ease both;
+}
+
+.spotlightItemDescription {
+  font-size: 16px;
+  opacity: 0.9;
+  line-height: 1.4;
+  margin: 0;
+  text-align: justify;
+
+  animation: textIn 0.55s ease both;
+  animation-delay: 0.08s;
+}
+
+.spotlightItemButton {
+  margin-top: 12px;
+  padding: 0;
+  width: fit-content;
+
+  background: transparent;
+  border: none;
+  cursor: pointer;
+
+  color: #b5b5b5;
+  text-decoration: underline;
+  font-size: 16px;
+
+  transition: color 0.2s ease;
+
+  animation: textIn 0.6s ease both;
+  animation-delay: 0.12s;
+}
+
+.spotlightItemButton:hover {
+  color: white;
+}
+
+/* ANIMATION */
+@keyframes textIn {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .spotlightItem {
+    width: 100%;
+
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    gap: 2rem;
+    padding-left: 0;
+  }
+
+  .spotlightItemImage {
+    width: 320px;
+    height: 320px;
+    flex: 0 0 auto;
+    margin-top: 0;
+  }
+
+  .spotlightItemTextContent {
+    padding-top: 0;
+    align-items: center;
+  }
+
+  .spotlightItemDescription {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .spotlightItem {
+    gap: 1rem;
+  }
+
+  .spotlightItemImage {
+    width: 220px;
+    height: 270px;
+  }
+
+  .spotlightItemTitle {
+    font-size: 1.5rem;
+  }
+
+  .spotlightItemDescription {
+    font-size: 0.8rem;
+    text-align: justify;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .spotlightItemButton {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .spotlightItem {
+    gap: 1rem;
+  }
+
+  .spotlightItemImage {
+    width: 180px;
+    height: 230px;
+  }
+
+  .spotlightItemTitle {
+    font-size: 1.5rem;
+  }
+
+  .spotlightItemDescription {
+    font-size: 0.8rem;
+    text-align: justify;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .spotlightItemButton {
+    font-size: 0.7rem;
+  }
+}

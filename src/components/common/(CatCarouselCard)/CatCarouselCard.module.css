@@ -1,0 +1,25 @@
+.catCarouselCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 280px;
+  height: 430px;
+
+  background: brown;
+  flex: 0 0 auto;
+}
+
+@media (max-width: 768px) {
+  .catCarouselCard {
+    width: 220px;
+    height: 320px;
+  }
+}
+
+@media (max-width: 480px) {
+  .catCarouselCard {
+    width: 180px;
+    height: 260px;
+  }
+}
