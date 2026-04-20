@@ -1,10 +1,34 @@
 import Image from "next/image";
 
+import CategoriesCarousel from "@/components/common/(CategoriesCarousel)/CategoriesCarousel";
+import LandingVideo from "@/components/common/(LandingVideo)/LandingVideo";
+import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
+import ServicesSection from "@/components/common/(ServicesSection)/ServicesSection";
+import SimpleVideo from "@/components/common/(SimpleVideo)/SimpleVideo";
+import SpotlightCarousel from "@/components/common/(SpotlightCarousel)/SpotlightCarousel";
+
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-      </main>
+    <div>
+      <LandingVideo src="/video/landing.mp4" />
+      <SectionHeader
+        title="Todo lo que ofrecemos"
+        description="Descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa."
+        color="black"
+      />
+      <CategoriesCarousel/>
+      <SectionHeader
+        title="Nuestra Selección"
+        color="black"
+      />
+      <SpotlightCarousel/>
+      <SectionHeader
+        title="¿Cómo nos destacamos?"
+        description="Te ofrecemos blablabla"
+        color="black"
+      />
+      <ServicesSection/>
+      <SimpleVideo src="/video/landing.mp4" />
     </div>
   );
 }
