@@ -19,8 +19,8 @@
 
 /* IMAGE */
 .serviceItemImage {
-  flex: 0 0 420px;
-  width: 420px;
+  flex: 0 0 520px;
+  width: 520px;
   height: 300px;
 
   background: rgba(0, 0, 0, 0.2);
@@ -35,7 +35,7 @@
   flex-direction: column;
   justify-content: flex-start;
 
-  padding-top: 5%;
+  padding-top: 2%;
   gap: 16px;
 
   color: black;
@@ -106,7 +106,7 @@
   }
 
   .serviceItemImage {
-    width: 80%;
+    width: 100%;
     height: 220px;
   }
 
@@ -116,8 +116,8 @@
 
   .serviceItemDescription {
     font-size: 0.9rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0;
+    padding-right: 0;
     text-align: justify;
   }
 
