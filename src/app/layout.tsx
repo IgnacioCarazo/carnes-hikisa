@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import { Be_Vietnam_Pro } from "next/font/google";
 import localFont from "next/font/local";
 
 import "./globals.css";
@@ -12,10 +13,15 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-
 const bernard = localFont({
   src: "../assets/fonts/Bernard_MT_Condensed_Regular.ttf",
   variable: "--font-bernard",
+});
+
+const beVietnam = Be_Vietnam_Pro({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"], 
+  variable: "--font-be-vietnam",
 });
 
 export const metadata: Metadata = {
@@ -31,7 +37,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${bernard.variable} ${inter.variable} ${inter.className}`}
+        className={`${bernard.variable} ${inter.variable} ${beVietnam.variable}`}
       >
         <Navbar />
         <main style={{ minHeight: "calc(100vh - var(--nav-height) - 400px)" }}>
