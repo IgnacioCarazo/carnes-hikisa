@@ -1,7 +1,9 @@
 .fadeSeparator {
-  width: 100%;
   display: block;
+
+  width: 100%;
   height: var(--separator-height);
+
   margin-top: -3px;
 
   background: linear-gradient(

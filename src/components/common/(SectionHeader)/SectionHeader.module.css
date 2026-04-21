@@ -1,35 +1,41 @@
 .sectionHeader {
-  width: 100%;
-
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
+
+  width: 100%;
 
   margin-top: 0.75rem;
   margin-bottom: 0.75rem;
+
+  text-align: center;
 }
 
 .sectionHeaderTitle {
-  font-size: 3rem; /* 48px */
-  font-weight: 600;
   margin: 0;
+
+  font-size: 3rem;
+  font-weight: 600;
 }
 
 .sectionHeaderDescription {
-  font-size: 1rem;
+  width: 100%;
   max-width: 100%;
+
   padding: 0 1rem;
+
+  font-size: 1rem;
+
   box-sizing: border-box;
 }
+
 /* TABLET */
 @media (max-width: 768px) {
   .sectionHeaderTitle {
-    font-size: 2.25rem; /* 36px */
+    font-size: 2.25rem;
   }
 
   .sectionHeaderDescription {
-    font-size: 1rem;
     max-width: 90%;
   }
 }
@@ -37,12 +43,12 @@
 /* MOBILE */
 @media (max-width: 480px) {
   .sectionHeaderTitle {
-    font-size: 1.75rem; /* 28px */
+    font-size: 1.75rem;
   }
 
   .sectionHeaderDescription {
-    font-size: 1rem;
     max-width: 100%;
+
     padding: 0 1rem;
   }
 }

@@ -1,38 +1,49 @@
 .dotsContainer {
   display: flex;
+
   max-width: 100%;
+
   overflow: hidden;
 }
 
 .overlay {
   position: absolute;
-  bottom: 20px;
   left: 50%;
+  bottom: 20px;
+
   transform: translateX(-50%);
 }
 
 .inline {
   position: static;
-  transform: none;
+
   max-width: 100%;
+
+  transform: none;
+
   flex-shrink: 1;
 }
 
 .dotsTrack {
   display: flex;
   gap: 10px;
-  transition: transform 0.3s ease;
+
   will-change: transform;
+  transition: transform 0.3s ease;
 }
 
 /* BASE DOT */
 .dot {
   width: 10px;
   height: 10px;
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
+
   flex: 0 0 10px;
+
+  border: none;
+  border-radius: 50%;
+
+  cursor: pointer;
+
   transition: background 0.2s ease;
 }
 
@@ -41,7 +52,6 @@
   background: rgba(255, 255, 255, 0.4);
 }
 
-.light.activeDot,
 .light.activeDot {
   background: #ffffff;
 }
@@ -50,7 +60,6 @@
   background: rgba(0, 0, 0, 0.3);
 }
 
-.dark.activeDot,
 .dark.activeDot {
   background: #000000;
 }
