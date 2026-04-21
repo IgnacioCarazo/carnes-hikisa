@@ -17,12 +17,11 @@
 }
 
 .sectionHeaderDescription {
-  font-size: 1.25rem; /* 20px */
-  margin-top: 0.75rem;
-  line-height: 1.5;
-  max-width: 70%;
+  font-size: 1rem;
+  max-width: 100%;
+  padding: 0 1rem;
+  box-sizing: border-box;
 }
-
 /* TABLET */
 @media (max-width: 768px) {
   .sectionHeaderTitle {
@@ -30,7 +29,7 @@
   }
 
   .sectionHeaderDescription {
-    font-size: 1.1rem;
+    font-size: 1rem;
     max-width: 90%;
   }
 }
