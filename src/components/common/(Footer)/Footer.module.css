@@ -1,5 +1,6 @@
+/* --- ESTILOS GENERALES (DESKTOP POR DEFECTO) --- */
 .footer {
-  padding-top: 2.5rem;
+  padding-top: 1.5rem; /* Se aplica en desktop */
 
   background-color: #ffffff;
   border-top: 1px solid #eeeeee;
@@ -143,8 +144,12 @@
   color: #aaa;
 }
 
-/* RESPONSIVE */
+/* --- RESPONSIVE (MOBILE) --- */
 @media (max-width: 768px) {
+  .footer {
+    padding-top: 0; /* Quitamos el padding en mobile */
+  }
+
   .container {
     grid-template-columns: 1fr;
 

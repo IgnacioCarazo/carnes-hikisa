@@ -7,6 +7,7 @@ type CategoryId = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8;
 
 interface CatCarouselCardProps {
   number: number;
+  isActive: boolean;
 }
 
 const categoriesData: Record<CategoryId, { title: string; img: string }> = {
@@ -44,7 +45,10 @@ const categoriesData: Record<CategoryId, { title: string; img: string }> = {
   },
 };
 
-export default function CatCarouselCard({ number }: CatCarouselCardProps) {
+export default function CatCarouselCard({
+  number,
+  isActive,
+}: CatCarouselCardProps) {
   const data = categoriesData[number as CategoryId] || categoriesData[1];
 
   return (
@@ -60,11 +64,13 @@ export default function CatCarouselCard({ number }: CatCarouselCardProps) {
         scaleOnHover={1.05}
         showMobileWarning={false}
         showTooltip={false}
-        displayOverlayContent={true}
+        displayOverlayContent={isActive} 
         overlayContent={
-          <p className="absolute top-4 left-4 bg-black/60 text-white px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap backdrop-blur-sm select-none">
-            {data.title}
-          </p>
+          isActive ? (
+            <p className="absolute top-4 left-4 bg-black/60 text-white px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap backdrop-blur-sm select-none">
+              {data.title}
+            </p>
+          ) : null
         }
       />
     </div>

@@ -9,7 +9,7 @@
   padding-left: 6%;
   padding-right: 4%;
 
-  gap: 100px;
+  gap: 70px;
 
   background: transparent;
 }
@@ -48,7 +48,7 @@
 }
 
 .serviceItemTitle {
-  font-size: 32px;
+  font-size: 34px;
   margin: 0;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .serviceItemDescription {
-  font-size: 16px;
+  font-size: 18px;
   line-height: 1.4;
   margin: 0;
 

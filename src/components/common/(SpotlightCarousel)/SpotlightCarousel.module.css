@@ -1,35 +1,28 @@
 .spotlightCarousel {
   display: flex;
   flex-direction: row;
-
   width: 100%;
   min-height: 550px;
-
   align-items: center;
-
   gap: 40px;
   padding: 10px 15px;
-
   background: #800300;
-
   position: relative;
+  overflow: hidden;
 }
 
 .spotlightWrapper {
   position: relative;
   z-index: 1;
-
   display: flex;
   width: 100%;
   flex: 1;
-
   transition: opacity 0.18s ease;
 }
 
 .visible {
   opacity: 1;
 }
-
 .hidden {
   opacity: 0;
 }
@@ -38,15 +31,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 50px;
   height: 50px;
-
   border: none;
   background: transparent;
-
   cursor: pointer;
-
   transition: opacity 0.2s ease;
 }
 
@@ -58,66 +47,48 @@
 .arrowIcon {
   width: 40px;
   height: 40px;
-
   padding: 10px;
-
   border-radius: 9999px;
   background: rgba(0, 0, 0, 0.2);
-
   filter: invert(1);
-
   display: block;
 }
 
 .arrowButton:hover .arrowIcon {
   background: rgba(0, 0, 0, 0.4);
 }
-
 .left {
   transform: rotate(180deg);
 }
-
 .right {
   transform: rotate(0deg);
 }
 
 .dotsContainer {
   position: absolute;
-
   left: 50%;
   bottom: 20px;
   transform: translateX(-50%);
-
   display: flex;
-  justify-content: flex-start;
-
-  overflow: hidden;
-
+  justify-content: center;
   z-index: 2;
-
-  width: calc(5 * 10px + 4 * 10px);
+  width: auto; /* Corregido para evitar scroll raro */
 }
 
 .dotsTrack {
   display: flex;
   gap: 10px;
-
   transition: transform 0.3s ease;
 }
 
 .dot {
   width: 10px;
   height: 10px;
-
   flex: 0 0 10px;
-
   border-radius: 50%;
   border: none;
-
   cursor: pointer;
-
   background: rgba(255, 255, 255, 0.4);
-
   transition: all 0.2s ease;
 }
 
@@ -125,27 +96,13 @@
   background: #ffffff;
 }
 
-.spotlightItemImage {
-  position: relative;
-  z-index: 2;
-}
-
 @media (max-width: 768px) {
   .spotlightCarousel {
-    min-height: 100dvh;
-    height: 100dvh;
-
-    padding: 2rem 0;
+    min-height: 600px; /* Estabilizado sin 100dvh para evitar saltos */
+    height: auto;
+    padding: 2rem 0 4rem 0;
     gap: 2rem;
-
-    justify-content: normal;
   }
-
-  .spotlightWrapper {
-    padding: 0 1.5rem;
-    touch-action: pan-y;
-  }
-
   .arrowButton {
     display: none;
   }
@@ -153,26 +110,14 @@
 
 @media (max-width: 480px) {
   .spotlightCarousel {
-    min-height: calc(100dvh - var(--nav-height));
-    height: calc(100dvh - var(--nav-height));
-
-    padding-top: 35%;
-
+    min-height: 550px;
+    padding-top: 60px; /* Evita el 35% que empuja todo fuera */
     align-items: flex-start;
-  }
-
-  .spotlightWrapper {
-    padding: 0;
-    touch-action: pan-y;
-  }
-
-  .arrowButton {
-    display: none;
   }
 }
 
 @media (max-width: 390px) {
   .dotsContainer {
-    bottom: 50px;
+    bottom: 30px;
   }
 }
