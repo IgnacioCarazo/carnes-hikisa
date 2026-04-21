@@ -1,0 +1,12 @@
+.fadeSeparator {
+  width: 100%;
+  display: block;
+  height: var(--separator-height);
+  margin-top: -3px;
+
+  background: linear-gradient(
+    to bottom,
+    var(--separator-color) 30%,
+    var(--separator-end) 100%
+  );
+}
