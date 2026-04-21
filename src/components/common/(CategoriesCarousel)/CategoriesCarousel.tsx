@@ -6,9 +6,11 @@ import { useIsMobile } from "@/hooks/useIsMobile";
 import styles from "./CategoriesCarousel.module.css";
 
 import CatCarouselCard from "../(CatCarouselCard)/CatCarouselCard";
+import DotsCarousel from "../(DotsCarousel)/DotsCarousel";
 
 const CategoriesCarousel = () => {
   const cards = [1, 2, 3, 4, 5, 6, 7, 8];
+
   const isMobile = useIsMobile(480);
   const [activeIndex, setActiveIndex] = useState(Math.floor(cards.length / 2));
 
@@ -21,8 +23,10 @@ const CategoriesCarousel = () => {
 
   useLayoutEffect(() => {
     if (!viewportRef.current) return;
+
     const update = () => setViewportWidth(viewportRef.current!.offsetWidth);
     update();
+
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
@@ -30,14 +34,14 @@ const CategoriesCarousel = () => {
   const translateX =
     -(activeIndex * step) + (viewportWidth / 2 - cardWidth / 2);
 
-  const handlePrev = () => setActiveIndex((prev) => Math.max(prev - 1, 0));
+  const handlePrev = () =>
+    setActiveIndex((prev) => Math.max(prev - 1, 0));
+
   const handleNext = () =>
     setActiveIndex((prev) => Math.min(prev + 1, cards.length - 1));
 
   const handleCardClick = (index: number) => {
-    if (index !== activeIndex) {
-      setActiveIndex(index);
-    }
+    if (index !== activeIndex) setActiveIndex(index);
   };
 
   return (
@@ -60,12 +64,12 @@ const CategoriesCarousel = () => {
               <div
                 key={num}
                 className={`${styles.cardWrapper} ${stateClass}`}
-                onClick={() => handleCardClick(i)} // Activamos el clic aquí
+                onClick={() => handleCardClick(i)}
                 style={{
                   width: `${cardWidth}px`,
                   height: isMobile ? "300px" : "420px",
                   flexShrink: 0,
-                  cursor: isActive ? "default" : "pointer", // Cursor diferente para las laterales
+                  cursor: isActive ? "default" : "pointer",
                 }}
               >
                 <CatCarouselCard number={num} />
@@ -75,18 +79,36 @@ const CategoriesCarousel = () => {
         </div>
       </div>
 
+      {/* CONTROLES (arrows + dots) */}
       <div className={styles.categoriesCarouselControls}>
         <button
           className={styles.categoriesCarouselArrowButton}
           onClick={handlePrev}
         >
-          ←
+          <img
+            src="/icons/chevron.svg"
+            className={`${styles.arrowIcon} ${styles.left}`}
+            alt="prev"
+          />
         </button>
+
+        <DotsCarousel
+          total={cards.length}
+          activeIndex={activeIndex}
+          onChange={setActiveIndex}
+          variant="inline"
+          theme="dark"
+        />
+
         <button
           className={styles.categoriesCarouselArrowButton}
-          onClick={handleNext}
+          onClick={handleNext}   // ✅ corregido
         >
-          →
+          <img
+            src="/icons/chevron.svg"
+            className={`${styles.arrowIcon} ${styles.right}`}
+            alt="next"
+          />
         </button>
       </div>
     </div>

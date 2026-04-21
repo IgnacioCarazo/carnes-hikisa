@@ -9,6 +9,37 @@
   background: white;
 }
 
+.categoriesCarouselArrowButton {
+  cursor: pointer;
+  background: transparent;
+  border: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+}
+
+.arrowIcon {
+  width: 40px;
+  height: 40px;
+
+  filter: invert(0); /* negro para Categories */
+  background: rgba(0, 0, 0, 0.05);
+  padding: 10px;
+  border-radius: 9999px;
+
+  display: block;
+}
+
+.left {
+  transform: rotate(180deg);
+}
+
+.right {
+  transform: rotate(0deg);
+}
+
 .cardsHolderViewport {
   width: 100%;
   max-width: 100%;
@@ -20,21 +51,8 @@
   flex-direction: row;
   align-items: center;
   gap: 50px;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Transmisión más suave */
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   perspective: 1000px;
-}
-
-.categoriesCarouselControls {
-  display: flex;
-  gap: 20px;
-}
-
-.categoriesCarouselArrowButton {
-  cursor: pointer;
-  padding: 10px 20px;
-  background: black;
-  color: white;
-  border: none;
 }
 
 .cardWrapper {
@@ -45,6 +63,7 @@
   will-change: transform;
 }
 
+/* STATES */
 .categoriesCarouselCardActive {
   transform: scale(1);
   opacity: 1;
@@ -63,12 +82,29 @@
   z-index: 1;
 }
 
+/* CONTROLS */
+.categoriesCarouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+/* SOLO devices con hover real (desktop/laptop) */
+@media (hover: hover) and (pointer: fine) {
+  .arrowIcon:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .categoriesCarousel {
     height: auto;
     gap: 24px;
     padding: 2rem 0;
   }
+
   .cardsHolder {
     gap: 16px;
   }
@@ -77,5 +113,10 @@
 @media (max-width: 480px) {
   .cardsHolder {
     gap: 16px;
+  }
+
+  .arrowIcon {
+    width: 32px;
+    height: 32px;
   }
 }
