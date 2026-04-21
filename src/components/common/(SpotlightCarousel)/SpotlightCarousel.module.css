@@ -1,25 +1,22 @@
 .spotlightCarousel {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  flex-direction: row;
 
   min-height: 550px;
   width: 100%;
 
   background: #800300;
   gap: 40px;
-  padding: 10px 0;
-
+  padding: 10px 15px;
+  align-items: center;
   position: relative;
 }
 
-/* wrapper ya NO controla sombra */
+/* CONTENT */
 .spotlightWrapper {
   flex: 1;
   width: 100%;
-  min-height: 500px;
   display: flex;
-  justify-content: center;
 
   transition: opacity 0.18s ease;
 
@@ -35,18 +32,43 @@
   opacity: 0;
 }
 
-.spotlightCarouselControls {
-  display: flex;
-  gap: 20px;
+/* ARROWS */
+.arrowIcon {
+  width: 40px;
+  height: 40px;
+
+  filter: invert(1);
+
+  background: rgba(0, 0, 0, 0.2);
+  padding: 10px;
+  border-radius: 9999px;
+
+  display: block;
+}
+
+.arrowButton:hover .arrowIcon {
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.left {
+  transform: rotate(180deg);
+}
+
+.right {
+  transform: rotate(0deg);
 }
 
 .arrowButton {
   cursor: pointer;
-  padding: 10px 20px;
-  background: black;
-  color: white;
   border: none;
+  height: 50px;
+  width: 50px;
 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
   transition: opacity 0.2s ease;
 }
 
@@ -55,54 +77,97 @@
   cursor: not-allowed;
 }
 
-/* ensure item is above shadow */
+/* DOTS */
+.dotsContainer {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  width: calc(5 * 10px + 4 * 10px); /* 5 dots + 4 gaps */
+  overflow: hidden;
+
+  display: flex;
+  justify-content: flex-start;
+  z-index: 2;
+}
+
+.dotsTrack {
+  display: flex;
+  gap: 10px;
+  transition: transform 0.3s ease;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+  border: none;
+
+  background: rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+
+  transition: all 0.2s ease;
+  flex: 0 0 10px;
+}
+
+/* STATES */
+.activeDot {
+  background: #ffffff;
+  /* transform: scale(1.2); */
+}
+
+/* IMAGE FIX */
 .spotlightItemImage {
   position: relative;
   z-index: 2;
 }
 
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .spotlightCarousel {
-    height: 10dvh;
     min-height: 100dvh;
-
+    height: 100dvh;
     padding: 2rem 0;
-
     gap: 2rem;
+    justify-content: normal;
   }
 
   .spotlightWrapper {
     padding: 0 1.5rem;
-  }
-
-  .spotlightCarouselControls {
-    gap: 16px;
+    touch-action: pan-y;
   }
 
   .arrowButton {
-    padding: 10px 18px;
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
   .spotlightCarousel {
     min-height: calc(100dvh - var(--nav-height));
-    height: auto;
-    padding: 2rem 0;
-    gap: 1.5rem;
-    justify-content: flex-start;
+    height: calc(100dvh - var(--nav-height));
+    padding-top: 35%;
+    align-items: flex-start;
   }
 
   .spotlightWrapper {
-    padding: 0 1rem;
-  }
-
-  .spotlightCarouselControls {
-    gap: 12px;
+    padding: 0;
+    touch-action: pan-y;
   }
 
   .arrowButton {
-    padding: 8px 14px;
-    font-size: 0.9rem;
+    display: none;
+  }
+}
+@media (max-width: 390px) {
+  .dotsContainer {
+    bottom: 50px;
+  }
+}
+@media (max-width: 3650px) {
+  .dotsContainer {
+    bottom: 0px;
   }
 }
