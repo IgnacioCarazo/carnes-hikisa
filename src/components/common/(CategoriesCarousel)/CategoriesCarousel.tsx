@@ -8,13 +8,9 @@ import styles from "./CategoriesCarousel.module.css";
 import CatCarouselCard from "../(CatCarouselCard)/CatCarouselCard";
 
 const CategoriesCarousel = () => {
-  const cards = [1, 2, 3, 4, 5, 6, 7];
-
+  const cards = [1, 2, 3, 4, 5, 6, 7, 8];
   const isMobile = useIsMobile(480);
-
-  const [activeIndex, setActiveIndex] = useState(
-    Math.floor(cards.length / 2)
-  );
+  const [activeIndex, setActiveIndex] = useState(Math.floor(cards.length / 2));
 
   const viewportRef = useRef<HTMLDivElement>(null);
   const [viewportWidth, setViewportWidth] = useState(0);
@@ -25,61 +21,52 @@ const CategoriesCarousel = () => {
 
   useLayoutEffect(() => {
     if (!viewportRef.current) return;
-
-    const update = () => {
-      setViewportWidth(viewportRef.current!.offsetWidth);
-    };
-
+    const update = () => setViewportWidth(viewportRef.current!.offsetWidth);
     update();
     window.addEventListener("resize", update);
-
     return () => window.removeEventListener("resize", update);
   }, []);
 
   const translateX =
-    -(activeIndex * step) +
-    (viewportWidth / 2 - cardWidth / 2);
+    -(activeIndex * step) + (viewportWidth / 2 - cardWidth / 2);
 
-  const handlePrev = () => {
-    setActiveIndex((prev) => Math.max(prev - 1, 0));
-  };
+  const handlePrev = () => setActiveIndex((prev) => Math.max(prev - 1, 0));
+  const handleNext = () =>
+    setActiveIndex((prev) => Math.min(prev + 1, cards.length - 1));
 
-  const handleNext = () => {
-    setActiveIndex((prev) =>
-      Math.min(prev + 1, cards.length - 1)
-    );
+  const handleCardClick = (index: number) => {
+    if (index !== activeIndex) {
+      setActiveIndex(index);
+    }
   };
 
   return (
     <div className={styles.categoriesCarousel}>
-      <div
-        ref={viewportRef}
-        className={styles.cardsHolderViewport}
-      >
+      <div ref={viewportRef} className={styles.cardsHolderViewport}>
         <div
           className={styles.cardsHolder}
-          style={{
-            transform: `translateX(${translateX}px)`,
-          }}
+          style={{ transform: `translateX(${translateX}px)` }}
         >
           {cards.map((num, i) => {
             const distance = Math.abs(i - activeIndex);
+            const isActive = i === activeIndex;
 
-            let stateClass =
-              styles.categoriesCarouselCardFar;
-
-            if (distance === 0) {
-              stateClass =
-                styles.categoriesCarouselCardActive;
-            } else if (distance === 1) {
-              stateClass =
-                styles.categoriesCarouselCardNear;
-            }
+            let stateClass = styles.categoriesCarouselCardFar;
+            if (isActive) stateClass = styles.categoriesCarouselCardActive;
+            else if (distance === 1)
+              stateClass = styles.categoriesCarouselCardNear;
 
             return (
               <div
                 key={num}
                 className={`${styles.cardWrapper} ${stateClass}`}
+                onClick={() => handleCardClick(i)} // Activamos el clic aquí
+                style={{
+                  width: `${cardWidth}px`,
+                  height: isMobile ? "300px" : "420px",
+                  flexShrink: 0,
+                  cursor: isActive ? "default" : "pointer", // Cursor diferente para las laterales
+                }}
               >
                 <CatCarouselCard number={num} />
               </div>
@@ -95,7 +82,6 @@ const CategoriesCarousel = () => {
         >
           ←
         </button>
-
         <button
           className={styles.categoriesCarouselArrowButton}
           onClick={handleNext}
