@@ -12,12 +12,12 @@ interface CatCarouselCardProps {
 
 const categoriesData: Record<CategoryId, { title: string; img: string }> = {
   1: {
-    title: "Carnes de Res",
-    img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop",
+    title: "Carne de Res",
+    img: "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=600&auto=format&fit=crop",
   },
   2: {
-    title: "Carnes de Cerdo",
-    img: "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop",
+    title: "Carne de Cerdo",
+    img: "https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg?auto=compress&cs=tinysrgb&h=600",
   },
   3: {
     title: "Pollo",
@@ -64,7 +64,7 @@ export default function CatCarouselCard({
         scaleOnHover={1.05}
         showMobileWarning={false}
         showTooltip={false}
-        displayOverlayContent={isActive} 
+        displayOverlayContent={isActive}
         overlayContent={
           isActive ? (
             <p className="absolute top-4 left-4 bg-black/60 text-white px-4 py-1.5 rounded-full text-sm font-medium whitespace-nowrap backdrop-blur-sm select-none">
