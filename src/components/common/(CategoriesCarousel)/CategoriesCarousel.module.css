@@ -2,16 +2,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 50px;
-  padding: 20px 0;
+
   width: 100%;
-  height: 600px;
+
+  padding: 20px 0;
+  gap: 50px;
+
   background: white;
 }
 
+/* CONTROLS */
+.categoriesCarouselControls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.categoriesCarouselArrowButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  background: transparent;
+  border: none;
+}
+
+.arrowIcon {
+  display: block;
+
+  width: 40px;
+  height: 40px;
+
+  padding: 10px;
+
+  border-radius: 9999px;
+
+  filter: invert(0);
+}
+
+.left {
+  transform: rotate(180deg);
+}
+
+.right {
+  transform: rotate(0deg);
+}
+
+/* CARDS */
 .cardsHolderViewport {
   width: 100%;
   max-width: 100%;
+
   overflow: hidden;
 }
 
@@ -19,32 +63,24 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
   gap: 50px;
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); /* Transmisión más suave */
+
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   perspective: 1000px;
 }
 
-.categoriesCarouselControls {
-  display: flex;
-  gap: 20px;
-}
-
-.categoriesCarouselArrowButton {
-  cursor: pointer;
-  padding: 10px 20px;
-  background: black;
-  color: white;
-  border: none;
-}
-
 .cardWrapper {
+  flex-shrink: 0;
+  border-radius: 5px;
+  overflow: hidden;
+
   transition:
     transform 0.4s ease,
     opacity 0.4s ease;
-  flex-shrink: 0;
   will-change: transform;
 }
-
+/* STATES */
 .categoriesCarouselCardActive {
   transform: scale(1);
   opacity: 1;
@@ -63,12 +99,22 @@
   z-index: 1;
 }
 
+/* INTERACTIONS */
+@media (hover: hover) and (pointer: fine) {
+  .arrowIcon:hover {
+    background: rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
   .categoriesCarousel {
     height: auto;
-    gap: 24px;
+
     padding: 2rem 0;
+    gap: 24px;
   }
+
   .cardsHolder {
     gap: 16px;
   }
@@ -77,5 +123,10 @@
 @media (max-width: 480px) {
   .cardsHolder {
     gap: 16px;
+  }
+
+  .arrowIcon {
+    width: 32px;
+    height: 32px;
   }
 }

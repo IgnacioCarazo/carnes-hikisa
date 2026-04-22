@@ -1,6 +1,5 @@
-import Image from "next/image";
-
 import CategoriesCarousel from "@/components/common/(CategoriesCarousel)/CategoriesCarousel";
+import FadeSeparator from "@/components/common/(FadeSeparator)/FadeSeparator";
 import LandingVideo from "@/components/common/(LandingVideo)/LandingVideo";
 import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
 import ServicesSection from "@/components/common/(ServicesSection)/ServicesSection";
@@ -16,18 +15,12 @@ export default function Home() {
         description="Descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa."
         color="black"
       />
-      <CategoriesCarousel/>
-      <SectionHeader
-        title="Nuestra Selección"
-        color="black"
-      />
-      <SpotlightCarousel/>
-      <SectionHeader
-        title="¿Cómo nos destacamos?"
-        description="Te ofrecemos blablabla"
-        color="black"
-      />
-      <ServicesSection/>
+      <CategoriesCarousel />
+      <SectionHeader title="Nuestra Selección" color="black" />
+      <SpotlightCarousel />
+      <FadeSeparator height={100} />
+      <SectionHeader title="¿Cómo nos destacamos?" color="black" />
+      <ServicesSection />
       <SimpleVideo src="/video/landing.mp4" />
     </div>
   );

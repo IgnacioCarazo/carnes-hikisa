@@ -1,83 +1,64 @@
 .spotlightItem {
   display: flex;
-  width: 80%;
+  width: 100%;
   height: 420px;
-
-  gap: 100px;
-
-  background: transparent;
   align-items: flex-start;
+  gap: 100px;
   padding-left: 5%;
+  background: transparent;
 }
 
-/* IMAGE */
 .spotlightItemImage {
-  flex: 0 0 420px;
+  position: relative;
+  z-index: 2;
   width: 420px;
-  aspect-ratio: 1 / 1;
-
-  background: rgba(0, 0, 0, 0.2);
+  height: 420px;
+  flex: 0 0 420px;
   border-radius: 6px;
-  margin-top: 20px;
-
-  /* ✔️ sombra real del objeto */
+  background: rgba(0, 0, 0, 0.2);
   box-shadow: 0px 25px 60px rgba(0, 0, 0, 0.35);
   transition:
     transform 0.1s ease,
     opacity 0.9s ease;
-  /* mejora percepción de “objeto flotante” */
-  position: relative;
-  z-index: 2;
 }
 
-/* TEXT */
 .spotlightItemTextContent {
-  flex: 1 1 0;
-
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
+  flex: 1 1 0;
   padding-top: 5%;
   gap: 16px;
-
   color: white;
 }
 
-/* STAGGER */
 .spotlightItemTitle {
   font-size: 32px;
   margin: 0;
-
   animation: textIn 0.45s ease both;
 }
 
 .spotlightItemDescription {
   font-size: 16px;
-  opacity: 0.9;
   line-height: 1.4;
   margin: 0;
+  opacity: 0.9;
   text-align: justify;
-
   animation: textIn 0.55s ease both;
   animation-delay: 0.08s;
 }
 
 .spotlightItemButton {
-  margin-top: 12px;
-  padding: 0;
   width: fit-content;
-
-  background: transparent;
+  margin-top: 62px;
+  padding: 0;
   border: none;
+  background: transparent;
   cursor: pointer;
-
   color: #b5b5b5;
   text-decoration: underline;
   font-size: 16px;
-
   transition: color 0.2s ease;
-
   animation: textIn 0.6s ease both;
   animation-delay: 0.12s;
 }
@@ -86,7 +67,6 @@
   color: white;
 }
 
-/* ANIMATION */
 @keyframes textIn {
   from {
     opacity: 0;
@@ -98,32 +78,25 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 770px) {
   .spotlightItem {
-    width: 100%;
-
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     text-align: center;
-
     gap: 2rem;
     padding-left: 0;
+    height: auto;
   }
-
   .spotlightItemImage {
-    width: 320px;
-    height: 320px;
-    flex: 0 0 auto;
+    width: 300px;
+    height: 300px;
+    flex: 0 0 300px;
     margin-top: 0;
   }
-
   .spotlightItemTextContent {
-    padding-top: 0;
     align-items: center;
-  }
-
-  .spotlightItemDescription {
-    text-align: center;
+    padding-top: 0;
   }
 }
 
@@ -131,50 +104,27 @@
   .spotlightItem {
     gap: 1rem;
   }
-
   .spotlightItemImage {
     width: 220px;
-    height: 270px;
+    height: 220px; /* Corregido a cuadrado para estabilidad */
+    flex: 0 0 220px;
   }
-
   .spotlightItemTitle {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
-
   .spotlightItemDescription {
-    font-size: 0.8rem;
-    text-align: justify;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
+    font-size: 0.85rem;
+    padding: 0 20px; /* Reducido de 50px para evitar colapso de texto */
   }
-
   .spotlightItemButton {
-    font-size: 0.7rem;
+    margin-top: 30px;
   }
 }
 
-@media (max-width: 380px) {
-  .spotlightItem {
-    gap: 1rem;
-  }
-
+@media (max-width: 390px) {
   .spotlightItemImage {
     width: 180px;
-    height: 230px;
-  }
-
-  .spotlightItemTitle {
-    font-size: 1.5rem;
-  }
-
-  .spotlightItemDescription {
-    font-size: 0.8rem;
-    text-align: justify;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  .spotlightItemButton {
-    font-size: 0.7rem;
+    height: 180px;
+    flex: 0 0 180px;
   }
 }
