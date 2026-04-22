@@ -13,6 +13,7 @@ const CategoriesCarousel = () => {
   const cards = [1, 2, 3, 4, 5, 6, 7, 8];
   const isMobile = useIsMobile(480);
   const [activeIndex, setActiveIndex] = useState(3);
+  const [bumpDirection, setBumpDirection] = useState<"left" | "right" | null>(null);
   const viewportRef = useRef<HTMLDivElement>(null);
   const [viewportWidth, setViewportWidth] = useState<number | null>(null);
 
@@ -29,11 +30,24 @@ const CategoriesCarousel = () => {
   }, []);
 
   const currentWidth = viewportWidth || 1150;
-  const translateX = -(activeIndex * step) + (currentWidth / 2 - cardWidth / 2);
+  const translateX =
+    -(activeIndex * step) + (currentWidth / 2 - cardWidth / 2);
 
-  const handlePrev = () => setActiveIndex((prev) => Math.max(prev - 1, 0));
-  const handleNext = () =>
-    setActiveIndex((prev) => Math.min(prev + 1, cards.length - 1));
+  const handlePrev = () => {
+    if (activeIndex === 0) {
+      setBumpDirection("left");
+    } else {
+      setActiveIndex((prev) => prev - 1);
+    }
+  };
+
+  const handleNext = () => {
+    if (activeIndex === cards.length - 1) {
+      setBumpDirection("right");
+    } else {
+      setActiveIndex((prev) => prev + 1);
+    }
+  };
 
   const handleCardClick = (index: number) => {
     if (index !== activeIndex) setActiveIndex(index);
@@ -43,14 +57,24 @@ const CategoriesCarousel = () => {
     <div className={styles.categoriesCarousel}>
       <div ref={viewportRef} className={styles.cardsHolderViewport}>
         <div
-          className={styles.cardsHolder}
-          style={{
-            transform: `translateX(${translateX}px)`,
-            transition:
-              viewportWidth === null
-                ? "none"
-                : "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)",
-          }}
+          className={`${styles.cardsHolder} ${
+            bumpDirection === "left"
+              ? styles.bumpLeft
+              : bumpDirection === "right"
+              ? styles.bumpRight
+              : ""
+          }`}
+          style={
+            {
+              transform: `translateX(${translateX}px)`,
+              "--tx": `${translateX}px`,
+              transition:
+                viewportWidth === null
+                  ? "none"
+                  : "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)",
+            } as React.CSSProperties
+          }
+          onAnimationEnd={() => setBumpDirection(null)}
         >
           {cards.map((num, i) => {
             const isActive = i === activeIndex;
