@@ -16,7 +16,7 @@ export default function Home() {
         color="black"
       />
       <CategoriesCarousel />
-      <SectionHeader title="Nuestra Selecciónnnnn" color="black" />
+      <SectionHeader title="Nuestra Selección" color="black" />
       <SpotlightCarousel />
       <FadeSeparator height={100} />
       <SectionHeader title="¿Cómo nos destacamos?" color="black" />
