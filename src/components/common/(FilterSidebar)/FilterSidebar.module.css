@@ -2,14 +2,15 @@
   background-color: white;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Vital para que Framer Motion anime el ancho correctamente */
-  height: 100vh;
+  overflow: hidden; /* Vital para la animación de Framer Motion */
+  height: 100%;
   border-right: 1px solid #eee;
-  position: relative;
 }
 
 .innerContainer {
-  width: 300px; /* Ancho fijo igual al del 'animate' de Framer Motion */
+  width: 100%;
+  max-width: 270px; /* Un poco más estrecho para centrar visualmente */
+  margin: 0 auto; /* Centra el bloque de contenido horizontalmente */
   padding: 1.5rem 1rem;
   display: flex;
   flex-direction: column;
@@ -32,7 +33,7 @@
 }
 
 .titleText {
-  font-size: 1.1rem;
+  font-size: 1.2rem; /* Ligeramente más pequeña */
   font-weight: 800;
   text-transform: uppercase;
   margin: 0;
@@ -49,7 +50,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  padding: 8px;
+  padding: 5px;
   border-radius: 50%;
 }
 
@@ -61,52 +62,74 @@
 .filterContent {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 0.6rem;
+  align-items: center; /* Centra las tarjetas dentro del nav */
+  gap: 0.6rem; /* Espaciado más compacto entre tarjetas */
   width: 100%;
-  overflow-y: auto;
-  padding-bottom: 1rem;
+  overflow-y: auto; /* Permite scroll si hay muchas categorías */
 }
 
-/* --- Estilos para el botón externo (Trigger) --- */
-.triggerButton {
-  background: white;
-  border: 1px solid #eee;
-  border-radius: 8px;
-  cursor: pointer;
+/* Estilos para las tarjetas (CategoryCard) */
+.categoryItem {
   display: flex;
   align-items: center;
-  justify-content: center;
-  transition:
-    padding-left 0.3s ease,
-    background-color 0.2s;
+  width: 100%;
+  max-width: 240px; /* Limita el ancho para que no toquen los bordes */
+  padding: 0.6rem 1rem; /* Padding reducido para hacerlas más pequeñas */
+  background: white;
+  border: 1px solid #e5e5e5;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  outline: none;
 }
 
-.closedPadding {
-  padding-left: 24px; /* El padding que mencionas solo cuando está cerrado */
+.categoryItem:hover {
+  border-color: #bbb;
+  background-color: #fafafa;
+  transform: translateY(-1px);
 }
 
-/* --- Estilos para las tarjetas de categorías --- */
+.active {
+  border: 2px solid #e31b23;
+  background-color: #fffcfc;
+  box-shadow: 0 2px 8px rgba(227, 27, 35, 0.1);
+}
+
 .iconWrapper {
-  margin-right: 12px;
+  margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 35px;
+  width: 35px; /* Contenedor de icono fijo */
   height: 35px;
 }
 
-/* Scrollbar personalizado */
+.categoryName {
+  font-size: 0.85rem; /* Texto más fino */
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Scrollbar sutil para el contenido */
 .filterContent::-webkit-scrollbar {
-  width: 5px;
+  width: 4px;
 }
 
 .filterContent::-webkit-scrollbar-thumb {
-  background: #e0e0e0;
+  background: #eee;
   border-radius: 10px;
 }
+.buttonBase {
+  /* Tus estilos normales del botón */
+  display: flex;
+  align-items: center;
+  transition: padding-left 0.3s ease;
+}
 
-.filterContent::-webkit-scrollbar-track {
-  background: transparent;
+.withPadding {
+  padding-left: 20px; /* El padding que necesitas solo cuando está cerrado */
 }
