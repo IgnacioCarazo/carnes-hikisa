@@ -1,0 +1,44 @@
+.card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 24px;
+  background-color: white;
+  border: 1.5px solid #e0e0e0; /* Gris suave para el borde normal */
+  border-radius: 40px; /* Bordes muy redondeados como en la imagen */
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  gap: 16px;
+  outline: none;
+}
+
+.card:hover {
+  background-color: #fcfcfc;
+  border-color: #bdbdbd;
+}
+
+.active {
+  border: 2px solid #e31b23; /* Rojo para la categoría seleccionada */
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+}
+
+/* Si usas imágenes <img> dentro del iconContainer */
+.iconContainer img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #000;
+  text-align: left;
+}

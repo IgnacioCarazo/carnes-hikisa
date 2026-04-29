@@ -1,0 +1,112 @@
+.sidebar {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Vital para que Framer Motion anime el ancho correctamente */
+  height: 100vh;
+  border-right: 1px solid #eee;
+  position: relative;
+}
+
+.innerContainer {
+  width: 300px; /* Ancho fijo igual al del 'animate' de Framer Motion */
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.sidebarHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.2rem;
+  padding: 0 0.5rem;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.titleText {
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin: 0;
+  color: #222;
+  letter-spacing: -0.5px;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #888;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 8px;
+  border-radius: 50%;
+}
+
+.closeBtn:hover {
+  color: #e31b23;
+  background-color: #fff5f5;
+}
+
+.filterContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  overflow-y: auto;
+  padding-bottom: 1rem;
+}
+
+/* --- Estilos para el botón externo (Trigger) --- */
+.triggerButton {
+  background: white;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    padding-left 0.3s ease,
+    background-color 0.2s;
+}
+
+.closedPadding {
+  padding-left: 24px; /* El padding que mencionas solo cuando está cerrado */
+}
+
+/* --- Estilos para las tarjetas de categorías --- */
+.iconWrapper {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 35px;
+  height: 35px;
+}
+
+/* Scrollbar personalizado */
+.filterContent::-webkit-scrollbar {
+  width: 5px;
+}
+
+.filterContent::-webkit-scrollbar-thumb {
+  background: #e0e0e0;
+  border-radius: 10px;
+}
+
+.filterContent::-webkit-scrollbar-track {
+  background: transparent;
+}

@@ -4,9 +4,12 @@ import { Be_Vietnam_Pro } from "next/font/google";
 import localFont from "next/font/local";
 
 import "./globals.css";
+import ConditionalFooter from "@/components/common/(Footer)/ConditionalFooter";
+
 import FloatingActions from "../components/common/(FloatingActions)/FloatingActions";
 import Footer from "../components/common/(Footer)/Footer";
 import Navbar from "../components/common/(NavBar)/Navbar";
+
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,14 +40,17 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`${bernard.variable} ${inter.variable} ${beVietnam.variable}`}
+        className={`layout-container ${bernard.variable} ${inter.variable} ${beVietnam.variable}`}
       >
         <Navbar />
-        <main style={{ minHeight: "calc(100vh - var(--nav-height) - 400px)" }}>
-          {children}
-        </main>
-        <FloatingActions />
-        <Footer />
+
+        <main className="main-content">{children}</main>
+
+        <div className="floating-actions-wrapper">
+          <FloatingActions />
+        </div>
+
+        <ConditionalFooter />
       </body>
     </html>
   );

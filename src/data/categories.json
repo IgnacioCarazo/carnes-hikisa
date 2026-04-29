@@ -1,0 +1,10 @@
+[
+  { "id": "res", "name": "Carnes de Res", "image": "vaca.png" },
+  { "id": "cerdo", "name": "Carnes de Cerdo", "image": "cerdo.png" },
+  { "id": "pollo", "name": "Pollo", "image": "pollo.png" },
+  { "id": "mar", "name": "Frutos del Mar", "image": "pescado.png" },
+  { "id": "embutidos", "name": "Embutidos", "image": "embutido.png" },
+  { "id": "paqueteria", "name": "Paquetería", "image": "paquete.png" },
+  { "id": "lacteos", "name": "Lácteos", "image": "lacteo.png" },
+  { "id": "carnitas", "name": "Carnitas Adobadas", "image": "fuego.png" }
+]

@@ -34,7 +34,9 @@ const Navbar = () => {
           <div className={`${styles.navbarLinks} ${isOpen ? styles.show : ""}`}>
             <Link
               href="/catalogo"
-              className={pathname === "/catalogo" ? styles.active : ""}
+              className={
+                pathname === "/(main)/catalogo/page" ? styles.active : ""
+              }
             >
               Catálogo
             </Link>
