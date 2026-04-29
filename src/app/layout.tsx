@@ -4,10 +4,10 @@ import { Be_Vietnam_Pro } from "next/font/google";
 import localFont from "next/font/local";
 
 import "./globals.css";
+
 import ConditionalFooter from "@/components/common/(Footer)/ConditionalFooter";
 
 import FloatingActions from "../components/common/(FloatingActions)/FloatingActions";
-import Footer from "../components/common/(Footer)/Footer";
 import Navbar from "../components/common/(NavBar)/Navbar";
 
 

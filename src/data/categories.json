@@ -1,10 +1,148 @@
 [
-  { "id": "res", "name": "Carnes de Res", "image": "vaca.png" },
-  { "id": "cerdo", "name": "Carnes de Cerdo", "image": "cerdo.png" },
-  { "id": "pollo", "name": "Pollo", "image": "pollo.png" },
-  { "id": "mar", "name": "Frutos del Mar", "image": "pescado.png" },
-  { "id": "embutidos", "name": "Embutidos", "image": "embutido.png" },
-  { "id": "paqueteria", "name": "Paquetería", "image": "paquete.png" },
-  { "id": "lacteos", "name": "Lácteos", "image": "lacteo.png" },
-  { "id": "carnitas", "name": "Carnitas Adobadas", "image": "fuego.png" }
+  {
+    "id": "res",
+    "name": "Carnes de Res",
+    "image": "vaca.png",
+    "products": [
+      {
+        "id": "res-1",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-2",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-3",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-4",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-5",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-1",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-2",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-3",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-4",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-5",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-1",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-2",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-3",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-4",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-5",
+        "name": "Corte de Carne",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      }
+    ]
+  },
+  {
+    "id": "cerdo",
+    "name": "Carnes de Cerdo",
+    "image": "cerdo.png",
+    "products": [
+      {
+        "id": "cerdo-1",
+        "name": "Corte de Carne",
+        "category": "Carnes de Cerdo",
+        "image": "/icons/categoryIcons/cerdo.png"
+      }
+    ]
+  },
+  {
+    "id": "pollo",
+    "name": "Pollo",
+    "image": "pollo.png",
+    "products": []
+  },
+  {
+    "id": "mar",
+    "name": "Frutos del Mar",
+    "image": "pescado.png",
+    "products": []
+  },
+  {
+    "id": "embutidos",
+    "name": "Embutidos",
+    "image": "embutido.png",
+    "products": []
+  },
+  {
+    "id": "paqueteria",
+    "name": "Paquetería",
+    "image": "paquete.png",
+    "products": []
+  },
+  {
+    "id": "lacteos",
+    "name": "Lácteos",
+    "image": "lacteo.png",
+    "products": []
+  },
+  {
+    "id": "carnitas",
+    "name": "Carnitas Adobadas",
+    "image": "fuego.png",
+    "products": []
+  }
 ]

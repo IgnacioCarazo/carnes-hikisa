@@ -1,20 +1,30 @@
+/* --- Estructura Principal del Sidebar --- */
 .sidebar {
-  background-color: white;
+  position: sticky;
+  top: 0;
+  height: 100vh;
   display: flex;
-  flex-direction: column;
-  overflow: hidden; /* Vital para la animación de Framer Motion */
-  height: 100%;
-  border-right: 1px solid #eee;
+  align-items: flex-start;
+  /* Evita que el contenido se vea mientras el ancho es pequeño */
+  overflow: hidden;
+  z-index: 50;
+  flex-shrink: 0;
+  /* Se eliminó la transición de CSS para no interferir con Framer Motion */
 }
 
 .innerContainer {
-  width: 100%;
-  max-width: 270px; /* Un poco más estrecho para centrar visualmente */
-  margin: 0 auto; /* Centra el bloque de contenido horizontalmente */
-  padding: 1.5rem 1rem;
+  /* Forzamos el ancho para que el contenido no "salte" al animar */
+  width: 320px;
+  min-width: 320px;
+  padding: 1.5rem 1.2rem;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  background-color: white;
+  border: 1px solid #f0f0f0;
+  border-radius: 28px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
+  max-height: 95vh;
+  margin-top: 1rem; /* Margen opcional para que no pegue al techo */
 }
 
 .sidebarHeader {
@@ -33,7 +43,7 @@
 }
 
 .titleText {
-  font-size: 1.2rem; /* Ligeramente más pequeña */
+  font-size: 1.2rem;
   font-weight: 800;
   text-transform: uppercase;
   margin: 0;
@@ -62,37 +72,14 @@
 .filterContent {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centra las tarjetas dentro del nav */
-  gap: 0.6rem; /* Espaciado más compacto entre tarjetas */
+  gap: 0.8rem;
   width: 100%;
-  overflow-y: auto; /* Permite scroll si hay muchas categorías */
-}
-
-/* Estilos para las tarjetas (CategoryCard) */
-.categoryItem {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  max-width: 240px; /* Limita el ancho para que no toquen los bordes */
-  padding: 0.6rem 1rem; /* Padding reducido para hacerlas más pequeñas */
-  background: white;
-  border: 1px solid #e5e5e5;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  outline: none;
-}
-
-.categoryItem:hover {
-  border-color: #bbb;
-  background-color: #fafafa;
-  transform: translateY(-1px);
-}
-
-.active {
-  border: 2px solid #e31b23;
-  background-color: #fffcfc;
-  box-shadow: 0 2px 8px rgba(227, 27, 35, 0.1);
+  overflow-y: auto;
+  padding-right: 4px;
+  /* Ajustado para dar espacio a la navegación */
+  flex-grow: 1;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 1rem;
 }
 
 .iconWrapper {
@@ -101,20 +88,11 @@
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-  width: 35px; /* Contenedor de icono fijo */
+  width: 35px;
   height: 35px;
 }
 
-.categoryName {
-  font-size: 0.85rem; /* Texto más fino */
-  font-weight: 700;
-  color: #333;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* Scrollbar sutil para el contenido */
+/* --- Scrollbar Custom --- */
 .filterContent::-webkit-scrollbar {
   width: 4px;
 }
@@ -122,14 +100,4 @@
 .filterContent::-webkit-scrollbar-thumb {
   background: #eee;
   border-radius: 10px;
-}
-.buttonBase {
-  /* Tus estilos normales del botón */
-  display: flex;
-  align-items: center;
-  transition: padding-left 0.3s ease;
-}
-
-.withPadding {
-  padding-left: 20px; /* El padding que necesitas solo cuando está cerrado */
 }

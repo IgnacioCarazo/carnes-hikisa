@@ -3,7 +3,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { Filter, ChevronLeft } from "lucide-react";
 import Image from "next/image";
-import { useState } from "react";
 
 import CategoryCard from "@/components/common/(CategoryCards)/CategoryCard";
 import categoriesData from "@/data/categories.json";
@@ -13,10 +12,23 @@ import styles from "./FilterSidebar.module.css";
 interface FilterSidebarProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
+  activeCategory: string;
+  onCategoryChange: (id: string) => void;
 }
 
-const FilterSidebar = ({ isOpen, setIsOpen }: FilterSidebarProps) => {
-  const [activeCategory, setActiveCategory] = useState("res");
+interface Category {
+  id: string;
+  name: string;
+  image: string;
+}
+
+const FilterSidebar = ({
+  isOpen,
+  setIsOpen,
+  activeCategory,
+  onCategoryChange,
+}: FilterSidebarProps) => {
+  const typedCategories = categoriesData as Category[];
 
   return (
     <AnimatePresence initial={false}>
@@ -24,12 +36,12 @@ const FilterSidebar = ({ isOpen, setIsOpen }: FilterSidebarProps) => {
         <motion.aside
           key="sidebar"
           initial={{ width: 0, opacity: 0 }}
-          animate={{ width: 300, opacity: 1 }}
+          animate={{ width: 320, opacity: 1 }}
           exit={{ width: 0, opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
           className={styles.sidebar}
         >
-          {/* El innerContainer tiene un ancho fijo para que el contenido no se "apriete" al animar */}
+          {/* El innerContainer siempre mide 320px, así el contenido no se deforma */}
           <div className={styles.innerContainer}>
             <div className={styles.sidebarHeader}>
               <div className={styles.titleGroup}>
@@ -39,40 +51,31 @@ const FilterSidebar = ({ isOpen, setIsOpen }: FilterSidebarProps) => {
               <button
                 className={styles.closeBtn}
                 onClick={() => setIsOpen(false)}
-                aria-label="Cerrar filtros"
               >
                 <ChevronLeft size={24} />
               </button>
             </div>
 
             <nav className={styles.filterContent}>
-              {categoriesData.map((cat, index) => {
-                const imagePath = `/icons/categoryIcons/${cat.image}`;
-
-                return (
-                  <CategoryCard
-                    key={cat.id}
-                    index={index}
-                    name={cat.name}
-                    icon={
-                      <div className={styles.iconWrapper}>
-                        <Image
-                          src={imagePath}
-                          alt={cat.name}
-                          width={45}
-                          height={45}
-                          style={{ objectFit: "contain" }}
-                          onError={() =>
-                            console.error(`Error cargando: ${imagePath}`)
-                          }
-                        />
-                      </div>
-                    }
-                    isActive={activeCategory === cat.id}
-                    onClick={() => setActiveCategory(cat.id)}
-                  />
-                );
-              })}
+              {typedCategories.map((cat) => (
+                <CategoryCard
+                  key={cat.id}
+                  name={cat.name}
+                  icon={
+                    <div className={styles.iconWrapper}>
+                      <Image
+                        src={`/icons/categoryIcons/${cat.image}`}
+                        alt={cat.name}
+                        width={35}
+                        height={35}
+                        style={{ objectFit: "contain" }}
+                      />
+                    </div>
+                  }
+                  isActive={activeCategory === cat.id}
+                  onClick={() => onCategoryChange(cat.id)}
+                />
+              ))}
             </nav>
           </div>
         </motion.aside>

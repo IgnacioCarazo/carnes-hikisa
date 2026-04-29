@@ -3,44 +3,60 @@
   flex-direction: column;
   min-height: 100vh;
   width: 100%;
+  background-color: #f9f9f9;
 }
 
 .contentLayout {
   display: flex;
   flex: 1;
-  gap: 2rem; /* Espacio de separación entre el filtro y las cards */
+  gap: 2.5rem;
+  padding: 2rem;
+  align-items: flex-start;
+  max-width: 100%;
+  margin: 0 auto;
+  width: 100%;
 }
 
 .sidebarArea {
   display: flex;
   flex-direction: column;
-  /* flex-shrink: 0 evita que el grid aplaste esta zona */
   flex-shrink: 0;
+  position: sticky;
+  top: 2rem;
+  z-index: 20;
 }
 
 .sidebarToggleBtn {
-  width: 45px;
-  height: 45px;
+  width: 48px;
+  height: 48px;
   background: white;
-  border: 1px solid #ddd;
-  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-  margin-top: 10px; /* Alineación con la primera fila de cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  margin-bottom: 1rem;
+  transition: all 0.2s ease;
+}
+
+.sidebarToggleBtn:hover {
+  background-color: #f0f0f0;
+  transform: scale(1.05);
 }
 
 .mainContent {
   flex: 1;
   display: flex;
   flex-direction: column;
+  min-width: 0;
 }
 
 .productCardPlaceholder {
   aspect-ratio: 1/1;
-  background-color: #f5f5f5;
-  border-radius: 15px;
-  border: 1px solid #ddd;
+  background-color: white;
+  border-radius: 18px;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
 }

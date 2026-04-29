@@ -1,7 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
-
 import styles from "./CategoryCard.module.css";
 
 interface CategoryCardProps {
@@ -13,14 +11,13 @@ interface CategoryCardProps {
 
 const CategoryCard = ({ name, icon, isActive, onClick }: CategoryCardProps) => {
   return (
-    <motion.button
-      whileTap={{ scale: 0.98 }}
+    <div
       onClick={onClick}
       className={`${styles.card} ${isActive ? styles.active : ""}`}
     >
       <div className={styles.iconContainer}>{icon}</div>
       <span className={styles.name}>{name}</span>
-    </motion.button>
+    </div>
   );
 };
 
