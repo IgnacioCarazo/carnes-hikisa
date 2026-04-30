@@ -1,3 +1,5 @@
+/* Navbar.module.css */
+
 .navbar {
   position: sticky;
   top: 0;
@@ -7,7 +9,6 @@
   align-items: center;
 
   height: var(--nav-height);
-
   padding: 0 4rem;
 
   background-color: #ffffff;
@@ -82,234 +83,59 @@
   height: auto;
 }
 
-/* SEARCH DESKTOP */
-.searchContainerDesktop {
-  display: flex;
-  align-items: center;
-
-  width: 220px;
-
-  padding: 0.5rem 1.2rem;
-
-  border: 1px solid transparent;
-  border-radius: 50px;
-
-  background: #f5f5f7;
-
-  transition: all 0.3s ease;
-}
-
-.searchContainerDesktop:focus-within {
-  width: 280px;
-
-  border-color: var(--red-hikisa);
-
-  background: #fff;
-
-  box-shadow: 0 4px 12px rgba(229, 62, 62, 0.08);
-}
-
-.searchIcon {
-  width: 18px;
-  height: 18px;
-
-  margin-right: 10px;
-
-  color: #999;
-}
-
-.searchContainerDesktop:focus-within .searchIcon {
-  color: var(--red-hikisa);
-}
-
-.searchContainerDesktop input {
-  width: 100%;
-
-  border: none;
-  outline: none;
-
-  background: transparent;
-
-  font-family: var(--font-inter), sans-serif;
-  font-size: 0.9rem;
-}
-
 /* MOBILE HIDDEN ELEMENTS */
-.hamburger,
-.searchButtonMobile,
-.searchPanelMobile {
+.hamburger {
   display: none;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
+/* RESPONSIVE (Móviles y Tablets / iPads) */
+@media (max-width: 1024px) {
   .navbar {
     grid-template-columns: auto 1fr auto;
-
     padding: 0 1rem;
-
     gap: 10px;
   }
 
-  .hamburger,
-  .searchButtonMobile {
+  .hamburger {
     display: block;
-
     background: none;
     border: none;
-  }
-
-  .navLeft {
-    grid-order: 1;
-  }
-
-  .navbarLogo {
-    grid-order: 2;
-  }
-
-  .navRight {
-    grid-order: 3;
-  }
-
-  .searchContainerDesktop {
-    display: none;
+    cursor: pointer;
   }
 
   .logoImg {
     width: 120px;
   }
 
-  .searchIcon {
-    width: 24px;
-    height: 24px;
-
-    margin-right: 0;
-  }
-
+  /* SIDEBAR STYLES */
   .navbarLinks {
     position: fixed;
     top: var(--nav-height);
-    left: -100%;
-
-    display: flex;
-    flex-direction: column;
-
-    width: 280px;
-    height: calc(100dvh - var(--nav-height));
-
-    padding: 2.5rem 2rem;
-
-    gap: 1.5rem;
-
-    background: #ffffff;
-    box-shadow: 15px 0 25px rgba(0, 0, 0, 0.05);
-
-    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-    z-index: 999;
-  }
-
-  .navbarLinks.show {
-    left: 0;
-  }
-
-  .navbarLinks a {
-    font-size: 1.4rem;
-
-    padding-bottom: 0.5rem;
-
-    border-bottom: 1px solid #f9f9f9;
-  }
-
-  .navbarLinks a::after {
-    display: none;
-  }
-
-  /* SEARCH PANEL */
-  .searchPanelMobile {
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    width: 100%;
-    height: 100dvh;
+    left: -100%; /* Oculto fuera de la pantalla a la izquierda */
+    width: 250px; /* Ancho fijo para el menú lateral */
+    height: calc(
+      100vh - var(--nav-height)
+    ); /* Cubre el alto restante de la pantalla */
 
     background-color: #ffffff;
+    border-right: 1px solid #eeeeee; /* Borde a la derecha para separarlo del fondo */
 
-    transform: translateY(-100%);
+    flex-direction: column;
+    align-items: flex-start; /* Alinea los enlaces a la izquierda */
+    padding: 3rem 2rem; /* Espaciado interno */
+    gap: 2rem;
 
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-
-    visibility: hidden;
-    pointer-events: none;
-
-    z-index: 2000;
-  }
-
-  .searchPanelMobile.showPanel {
-    transform: translateY(0);
-
-    visibility: visible;
-    pointer-events: auto;
-  }
-
-  .searchPanelHeader {
+    /* Siempre se mantiene como flex, la posición controla su visibilidad */
     display: flex;
-    align-items: center;
 
-    gap: 1rem;
+    /* Animación de deslizamiento */
+    transition: left 0.3s ease-in-out;
 
-    padding: 1rem;
-
-    border-bottom: 1px solid #eeeeee;
+    box-shadow: 4px 0 6px -1px rgba(0, 0, 0, 0.1);
   }
 
-  .searchField {
-    display: flex;
-    align-items: center;
-
-    flex: 1;
-
-    padding: 0.6rem 1rem;
-
-    border-radius: 50px;
-
-    background-color: #f5f5f7;
-  }
-
-  .searchField input {
-    width: 100%;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    font-family: var(--font-inter), sans-serif;
-    font-size: 1rem;
-  }
-
-  .closePanel {
-    border: none;
-    background: none;
-
-    font-family: var(--font-inter), sans-serif;
-    font-size: 0.9rem;
-
-    text-transform: uppercase;
-
-    color: #666;
-  }
-
-  .searchPanelContent {
-    padding: 3rem 1rem;
-
-    text-align: center;
-  }
-
-  .searchPlaceholderText {
-    font-size: 0.9rem;
-
-    color: #999;
+  /* MOSTRAR CUANDO EL ESTADO isOpen ES TRUE */
+  .navbarLinks.show {
+    left: 0; /* Desliza el sidebar hacia adentro */
   }
 }

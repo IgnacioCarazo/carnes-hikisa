@@ -1,0 +1,330 @@
+/* SearchBar.module.css */
+
+/* --- SEARCH DESKTOP CONTAINER (ELEGANTE) --- */
+.searchContainerDesktop {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  width: 240px;
+  padding: 0.6rem 1.2rem;
+
+  border: 1px solid #e2e2e5;
+  border-radius: 50px;
+
+  background: #fdfdfd;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
+
+  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.searchContainerDesktop:focus-within {
+  width: 310px;
+  border-color: var(--red-hikisa);
+  background: #ffffff;
+  box-shadow:
+    0 8px 24px rgba(229, 62, 62, 0.12),
+    inset 0 0 0 1px rgba(229, 62, 62, 0.05);
+}
+
+.searchIconDesktop {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  color: #a0a0a5;
+  transition: color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.searchContainerDesktop:focus-within .searchIconDesktop {
+  color: var(--red-hikisa);
+}
+
+.searchContainerDesktop input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-inter), sans-serif;
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.searchContainerDesktop input::placeholder {
+  color: #a0a0a5;
+  font-weight: 400;
+}
+
+/* BOTÓN DE LIMPIAR ESCRITORIO (X) */
+.clearButtonDesktop {
+  background: none;
+  border: none;
+  padding: 4px;
+  margin-left: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #c0c0c5;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.clearButtonDesktop:hover {
+  color: var(--red-hikisa);
+  transform: scale(1.1);
+}
+
+.clearButtonDesktop svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- RESULTADOS Y MINI CARDS --- */
+.searchResultsDropdown {
+  position: absolute;
+  top: calc(100% + 16px);
+  right: 0;
+
+  width: 380px;
+  padding: 16px;
+
+  /* Diseño elegante oscuro con glassmorphism */
+  background: rgba(12, 12, 12, 0.95);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  box-shadow:
+    0 24px 48px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(255, 255, 255, 0.05);
+  z-index: 2000;
+}
+
+.miniCard {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px;
+
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.miniCard:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.1);
+  transform: translateX(4px);
+}
+
+.miniImageContainer {
+  width: 55px;
+  height: 55px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: #000;
+}
+
+.miniProductImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.miniFooter {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+}
+
+.miniInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.miniTitle {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.miniCategory {
+  font-size: 0.7rem;
+  color: #a0a0a0;
+  text-transform: capitalize;
+}
+
+.miniViewButton {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ESTADOS DE BUSQUEDA */
+.searchStatus {
+  padding: 1.5rem 1rem;
+  color: #888;
+  font-size: 0.85rem;
+  text-align: center;
+  font-family: var(--font-inter), sans-serif;
+}
+
+/* MOBILE HIDDEN ELEMENTS */
+.searchButtonMobile,
+.searchPanelMobile {
+  display: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .searchButtonMobile {
+    display: block;
+    background: none;
+    border: none;
+  }
+
+  /* El icono de lupa de móvil debe tener color para verse bien */
+  .searchIcon {
+    width: 22px;
+    height: 22px;
+    color: #333;
+  }
+
+  .searchContainerDesktop {
+    display: none;
+  }
+
+  /* PANEL MÓVIL (DRAWER) */
+  .searchPanelMobile {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100dvh;
+    background-color: #ffffff;
+    transform: translateY(-100%);
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    visibility: hidden;
+    pointer-events: none;
+    z-index: 2000;
+    display: block; /* Anulamos el display:none del estado inicial */
+  }
+
+  .searchPanelMobile.showPanel {
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .searchPanelHeader {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    border-bottom: 1px solid #eeeeee;
+  }
+
+  .searchField {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border-radius: 50px;
+    background-color: #f5f5f7;
+  }
+
+  .searchField input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: var(--font-inter), sans-serif;
+    font-size: 1rem;
+    color: #333;
+  }
+
+  /* Botón X Móvil */
+  .clearButtonMobile {
+    background: #e1e1e3;
+    border: none;
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #666;
+    margin-left: 8px;
+    flex-shrink: 0;
+  }
+
+  .clearButtonMobile svg {
+    width: 14px;
+    height: 14px;
+  }
+
+  .closePanel {
+    border: none;
+    background: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    color: #666;
+    font-weight: 600;
+  }
+
+  .searchPanelContent {
+    padding: 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    overflow-y: auto;
+    height: calc(100% - 70px);
+  }
+
+  .searchPanelContent .miniCard {
+    background: #0a0a0a;
+    border: 1px solid #272727;
+  }
+
+  /* Texto Sin Resultados Móvil */
+  .noResultsText {
+    text-align: center;
+    color: #999;
+    font-size: 0.95rem;
+    margin-top: 3rem;
+    padding: 0 1rem;
+    line-height: 1.5;
+  }
+
+  .searchPlaceholderText {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #999;
+    margin-top: 2rem;
+  }
+}

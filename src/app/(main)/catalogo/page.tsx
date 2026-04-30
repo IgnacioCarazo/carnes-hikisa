@@ -7,6 +7,7 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useMemo, Suspense } from "react";
 
 import FilterSidebar from "@/components/common/(FilterSidebar)/FilterSidebar";
+import CatalogSearchBar from "@/components/common/(NavBar)/CatalogSearchBar";
 import ProductGrid from "@/components/common/(ProductGrid)/ProductGrid";
 import ProductsCards from "@/components/common/(ProductsCards)/ProductsCards";
 import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
@@ -105,60 +106,68 @@ function CatalogoContent() {
 
   const renderActiveFilterCards = () => (
     <div className={styles.filterHeaderWrapper}>
-      {activeCategories.length > 0 || searchQuery ? (
-        <>
-          <button
-            className={styles.removeAllBadge}
-            onClick={handleClearFilters}
-          >
-            Limpiar todo
-          </button>
-          {searchQuery && (
-            <div className={styles.searchTermBadge}>
-              Buscando:{" "}
-              <span className={styles.highlightText}>
-                &quot;{searchQuery}&quot;
-              </span>
-            </div>
-          )}
-          <div className={styles.filterCardsContainer}>
-            <AnimatePresence>
-              {activeCategories.map((id) => {
-                const cat = categoriesData.find((c) => c.id === id);
-                if (!cat) return null;
-                return (
-                  <motion.div
-                    key={id}
-                    layout
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className={styles.miniCategoryCard}
-                  >
-                    <div className={styles.miniIconContainer}>
-                      <Image
-                        src={`/icons/categoryIcons/${cat.image}`}
-                        alt={cat.name}
-                        width={20}
-                        height={20}
-                      />
-                    </div>
-                    <span className={styles.miniName}>{cat.name}</span>
-                    <button
-                      className={styles.miniRemoveBtn}
-                      onClick={() => handleCategoryChange(id)}
+      {/* LADO IZQUIERDO: Título o Filtros Activos */}
+      <div className={styles.leftFilterContent}>
+        {activeCategories.length > 0 || searchQuery ? (
+          <>
+            <button
+              className={styles.removeAllBadge}
+              onClick={handleClearFilters}
+            >
+              Limpiar todo
+            </button>
+            {searchQuery && (
+              <div className={styles.searchTermBadge}>
+                Buscando:{" "}
+                <span className={styles.highlightText}>
+                  &quot;{searchQuery}&quot;
+                </span>
+              </div>
+            )}
+            <div className={styles.filterCardsContainer}>
+              <AnimatePresence>
+                {activeCategories.map((id) => {
+                  const cat = categoriesData.find((c) => c.id === id);
+                  if (!cat) return null;
+                  return (
+                    <motion.div
+                      key={id}
+                      layout
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      className={styles.miniCategoryCard}
                     >
-                      <X size={10} strokeWidth={4} />
-                    </button>
-                  </motion.div>
-                );
-              })}
-            </AnimatePresence>
-          </div>
-        </>
-      ) : (
-        <span className={styles.allProductsText}>Todos los productos</span>
-      )}
+                      <div className={styles.miniIconContainer}>
+                        <Image
+                          src={`/icons/categoryIcons/${cat.image}`}
+                          alt={cat.name}
+                          width={20}
+                          height={20}
+                        />
+                      </div>
+                      <span className={styles.miniName}>{cat.name}</span>
+                      <button
+                        className={styles.miniRemoveBtn}
+                        onClick={() => handleCategoryChange(id)}
+                      >
+                        <X size={10} strokeWidth={4} />
+                      </button>
+                    </motion.div>
+                  );
+                })}
+              </AnimatePresence>
+            </div>
+          </>
+        ) : (
+          <span className={styles.allProductsText}>Todos los productos</span>
+        )}
+      </div>
+
+      {/* LADO DERECHO: El SearchBar */}
+      <div className={styles.rightSearchContainer}>
+        <CatalogSearchBar />
+      </div>
     </div>
   );
 

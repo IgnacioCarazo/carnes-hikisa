@@ -36,14 +36,32 @@
   overflow-y: auto;
 }
 
-/* --- Header de Filtros con Scroll Horizontal --- */
+/* --- Header de Filtros con Scroll Horizontal y SearchBar --- */
 .filterHeaderWrapper {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: space-between; /* Empuja el buscador a la derecha */
+  gap: 16px;
   width: 100%;
   padding-bottom: 1rem;
-  min-width: 0; /* Crítico para permitir scroll dentro de flex */
+  min-width: 0;
+}
+
+/* Contenedor de la izquierda (Título o pills) */
+.leftFilterContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1; /* Permite que tome todo el espacio disponible */
+  min-width: 0; /* Crítico para no romper el scroll horizontal de los pills */
+}
+
+/* Contenedor de la derecha (Search Bar) */
+.rightSearchContainer {
+  flex-shrink: 0; /* Evita que el buscador se aplaste */
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .filterCardsContainer {
@@ -106,6 +124,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   margin-top: 10px;
 }
+
 .searchTermBadge {
   background-color: #f0f0f0;
   padding: 6px 14px;
@@ -127,6 +146,7 @@
   color: #888;
   grid-column: 1 / -1;
 }
+
 .highlightText {
   font-weight: 800; /* Reemplaza el efecto de strong */
   color: #e31b23; /* O el color que prefieras para resaltar */
