@@ -1,5 +1,6 @@
 "use client";
 
+import { motion, AnimatePresence } from "framer-motion";
 import { Filter, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
@@ -9,105 +10,165 @@ import FilterSidebar from "@/components/common/(FilterSidebar)/FilterSidebar";
 import ProductGrid from "@/components/common/(ProductGrid)/ProductGrid";
 import ProductsCards from "@/components/common/(ProductsCards)/ProductsCards";
 import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
-import categoriesData from "@/data/categories.json";
+import categoriesDataRaw from "@/data/categories.json";
 
 import styles from "./page.module.css";
+
+// --- INTERFACES ESTRICTAS ---
+export interface Product {
+  id: string;
+  name: string;
+  description: string;
+  category: string;
+  image: string;
+}
+
+export interface Category {
+  id: string;
+  name: string;
+  image: string;
+  "image-white": string;
+  imageCarousell: string;
+  products: Product[];
+}
+
+const categoriesData = categoriesDataRaw as Category[];
 
 function CatalogoContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-
   const [isOpen, setIsOpen] = useState(false);
 
-  // 1. Obtener categorías activas desde la URL
   const activeCategories = useMemo(() => {
     const params = searchParams.get("categories");
     return params ? params.split(",") : [];
   }, [searchParams]);
 
-  // 2. Función única para actualizar la URL
+  const searchQuery = useMemo(
+    () => searchParams.get("search") || "",
+    [searchParams],
+  );
+
   const updateURL = (newCategories: string[]) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (newCategories.length > 0) {
+    if (newCategories.length > 0)
       params.set("categories", newCategories.join(","));
-    } else {
-      params.delete("categories");
-    }
+    else params.delete("categories");
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const handleCategoryChange = (id: string) => {
-    const nextCategories = activeCategories.includes(id)
-      ? activeCategories.filter((catId) => catId !== id)
+    const next = activeCategories.includes(id)
+      ? activeCategories.filter((c) => c !== id)
       : [...activeCategories, id];
-    updateURL(nextCategories);
+    updateURL(next);
   };
 
   const handleClearFilters = () => {
-    updateURL([]);
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("categories");
+    params.delete("search");
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  // 3. Filtrado de datos para el grid
-  const filteredCategories = useMemo(() => {
-    if (activeCategories.length === 0) return categoriesData;
-    return categoriesData.filter((cat) => activeCategories.includes(cat.id));
-  }, [activeCategories]);
+  const filteredCategories: Category[] = useMemo(() => {
+    const cleanQuery = searchQuery
+      .trim()
+      .replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    const regex = new RegExp(cleanQuery, "i");
 
-  const renderActiveFilterCards = () => {
-    if (activeCategories.length === 0) {
-      return (
-        <div className={styles.filterHeaderWrapper}>
-          <span className={styles.allProductsText}>Todos los productos</span>
-        </div>
+    return categoriesData
+      .map((cat): Category | null => {
+        const matchingProducts =
+          cat.products?.filter((p) => regex.test(p.name)) || [];
+
+        const categoryMatches = regex.test(cat.name);
+
+        if (categoryMatches || matchingProducts.length > 0) {
+          return {
+            ...cat,
+            products:
+              searchQuery && matchingProducts.length > 0
+                ? matchingProducts
+                : cat.products || [],
+          };
+        }
+        return null;
+      })
+      .filter((cat): cat is Category => cat !== null)
+      .filter(
+        (cat) =>
+          activeCategories.length === 0 || activeCategories.includes(cat.id),
       );
-    }
+  }, [activeCategories, searchQuery]);
 
-    return (
-      <div className={styles.filterHeaderWrapper}>
-        <button className={styles.removeAllBadge} onClick={handleClearFilters}>
-          Limpiar todo
-        </button>
-
-        <div className={styles.filterCardsContainer}>
-          {activeCategories.map((catId) => {
-            const category = categoriesData.find((c) => c.id === catId);
-            if (!category) return null;
-
-            return (
-              <div key={catId} className={styles.miniCategoryCard}>
-                <div className={styles.miniIconContainer}>
-                  <Image
-                    src={`/icons/categoryIcons/${category.image}`}
-                    alt={category.name}
-                    width={20}
-                    height={20}
-                    style={{ objectFit: "contain" }}
-                  />
-                </div>
-                <span className={styles.miniName}>{category.name}</span>
-                <button
-                  className={styles.miniRemoveBtn}
-                  onClick={() => handleCategoryChange(catId)}
-                >
-                  <X size={10} strokeWidth={4} />
-                </button>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    );
-  };
+  const renderActiveFilterCards = () => (
+    <div className={styles.filterHeaderWrapper}>
+      {activeCategories.length > 0 || searchQuery ? (
+        <>
+          <button
+            className={styles.removeAllBadge}
+            onClick={handleClearFilters}
+          >
+            Limpiar todo
+          </button>
+          {searchQuery && (
+            <div className={styles.searchTermBadge}>
+              Buscando:{" "}
+              <span className={styles.highlightText}>
+                &quot;{searchQuery}&quot;
+              </span>
+            </div>
+          )}
+          <div className={styles.filterCardsContainer}>
+            <AnimatePresence>
+              {activeCategories.map((id) => {
+                const cat = categoriesData.find((c) => c.id === id);
+                if (!cat) return null;
+                return (
+                  <motion.div
+                    key={id}
+                    layout
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className={styles.miniCategoryCard}
+                  >
+                    <div className={styles.miniIconContainer}>
+                      <Image
+                        src={`/icons/categoryIcons/${cat.image}`}
+                        alt={cat.name}
+                        width={20}
+                        height={20}
+                      />
+                    </div>
+                    <span className={styles.miniName}>{cat.name}</span>
+                    <button
+                      className={styles.miniRemoveBtn}
+                      onClick={() => handleCategoryChange(id)}
+                    >
+                      <X size={10} strokeWidth={4} />
+                    </button>
+                  </motion.div>
+                );
+              })}
+            </AnimatePresence>
+          </div>
+        </>
+      ) : (
+        <span className={styles.allProductsText}>Todos los productos</span>
+      )}
+    </div>
+  );
 
   return (
     <main className={styles.pageWrapper}>
       <SectionHeader
         title="NUESTROS PRODUCTOS"
-        description="Explore nuestra selección de cortes premium y productos frescos de alta calidad."
+        description="Explore nuestra selección de cortes premium y productos frescos."
         color="black"
       />
-
       <div className={styles.contentLayout}>
         <div className={styles.sidebarArea}>
           {!isOpen && (
@@ -118,7 +179,6 @@ function CatalogoContent() {
               <Filter size={20} />
             </button>
           )}
-
           <FilterSidebar
             isOpen={isOpen}
             setIsOpen={setIsOpen}
@@ -127,16 +187,22 @@ function CatalogoContent() {
             onClearFilters={handleClearFilters}
           />
         </div>
-
         <div className={styles.mainContent}>
           <ProductGrid categoryTitle={renderActiveFilterCards()}>
-            {filteredCategories.length > 0 ? (
-              <ProductsCards categories={filteredCategories} />
-            ) : (
-              <p className={styles.emptyMessage}>
-                No hay productos disponibles en esta selección.
-              </p>
-            )}
+            <AnimatePresence mode="popLayout">
+              {filteredCategories.length > 0 ? (
+                <ProductsCards key="list" categories={filteredCategories} />
+              ) : (
+                <motion.p
+                  key="empty"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className={styles.emptyMessage}
+                >
+                  No se encontraron productos que coincidan con tu búsqueda.
+                </motion.p>
+              )}
+            </AnimatePresence>
           </ProductGrid>
         </div>
       </div>

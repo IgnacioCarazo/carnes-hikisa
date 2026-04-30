@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
 import iconMenu from "@/assets/icons/Hamburger-Menu.webp";
@@ -11,8 +11,22 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const searchParams = useSearchParams();
+
   const [isOpen, setIsOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  // Sincronización de estado sin useEffect para evitar renders en cascada
+  const currentSearch = searchParams.get("search") || "";
+  const [tempSearch, setTempSearch] = useState(currentSearch);
+  const [prevSearch, setPrevSearch] = useState(currentSearch);
+
+  if (currentSearch !== prevSearch) {
+    setPrevSearch(currentSearch);
+    setTempSearch(currentSearch);
+  }
+
   const searchInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -20,6 +34,21 @@ const Navbar = () => {
       searchInputRef.current.focus();
     }
   }, [isSearchOpen]);
+
+  const executeSearch = (value: string) => {
+    const params = new URLSearchParams(searchParams.toString());
+    if (value.trim()) {
+      params.set("search", value.trim());
+    } else {
+      params.delete("search");
+    }
+    router.push(`/catalogo?${params.toString()}`);
+    setIsSearchOpen(false);
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter") executeSearch(tempSearch);
+  };
 
   return (
     <>
@@ -34,9 +63,7 @@ const Navbar = () => {
           <div className={`${styles.navbarLinks} ${isOpen ? styles.show : ""}`}>
             <Link
               href="/catalogo"
-              className={
-                pathname === "/(main)/catalogo/page" ? styles.active : ""
-              }
+              className={pathname.includes("/catalogo") ? styles.active : ""}
             >
               Catálogo
             </Link>
@@ -63,7 +90,6 @@ const Navbar = () => {
         </div>
 
         <div className={styles.navRight}>
-          {/* Lupa para abrir el panel en móvil */}
           <button
             className={styles.searchButtonMobile}
             onClick={() => setIsSearchOpen(true)}
@@ -79,9 +105,14 @@ const Navbar = () => {
               <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
             </svg>
           </button>
-
           <div className={styles.searchContainerDesktop}>
-            <input type="text" placeholder="Buscar..." />
+            <input
+              type="text"
+              placeholder="Buscar..."
+              value={tempSearch}
+              onChange={(e) => setTempSearch(e.target.value)}
+              onKeyDown={handleKeyDown}
+            />
           </div>
         </div>
       </nav>
@@ -90,13 +121,14 @@ const Navbar = () => {
         className={`${styles.searchPanelMobile} ${isSearchOpen ? styles.showPanel : ""}`}
       >
         <div className={styles.searchPanelHeader}>
-          <div className={styles.searchField}>
-            <input
-              ref={searchInputRef}
-              type="text"
-              placeholder="¿Qué corte buscas?"
-            />
-          </div>
+          <input
+            ref={searchInputRef}
+            type="text"
+            placeholder="¿Qué corte buscas?"
+            value={tempSearch}
+            onChange={(e) => setTempSearch(e.target.value)}
+            onKeyDown={handleKeyDown}
+          />
           <button
             className={styles.closePanel}
             onClick={() => setIsSearchOpen(false)}
