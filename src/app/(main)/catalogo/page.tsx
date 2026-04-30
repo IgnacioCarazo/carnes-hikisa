@@ -15,7 +15,6 @@ import categoriesDataRaw from "@/data/categories.json";
 
 import styles from "./page.module.css";
 
-// --- INTERFACES ESTRICTAS ---
 export interface Product {
   id: string;
   name: string;
