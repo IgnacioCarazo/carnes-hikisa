@@ -12,8 +12,9 @@ import styles from "./FilterSidebar.module.css";
 interface FilterSidebarProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
-  activeCategory: string;
-  onCategoryChange: (id: string) => void;
+  activeCategories: string[];
+  onCategoryChange: (id: string) => void; // Agregada de nuevo
+  onClearFilters: () => void; // Agregada de nuevo
 }
 
 interface Category {
@@ -25,10 +26,12 @@ interface Category {
 const FilterSidebar = ({
   isOpen,
   setIsOpen,
-  activeCategory,
+  activeCategories,
   onCategoryChange,
+  onClearFilters,
 }: FilterSidebarProps) => {
   const typedCategories = categoriesData as Category[];
+  const hasActiveFilters = activeCategories.length > 0;
 
   return (
     <AnimatePresence initial={false}>
@@ -41,19 +44,29 @@ const FilterSidebar = ({
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
           className={styles.sidebar}
         >
-          {/* El innerContainer siempre mide 320px, así el contenido no se deforma */}
           <div className={styles.innerContainer}>
             <div className={styles.sidebarHeader}>
               <div className={styles.titleGroup}>
                 <h3 className={styles.titleText}>Categorías</h3>
                 <Filter size={20} strokeWidth={2.5} />
               </div>
-              <button
-                className={styles.closeBtn}
-                onClick={() => setIsOpen(false)}
-              >
-                <ChevronLeft size={24} />
-              </button>
+
+              <div className={styles.headerActions}>
+                {hasActiveFilters && (
+                  <button
+                    className={styles.clearAllBtn}
+                    onClick={onClearFilters}
+                  >
+                    Limpiar
+                  </button>
+                )}
+                <button
+                  className={styles.closeBtn}
+                  onClick={() => setIsOpen(false)}
+                >
+                  <ChevronLeft size={24} />
+                </button>
+              </div>
             </div>
 
             <nav className={styles.filterContent}>
@@ -72,7 +85,7 @@ const FilterSidebar = ({
                       />
                     </div>
                   }
-                  isActive={activeCategory === cat.id}
+                  isActive={activeCategories.includes(cat.id)}
                   onClick={() => onCategoryChange(cat.id)}
                 />
               ))}

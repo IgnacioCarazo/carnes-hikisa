@@ -3,94 +3,279 @@
     "id": "res",
     "name": "Carnes de Res",
     "image": "vaca.png",
+    "image-white": "vacaBlanco.png",
+    "imageCarousell": "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=600&auto=format&fit=crop",
     "products": [
       {
         "id": "res-1",
-        "name": "Corte de Carne",
+        "name": "Corazón de Res",
+        "description": "Corte magro de textura firme y sabor intenso. Ideal para parrilla o guisos prolongados.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
         "id": "res-2",
-        "name": "Corte de Carne",
+        "name": "Bazo de Res",
+        "description": "Víscera de sabor fuerte y textura suave. Recomendado para preparaciones tradicionales y guisos.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
         "id": "res-3",
-        "name": "Corte de Carne",
+        "name": "Hígado de Res",
+        "description": "Alto contenido de hierro, textura suave y sabor pronunciado. Apto para sartén o encebollado.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
         "id": "res-4",
-        "name": "Corte de Carne",
+        "name": "Riñones de Res",
+        "description": "Sabor característico y textura delicada. Se recomienda limpieza previa y cocción en guisos o salteados.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
         "id": "res-5",
-        "name": "Corte de Carne",
+        "name": "Mondongo Entero",
+        "description": "Estómago de res limpio, ideal para sopas y recetas tradicionales de larga cocción.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-1",
-        "name": "Corte de Carne",
+        "id": "res-6",
+        "name": "Lengua",
+        "description": "Corte suave y jugoso tras cocción lenta. Versátil para desmechar, rebanar o guisar.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-2",
-        "name": "Corte de Carne",
+        "id": "res-7",
+        "name": "Mondongo Picado",
+        "description": "Mondongo previamente troceado para facilitar su preparación en sopas y guisos.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-3",
-        "name": "Corte de Carne",
+        "id": "res-8",
+        "name": "Caja Mondongo",
+        "description": "Presentación en volumen de mondongo seleccionado, lista para procesos comerciales o familiares.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-4",
-        "name": "Corte de Carne",
+        "id": "res-9",
+        "name": "Jarrete Picado",
+        "description": "Corte con hueso y colágeno, ideal para caldos y estofados de larga cocción.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-5",
-        "name": "Corte de Carne",
+        "id": "res-10",
+        "name": "Costilla Entera",
+        "description": "Corte con hueso y grasa que aporta sabor. Ideal para parrilla, horno o ahumado.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-1",
-        "name": "Corte de Carne",
+        "id": "res-11",
+        "name": "Costilla Picada",
+        "description": "Costilla troceada para preparación rápida en parrilla o guisos.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-2",
-        "name": "Corte de Carne",
+        "id": "res-12",
+        "name": "Hueso Carnudo Entero",
+        "description": "Hueso con abundante carne adherida, perfecto para caldos sustanciosos.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-3",
-        "name": "Corte de Carne",
+        "id": "res-13",
+        "name": "Hueso Carnudo Picado",
+        "description": "Versión troceada para facilitar su uso en sopas y preparaciones largas.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-4",
-        "name": "Corte de Carne",
+        "id": "res-14",
+        "name": "Hueso Consome Entero",
+        "description": "Hueso seleccionado para caldos claros y concentrados en sabor.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       },
       {
-        "id": "res-5",
-        "name": "Corte de Carne",
+        "id": "res-15",
+        "name": "Hueso Consome Picado",
+        "description": "Presentación práctica para una extracción rápida de sabor en sopas.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-16",
+        "name": "Osobuco",
+        "description": "Corte transversal con hueso y tuétano. Ideal para estofados ricos en colágeno.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-17",
+        "name": "Osobuco Picado",
+        "description": "Versión troceada para facilitar su cocción en guisos y sopas.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-18",
+        "name": "Rabo de Res",
+        "description": "Corte gelatinoso de sabor profundo. Perfecto para estofados de larga cocción.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-19",
+        "name": "Molida de Res Especial",
+        "description": "Carne molida balanceada en grasa, ideal para uso diario en múltiples preparaciones.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-20",
+        "name": "Molida de Res Premium",
+        "description": "Selección de cortes de mayor calidad, con mejor textura y sabor.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-21",
+        "name": "Bistec de Bolita",
+        "description": "Corte magro, de fibra firme. Recomendado para plancha o empanizado.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-22",
+        "name": "Bistec de Posta de Cuarto",
+        "description": "Corte versátil, equilibrado en textura y sabor. Ideal para sartén o parrilla.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-23",
+        "name": "Bistec de Lomo",
+        "description": "Corte suave y jugoso, de cocción rápida. Excelente para plancha o parrilla.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-24",
+        "name": "Bistec Adobado",
+        "description": "Bistec previamente sazonado, listo para cocinar. Práctico y de sabor intenso.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-25",
+        "name": "Posta Bolita Entera",
+        "description": "Corte magro entero, ideal para rebanar o preparar al horno.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-26",
+        "name": "Posta Cuarto Entera",
+        "description": "Corte completo, versátil para asar, hornear o porcionar.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-27",
+        "name": "Vuelta de Lomo",
+        "description": "Corte tierno, adecuado para bistec o preparaciones rápidas.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-28",
+        "name": "Trocitos de Res",
+        "description": "Carne en cubos lista para guisos, estofados o salteados.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-29",
+        "name": "Posta Quititeña",
+        "description": "Corte tradicional, firme y magro. Ideal para cocción prolongada.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-30",
+        "name": "Posta Pecho",
+        "description": "Corte con mayor contenido de grasa, aporta jugosidad en preparaciones largas.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-31",
+        "name": "Posta Cecina",
+        "description": "Corte ideal para curar o preparar a la plancha en láminas delgadas.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-32",
+        "name": "Punta Fogo",
+        "description": "Corte con capa de grasa que aporta sabor. Excelente para parrilla.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-33",
+        "name": "Lomito",
+        "description": "Corte extra suave y magro, de alta calidad. Ideal para medallones o parrilla.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-34",
+        "name": "Mano de Piedra",
+        "description": "Corte firme, recomendado para ablandar y cocinar en guisos o mechados.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-35",
+        "name": "Lomo Ancho",
+        "description": "Corte jugoso con buen marmoleo. Ideal para parrilla o asados.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-36",
+        "name": "Solomo",
+        "description": "Corte suave y versátil, apto para bistec, parrilla o sartén.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-37",
+        "name": "Posta de Ternero",
+        "description": "Carne de res joven, más suave y de sabor delicado. Ideal para preparaciones finas.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-38",
+        "name": "Hueso Pescuezo Entero",
+        "description": "Hueso de cuello con carne adherida y alto contenido de colágeno. Ideal para caldos y sopas de cocción prolongada.",
+        "category": "Carnes de Res",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "res-39",
+        "name": "Hueso Pescuezo Picado",
+        "description": "Presentación troceada para facilitar su uso. Hueso de cuello con carne adherida y alto contenido de colágeno. Ideal para caldos y sopas de cocción prolongada.",
         "category": "Carnes de Res",
         "image": "/productos/carneRes.webp"
       }
@@ -100,12 +285,141 @@
     "id": "cerdo",
     "name": "Carnes de Cerdo",
     "image": "cerdo.png",
+    "image-white": "cerdoBlanco.png",
+    "imageCarousell": "https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg?auto=compress&cs=tinysrgb&h=600",
     "products": [
       {
         "id": "cerdo-1",
-        "name": "Corte de Carne",
+        "name": "Molida de Cerdo",
+        "description": "Carne molida con buen balance de grasa, ideal para embutidos, rellenos y preparaciones caseras.",
         "category": "Carnes de Cerdo",
-        "image": "/icons/categoryIcons/cerdo.png"
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-2",
+        "name": "Pierna de Cerdo",
+        "description": "Corte magro y versátil, apto para hornear, asar o porcionar en bistec.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-3",
+        "name": "Paleta de Cerdo",
+        "description": "Corte con mayor contenido de grasa y colágeno. Ideal para cocción lenta y desmechado.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-4",
+        "name": "Bistec de Cerdo",
+        "description": "Corte delgado, de cocción rápida. Adecuado para plancha o sartén.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-5",
+        "name": "Trocitos de Cerdo",
+        "description": "Carne en cubos lista para guisos, estofados o salteados.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-6",
+        "name": "Chuleta Cabeza Picada",
+        "description": "Corte con hueso, troceado. Aporta sabor intenso para fritura o guisos.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-7",
+        "name": "Chuleta Riñonada Picada",
+        "description": "Chuleta troceada con buena proporción de carne y grasa. Ideal para cocción rápida.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-8",
+        "name": "Costilla de Cerdo Picada",
+        "description": "Costilla en porciones pequeñas, perfecta para parrilla o preparaciones al horno.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-9",
+        "name": "Chuleta Riñonada Entera",
+        "description": "Corte completo, jugoso y con hueso. Recomendado para parrilla o plancha.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-10",
+        "name": "Chuleta Cabeza Entera",
+        "description": "Chuleta con mayor contenido de grasa, que aporta jugosidad y sabor.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-11",
+        "name": "Costilla de Cerdo Entera",
+        "description": "Corte completo con hueso, ideal para asar, hornear o ahumar.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-12",
+        "name": "Papada de Cerdo",
+        "description": "Corte graso y sabroso. Apto para fritura, embutidos o cocción lenta.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-13",
+        "name": "Pezuñas",
+        "description": "Ricas en colágeno, ideales para caldos, sopas y gelatinas naturales.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-14",
+        "name": "Pellejo de Cerdo",
+        "description": "Piel de cerdo, utilizada para fritura o como base en preparaciones tradicionales.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-15",
+        "name": "Tripa de Cerdo",
+        "description": "Producto limpio y listo para uso en la elaboración de embutidos.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-16",
+        "name": "Chuleta Ahumada Entera",
+        "description": "Chuleta con proceso de ahumado, sabor intenso y lista para calentar o cocinar.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-17",
+        "name": "Chuleta Ahumada Picada",
+        "description": "Versión troceada, práctica para preparaciones rápidas.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-18",
+        "name": "Costilla Ahumada Entera",
+        "description": "Costilla completa con ahumado, ideal para horno o parrilla.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-19",
+        "name": "Costilla Ahumada Rebanada",
+        "description": "Porciones listas para facilitar su cocción y servicio.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
       }
     ]
   },
@@ -113,36 +427,306 @@
     "id": "pollo",
     "name": "Pollo",
     "image": "pollo.png",
-    "products": []
+    "image-white": "polloBlanco.png",
+    "imageCarousell": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=600&auto=format&fit=crop",
+    "products": [
+      {
+        "id": "pollo-1",
+        "name": "Pechuga Deshuesada",
+        "description": "Corte magro, sin hueso, de textura suave. Ideal para plancha, sartén o preparaciones saludables.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-2",
+        "name": "Muslo Entero",
+        "description": "Corte con hueso y piel, jugoso y de mayor sabor. Apto para horno, fritura o parrilla.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-3",
+        "name": "Pollo Entero",
+        "description": "Pieza completa, versátil para asar, hornear o despresar según necesidad.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-4",
+        "name": "Pechuga con Hueso",
+        "description": "Corte que conserva el hueso para mayor jugosidad y sabor durante la cocción.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-5",
+        "name": "Muslito de Pollo",
+        "description": "Corte pequeño con hueso, ideal para fritura, horno o preparaciones rápidas.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-6",
+        "name": "Alas",
+        "description": "Corte con piel y hueso, popular para fritura o salsas. De textura jugosa y sabor intenso.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-7",
+        "name": "Pechuga",
+        "description": "Corte magro de pollo, de textura suave y cocción rápida. Versátil para diferentes usos.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      }
+    ]
   },
   {
     "id": "mar",
     "name": "Frutos del Mar",
     "image": "pescado.png",
-    "products": []
+    "image-white": "pescadoBlanco.png",
+    "imageCarousell": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?q=80&w=600&auto=format&fit=crop",
+    "products": [
+      {
+        "id": "mar-1",
+        "name": "Filet de Tilapia",
+        "description": "Filete limpio, sin espinas, de sabor suave y textura firme. Ideal para plancha, fritura o al vapor.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-2",
+        "name": "Caja de Tilapia",
+        "description": "Presentación en volumen de tilapia, adecuada para consumo familiar o comercial.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-3",
+        "name": "Filet Pangasius",
+        "description": "Filete blanco, de sabor ligero y textura suave. Versátil para múltiples métodos de cocción.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-4",
+        "name": "Filet Bolillo",
+        "description": "Filete de pescado de carne firme, apto para fritura, empanizado o plancha.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-5",
+        "name": "Chuleta Bolillo",
+        "description": "Corte con hueso, de sabor más intenso. Recomendado para fritura o guisos.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-6",
+        "name": "Mariscada",
+        "description": "Mezcla de mariscos seleccionados, lista para sopas, arroces o preparaciones mixtas.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-7",
+        "name": "Camarones Pinky",
+        "description": "Camarones pequeños, prácticos y versátiles. Ideales para arroces, pastas y salteados.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-8",
+        "name": "Macarella Medallones",
+        "description": "Porciones de macarela en corte transversal, con buen contenido graso y sabor marcado. Aptas para fritura o parrilla.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-9",
+        "name": "Picadura para Ceviche de Bolillo",
+        "description": "Pescado fresco en trozos pequeños, listo para preparar ceviche. Textura firme y adecuada para marinar.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      },
+      {
+        "id": "mar-10",
+        "name": "Pargo Rojo Cultivo 1kg",
+        "description": "Pescado entero de cultivo. Ideal para freír, hornear o cocinar entero.",
+        "category": "Frutos del Mar",
+        "image": "/productos/pescado.webp"
+      }
+    ]
   },
   {
     "id": "embutidos",
     "name": "Embutidos",
     "image": "embutido.png",
-    "products": []
+    "image-white": "embutidoBlanco.png",
+    "imageCarousell": "https://images.unsplash.com/photo-1595295333158-4742f28fbd85?q=80&w=600&auto=format&fit=crop",
+    "products": [
+      {
+        "id": "embutidos-1",
+        "name": "Chorizo de Cerdo Especial",
+        "description": "Embutido elaborado con carne de cerdo y mezcla de especias seleccionadas. Sabor equilibrado y textura firme.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-2",
+        "name": "Chorizo de Cerdo Criollo",
+        "description": "Chorizo de perfil tradicional, con condimentos intensos. Ideal para parrilla o fritura.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-3",
+        "name": "Chorizo de Cerdo con Chile",
+        "description": "Embutido con toque picante, de sabor marcado. Apto para parrilla o sartén.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-4",
+        "name": "Salchichón de Pollo",
+        "description": "Embutido a base de carne de pollo, de textura suave y sabor ligero.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-5",
+        "name": "Salchichón Campesino",
+        "description": "Producto de estilo tradicional, con mezcla de carnes y especias. Sabor robusto.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-6",
+        "name": "Salchichón Criollo",
+        "description": "Embutido con perfil condimentado, característico de recetas locales.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-7",
+        "name": "Burbujas Salchichón",
+        "description": "Presentación en pequeñas porciones, práctica para consumo rápido o bocadillos.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-8",
+        "name": "Jamón de Res",
+        "description": "Producto cocido y prensado, de sabor suave. Ideal para rebanar y consumir frío o caliente.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-9",
+        "name": "Salchichas de Pollo",
+        "description": "Embutido de pollo, de textura uniforme y sabor suave. Práctico y versátil.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-10",
+        "name": "Morcilla",
+        "description": "Embutido elaborado con sangre de cerdo y especias. Sabor intenso, ideal para fritura o parrilla.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      }
+    ]
   },
   {
     "id": "paqueteria",
     "name": "Paquetería",
     "image": "paquete.png",
-    "products": []
+    "image-white": "paqueteBlanco.png",
+    "imageCarousell": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=600&auto=format&fit=crop",
+    "products": [
+      {
+        "id": "paqueteria-1",
+        "name": "Papas para freír 2.5kg",
+        "description": "Papas seleccionadas y listas para freír. Corte uniforme para una cocción pareja y textura crujiente.",
+        "category": "Paquetería",
+        "image": "/productos/papas.webp"
+      },
+      {
+        "id": "paqueteria-2",
+        "name": "Papas para freír 1kg",
+        "description": "Presentación práctica de papas listas para freír. Ideales para uso doméstico.",
+        "category": "Paquetería",
+        "image": "/productos/papas.webp"
+      },
+      {
+        "id": "paqueteria-3",
+        "name": "Caja de papas para freír 10kg",
+        "description": "Formato en volumen para uso comercial o alto consumo. Corte uniforme y rendimiento consistente.",
+        "category": "Paquetería",
+        "image": "/productos/papas.webp"
+      },
+      {
+        "id": "paqueteria-4",
+        "name": "Papa Gajo",
+        "description": "Papas cortadas en gajos, listas para freír u hornear. Exterior crujiente e interior suave, ideales como acompañamiento.",
+        "category": "Paquetería",
+        "image": "/productos/papas.webp"
+      }
+    ]
   },
   {
     "id": "lacteos",
     "name": "Lácteos",
     "image": "lacteo.png",
-    "products": []
+    "image-white": "lacteoBlanco.png",
+    "imageCarousell": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?q=80&w=600&auto=format&fit=crop",
+    "products": [
+      {
+        "id": "lacteos-1",
+        "name": "Queso Semiduro",
+        "description": "Queso de textura firme y fácil de rebanar. Sabor balanceado, apto para consumo directo o cocina.",
+        "category": "Lácteos",
+        "image": "/productos/queso.webp"
+      },
+      {
+        "id": "lacteos-2",
+        "name": "Queso Tierno",
+        "description": "Queso fresco, de textura suave y alto contenido de humedad. Ideal para consumo inmediato.",
+        "category": "Lácteos",
+        "image": "/productos/queso.webp"
+      },
+      {
+        "id": "lacteos-3",
+        "name": "Queso Amarillo 16 y 40 unidades",
+        "description": "Queso procesado en rebanadas individuales. Práctico para sándwiches y preparación rápida.",
+        "category": "Lácteos",
+        "image": "/productos/queso.webp"
+      },
+      {
+        "id": "lacteos-4",
+        "name": "Huevos",
+        "description": "Producto fresco y versátil, apto para múltiples preparaciones en cocina diaria.",
+        "category": "Lácteos",
+        "image": "/productos/huevo.webp"
+      }
+    ]
   },
   {
     "id": "carnitas",
     "name": "Carnitas Adobadas",
     "image": "fuego.png",
-    "products": []
+    "image-white": "fuegoBlanco.png",
+    "imageCarousell": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop",
+    "products": [
+      {
+        "id": "carnitas-1",
+        "name": "Bistec Adobado",
+        "description": "Bistec previamente sazonado, listo para cocinar. Práctico y de sabor intenso.",
+        "category": "Carnitas Adobadas",
+        "image": "/productos/carneAdobada.webp"
+      }
+    ]
   }
 ]

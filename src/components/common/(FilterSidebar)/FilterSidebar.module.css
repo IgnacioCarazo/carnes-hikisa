@@ -1,30 +1,26 @@
-/* --- Estructura Principal del Sidebar --- */
 .sidebar {
-  position: sticky;
-  top: 0;
   height: 100vh;
   display: flex;
   align-items: flex-start;
-  /* Evita que el contenido se vea mientras el ancho es pequeño */
   overflow: hidden;
   z-index: 50;
   flex-shrink: 0;
-  /* Se eliminó la transición de CSS para no interferir con Framer Motion */
+  padding: 10px 0;
 }
 
 .innerContainer {
-  /* Forzamos el ancho para que el contenido no "salte" al animar */
   width: 320px;
   min-width: 320px;
-  padding: 1.5rem 1.2rem;
+  padding: 1.1rem 1.2rem;
   display: flex;
   flex-direction: column;
   background-color: white;
   border: 1px solid #f0f0f0;
   border-radius: 28px;
-  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06);
-  max-height: 95vh;
-  margin-top: 1rem; /* Margen opcional para que no pegue al techo */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  max-height: calc(100% - 20px);
+  margin-left: 10px;
+  position: relative;
 }
 
 .sidebarHeader {
@@ -60,7 +56,7 @@
   align-items: center;
   justify-content: center;
   transition: all 0.2s ease;
-  padding: 5px;
+  padding: 8px;
   border-radius: 50%;
 }
 
@@ -72,18 +68,14 @@
 .filterContent {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
   width: 100%;
   overflow-y: auto;
-  padding-right: 4px;
-  /* Ajustado para dar espacio a la navegación */
+  padding-right: 8px;
   flex-grow: 1;
-  border-bottom: 1px solid #eee;
-  padding-bottom: 1rem;
 }
 
 .iconWrapper {
-  margin-right: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -92,12 +84,71 @@
   height: 35px;
 }
 
-/* --- Scrollbar Custom --- */
-.filterContent::-webkit-scrollbar {
-  width: 4px;
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
-.filterContent::-webkit-scrollbar-thumb {
-  background: #eee;
-  border-radius: 10px;
+.clearAllBtn {
+  background: none;
+  border: none;
+  color: #e31b23;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.viewResultsBtn {
+  display: none; /* Oculto en desktop */
+}
+
+/* --- Mobile Styles --- */
+@media (max-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100dvh;
+    background-color: white;
+    z-index: 9999;
+    padding: 0;
+    margin: 0;
+  }
+
+  .innerContainer {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: 100%;
+    max-height: 100%;
+    margin: 0;
+    border-radius: 0;
+    border: none;
+    padding: 1.5rem;
+  }
+
+  .filterContent {
+    padding-bottom: 20px;
+  }
+
+  .viewResultsBtn {
+    display: block;
+    width: 100%;
+    background-color: #e31b23;
+    color: white;
+    border: none;
+    padding: 1.2rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(227, 27, 35, 0.3);
+  }
 }

@@ -1,7 +1,9 @@
 "use client";
 import Image from "next/image";
+import { useRouter } from "next/navigation"; // Importamos el router
 import { useState, useRef, useLayoutEffect } from "react";
 
+import categoriesData from "@/data/categories.json";
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 import styles from "./CategoriesCarousel.module.css";
@@ -10,9 +12,14 @@ import CatCarouselCard from "../(CatCarouselCard)/CatCarouselCard";
 import DotsCarousel from "../(DotsCarousel)/DotsCarousel";
 
 const CategoriesCarousel = () => {
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8];
+  const router = useRouter(); // Inicializamos el router para la navegación
   const isMobile = useIsMobile(480);
-  const [activeIndex, setActiveIndex] = useState(3);
+
+  // Inicializamos el índice en el medio
+  const [activeIndex, setActiveIndex] = useState(() =>
+    Math.floor(categoriesData.length / 2),
+  );
+
   const viewportRef = useRef<HTMLDivElement>(null);
   const [viewportWidth, setViewportWidth] = useState<number | null>(null);
 
@@ -23,7 +30,9 @@ const CategoriesCarousel = () => {
   useLayoutEffect(() => {
     if (!viewportRef.current) return;
     const update = () => setViewportWidth(viewportRef.current!.offsetWidth);
+
     update();
+
     window.addEventListener("resize", update);
     return () => window.removeEventListener("resize", update);
   }, []);
@@ -33,10 +42,18 @@ const CategoriesCarousel = () => {
 
   const handlePrev = () => setActiveIndex((prev) => Math.max(prev - 1, 0));
   const handleNext = () =>
-    setActiveIndex((prev) => Math.min(prev + 1, cards.length - 1));
+    setActiveIndex((prev) => Math.min(prev + 1, categoriesData.length - 1));
 
+  // LÓGICA DE NAVEGACIÓN:
   const handleCardClick = (index: number) => {
-    if (index !== activeIndex) setActiveIndex(index);
+    if (index !== activeIndex) {
+      // Si la tarjeta no es la activa, solo la centramos
+      setActiveIndex(index);
+    } else {
+      // Si ya es la activa, navegamos al catálogo con el ID de la categoría
+      const categoryId = categoriesData[index].id;
+      router.push(`/catalogo?categories=${categoryId}`);
+    }
   };
 
   return (
@@ -47,12 +64,12 @@ const CategoriesCarousel = () => {
           style={{
             transform: `translateX(${translateX}px)`,
             transition:
-              viewportWidth === null
-                ? "none"
-                : "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)",
+              viewportWidth !== null
+                ? "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)"
+                : "none",
           }}
         >
-          {cards.map((num, i) => {
+          {categoriesData.map((category, i) => {
             const isActive = i === activeIndex;
             const distance = Math.abs(i - activeIndex);
 
@@ -63,17 +80,21 @@ const CategoriesCarousel = () => {
 
             return (
               <div
-                key={num}
+                key={category.id}
                 className={`${styles.cardWrapper} ${stateClass}`}
                 onClick={() => handleCardClick(i)}
                 style={{
                   width: `${cardWidth}px`,
                   height: isMobile ? "300px" : "420px",
                   flexShrink: 0,
-                  cursor: isActive ? "default" : "pointer",
+                  cursor: "pointer", // Siempre puntero para indicar interactividad
                 }}
               >
-                <CatCarouselCard number={num} isActive={isActive} />
+                <CatCarouselCard
+                  title={category.name}
+                  image={category.imageCarousell}
+                  isActive={isActive}
+                />
               </div>
             );
           })}
@@ -84,6 +105,8 @@ const CategoriesCarousel = () => {
         <button
           className={styles.categoriesCarouselArrowButton}
           onClick={handlePrev}
+          disabled={activeIndex === 0}
+          style={{ opacity: activeIndex === 0 ? 0.3 : 1 }}
         >
           <Image
             src="/icons/chevron.svg"
@@ -95,7 +118,7 @@ const CategoriesCarousel = () => {
         </button>
 
         <DotsCarousel
-          total={cards.length}
+          total={categoriesData.length}
           activeIndex={activeIndex}
           onChange={setActiveIndex}
           variant="inline"
@@ -105,6 +128,10 @@ const CategoriesCarousel = () => {
         <button
           className={styles.categoriesCarouselArrowButton}
           onClick={handleNext}
+          disabled={activeIndex === categoriesData.length - 1}
+          style={{
+            opacity: activeIndex === categoriesData.length - 1 ? 0.3 : 1,
+          }}
         >
           <Image
             src="/icons/chevron.svg"

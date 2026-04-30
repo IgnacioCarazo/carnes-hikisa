@@ -4,16 +4,14 @@
   border-radius: 16px;
   overflow: hidden;
   border: 1px solid #272727;
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
   display: flex;
   flex-direction: column;
+  /* IMPORTANTE: No pongas transition: transform aquí */
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border-color: #444;
 }
 
 .imageContainer {
@@ -27,11 +25,11 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: scale 0.4s ease;
+  transition: transform 0.4s ease; /* Esto sí puede quedarse, es interno */
 }
 
 .card:hover .productImage {
-  scale: 1.1;
+  transform: scale(1.1);
 }
 
 .footer {
@@ -58,15 +56,15 @@
 
 .category {
   font-size: 0.85rem;
-  color: #ffffff;
+  color: #a0a0a0;
   text-transform: capitalize;
 }
 
 .viewButton {
-  width: 40px;
-  height: 40px;
+  width: 42px;
+  height: 42px;
   border-radius: 10px;
-  background-color: #c53030;
+  background-color: #ffffff;
   border: none;
   display: flex;
   align-items: center;
@@ -77,5 +75,14 @@
 }
 
 .viewButton:hover {
-  background-color: #e53e3e;
+  background-color: #e2e2e2;
+}
+
+.viewButton:active {
+  transform: scale(0.95);
+}
+
+.buttonIcon {
+  filter: brightness(0);
+  display: block;
 }

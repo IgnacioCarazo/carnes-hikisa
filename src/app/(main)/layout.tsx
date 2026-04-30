@@ -1,24 +1,16 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Be_Vietnam_Pro } from "next/font/google";
-import localFont from "next/font/local";
 
 import "./globals.css";
 
+import FloatingActions from "@/components/common/(FloatingActions)/FloatingActions";
 import ConditionalFooter from "@/components/common/(Footer)/ConditionalFooter";
-
-import FloatingActions from "../components/common/(FloatingActions)/FloatingActions";
-import Navbar from "../components/common/(NavBar)/Navbar";
-
+import Navbar from "@/components/common/(NavBar)/Navbar";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-});
-
-const bernard = localFont({
-  src: "../assets/fonts/Bernard_MT_Condensed_Regular.ttf",
-  variable: "--font-bernard",
 });
 
 const beVietnam = Be_Vietnam_Pro({
@@ -40,7 +32,7 @@ export default function RootLayout({
   return (
     <html lang="es">
       <body
-        className={`layout-container ${bernard.variable} ${inter.variable} ${beVietnam.variable}`}
+        className={`layout-container ${inter.variable} ${beVietnam.variable}`}
       >
         <Navbar />
 
