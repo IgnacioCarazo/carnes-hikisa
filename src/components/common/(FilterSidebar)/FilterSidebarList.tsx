@@ -1,5 +1,5 @@
-import { Category } from "@/app/(main)/catalogo/page";
 import CategoryCard from "@/components/common/(CategoryCards)/CategoryCard";
+import { Category } from "@/types/product";
 
 import FilterCategoryIcon from "./FilterCategoryIcon";
 import styles from "./FilterSidebar.module.css";
