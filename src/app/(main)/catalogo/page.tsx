@@ -39,7 +39,7 @@ function CatalogoContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(true);
 
   const activeCategories = useMemo(() => {
     const params = searchParams.get("categories");
@@ -73,46 +73,17 @@ function CatalogoContent() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  // --- LÓGICA DE FUSE.JS ---
   const filteredCategories = useMemo(() => {
-        if (!searchQuery && activeCategories.length === 0) return categoriesData;
-
+    if (!searchQuery && activeCategories.length === 0) return categoriesData;
     return categoriesData
       .map((cat) => {
-        // Si hay categorías activas y esta no lo es, la descartamos
-        if (activeCategories.length > 0 && !activeCategories.includes(cat.id)) {
+        if (activeCategories.length > 0 && !activeCategories.includes(cat.id))
           return null;
-        }
-
-        // Si no hay búsqueda pero la categoría está activa, devolver categoría completa
         if (!searchQuery) return cat;
-
-        // Configurar Fuse para los productos de esta categoría
-        const fuse = new Fuse(cat.products, {
-          keys: ["name"],
-          threshold: 0.3, // 0 es exacto, 1 es cualquier cosa. 0.3 es ideal.
-          ignoreLocation: true,
-          useExtendedSearch: true,
-        });
-
+        const fuse = new Fuse(cat.products, { keys: ["name"], threshold: 0.3 });
         const searchResults = fuse.search(searchQuery).map((r) => r.item);
-
-        // Si la categoría misma coincide con el nombre buscado, mostrar todos sus productos
-        const categoryMatch =
-          new Fuse([cat], { keys: ["name"], threshold: 0.3 }).search(
-            searchQuery,
-          ).length > 0;
-
-        if (categoryMatch || searchResults.length > 0) {
-          return {
-            ...cat,
-            products:
-              categoryMatch && searchResults.length === 0
-                ? cat.products
-                : searchResults,
-          };
-        }
-
+        if (searchResults.length > 0)
+          return { ...cat, products: searchResults };
         return null;
       })
       .filter((cat): cat is Category => cat !== null);
@@ -126,24 +97,51 @@ function CatalogoContent() {
         color="black"
       />
       <div className={styles.contentLayout}>
-        <div className={styles.sidebarArea}>
-          {!isOpen && (
-            <button
-              className={styles.sidebarToggleBtn}
-              onClick={() => setIsOpen(true)}
-            >
-              <Filter size={20} />
-            </button>
-          )}
-          <FilterSidebar
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            activeCategories={activeCategories}
-            onCategoryChange={handleCategoryChange}
-            onClearFilters={handleClearFilters}
-          />
-        </div>
-        <div className={styles.mainContent}>
+        <motion.div
+          className={styles.sidebarArea}
+          animate={{ width: isOpen ? "340px" : "60px" }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
+          {/* Cambiado a popLayout para evitar el parpadeo de espera */}
+          <AnimatePresence mode="popLayout" initial={false}>
+            {isOpen ? (
+              <motion.div
+                key="sidebar"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+              >
+                <FilterSidebar
+                  isOpen={isOpen}
+                  setIsOpen={setIsOpen}
+                  activeCategories={activeCategories}
+                  onCategoryChange={handleCategoryChange}
+                  onClearFilters={handleClearFilters}
+                />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="button-container"
+                className={styles.buttonCenterer}
+                initial={{ opacity: 0, scale: 0.5 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <button
+                  className={styles.sidebarToggleBtn}
+                  onClick={() => setIsOpen(true)}
+                  title="Mostrar Filtros"
+                >
+                  <Filter size={24} />
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+
+        <motion.div layout className={styles.mainContent}>
           <ProductGrid
             categoryTitle={
               <div className={styles.filterHeaderWrapper}>
@@ -228,7 +226,7 @@ function CatalogoContent() {
               )}
             </AnimatePresence>
           </ProductGrid>
-        </div>
+        </motion.div>
       </div>
     </main>
   );

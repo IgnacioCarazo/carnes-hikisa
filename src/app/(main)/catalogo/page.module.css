@@ -11,12 +11,10 @@
 .contentLayout {
   display: flex;
   flex: 1;
-  gap: 2rem;
-  padding: 0 1.5rem;
-  align-items: flex-start;
   width: 100%;
   overflow: hidden;
-  min-height: 0;
+  padding: 1rem 1.5rem 0 1.5rem;
+  gap: 2rem;
 }
 
 .sidebarArea {
@@ -25,6 +23,14 @@
   flex-shrink: 0;
   height: 100%;
   z-index: 20;
+  position: relative;
+}
+
+.buttonCenterer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
 }
 
 .mainContent {
@@ -34,120 +40,152 @@
   height: 100%;
   min-width: 0;
   overflow-y: auto;
+  padding-bottom: 2rem;
 }
 
-/* --- Header de Filtros con Scroll Horizontal y SearchBar --- */
+.sidebarToggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1.5px solid #e0e0e0;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease;
+  margin-top: 5px;
+  color: #333;
+}
+
+.sidebarToggleBtn:hover {
+  border-color: #e31b23;
+  color: #e31b23;
+  transform: translateY(-2px);
+}
+
+/* --- Header de Filtros con Truncado --- */
 .filterHeaderWrapper {
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Empuja el buscador a la derecha */
+  justify-content: space-between;
   gap: 16px;
   width: 100%;
-  padding-bottom: 1rem;
-  min-width: 0;
+  padding-bottom: 1.5rem;
+  min-width: 0; /* Permite que el contenedor se encoja */
 }
 
-/* Contenedor de la izquierda (Título o pills) */
 .leftFilterContent {
   display: flex;
   align-items: center;
   gap: 12px;
-  flex: 1; /* Permite que tome todo el espacio disponible */
-  min-width: 0; /* Crítico para no romper el scroll horizontal de los pills */
+  flex: 1;
+  min-width: 0; /* Crucial para que los hijos puedan truncar */
 }
 
-/* Contenedor de la derecha (Search Bar) */
 .rightSearchContainer {
-  flex-shrink: 0; /* Evita que el buscador se aplaste */
+  flex: 0 0 auto; /* El buscador mantiene su tamaño */
   display: flex;
   align-items: center;
   justify-content: flex-end;
 }
 
+/* --- Contenedor de Pills Elástico --- */
 .filterCardsContainer {
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap; /* Evita que bajen a la siguiente línea */
-  gap: 0.8rem;
+  gap: 6px;
   align-items: center;
-  overflow-x: auto; /* Habilita el scroll */
-  padding: 5px 0;
   flex: 1;
-
-  /* Ocultar scrollbar */
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-}
-
-.filterCardsContainer::-webkit-scrollbar {
-  display: none;
+  min-width: 0;
+  overflow: hidden; /* Eliminamos el scroll para forzar el truncado */
 }
 
 .miniCategoryCard {
-  flex-shrink: 0; /* Evita que la card se achique */
   display: flex;
   align-items: center;
-  padding: 6px 12px;
-  background-color: white;
-  border: 1.5px solid #e0e0e0;
+  padding: 6px 10px;
+  background: white;
+  border: 1.5px solid #eee;
   border-radius: 32px;
-  gap: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+  gap: 6px;
+  min-width: 40px; /* Espacio mínimo para el icono y algo de texto */
+  flex: 0 1 auto; /* Permite que la pill se encoja si es necesario */
+  overflow: hidden;
 }
 
-.removeAllBadge {
+.miniIconContainer {
   flex-shrink: 0;
-  background-color: #e31b23;
-  border: 1.5px solid #e31b23;
+  display: flex;
+  align-items: center;
+  width: 18px;
+}
+
+.miniName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; /* Aquí aparecen los puntitos */
+  flex: 1;
+}
+
+.miniRemoveBtn {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  cursor: pointer;
+  color: #999;
+  flex-shrink: 0;
+}
+
+/* --- Estilos de Apoyo --- */
+.removeAllBadge {
+  background: #e31b23;
   color: white;
-  padding: 6px 16px;
-  border-radius: 24px;
-  font-size: 0.7rem;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.65rem;
   font-weight: 800;
   text-transform: uppercase;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .allProductsText {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 800;
   text-transform: uppercase;
   color: #1a1a1a;
-}
-
-.sidebarToggleBtn {
-  background: white;
-  border: 1px solid #eee;
-  padding: 10px;
-  border-radius: 50%;
-  cursor: pointer;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  margin-top: 10px;
+  white-space: nowrap;
 }
 
 .searchTermBadge {
   background-color: #f0f0f0;
-  padding: 6px 14px;
+  padding: 4px 10px;
   border-radius: 20px;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   color: #444;
   border: 1px dashed #ccc;
   white-space: nowrap;
+  flex-shrink: 0;
 }
 
-.searchTermBadge strong {
+.highlightText {
   color: #e31b23;
+  font-weight: 800;
 }
 
 .emptyMessage {
   text-align: center;
   padding: 3rem;
-  font-size: 1.1rem;
-  color: #888;
-  grid-column: 1 / -1;
-}
-
-.highlightText {
-  font-weight: 800; /* Reemplaza el efecto de strong */
-  color: #e31b23; /* O el color que prefieras para resaltar */
+  color: #666;
+  font-weight: 500;
+  width: 100%;
 }
