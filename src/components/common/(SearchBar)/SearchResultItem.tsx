@@ -20,23 +20,20 @@ const SearchResultItem = ({ product, onClick, index = 0 }: Props) => (
     onClick={() => onClick(product.name)}
   >
     <div className={styles.miniImageContainer}>
-      <div className={styles.miniImageWrapper}>
-        <Image
-          src={product.image}
-          alt={product.name}
-          width={80}
-          height={80}
-          className={styles.miniProductImage}
-          sizes="80px"
-          loading="lazy"
-        />
-      </div>
+      <Image
+        src={product.image}
+        alt={product.name}
+        width={55}
+        height={55}
+        className={styles.miniProductImage}
+        sizes="55px"
+        loading="lazy"
+      />
     </div>
-    <div className={styles.miniFooter}>
-      <div className={styles.miniInfo}>
-        <h3 className={styles.miniTitle}>{product.name}</h3>
-        <span className={styles.miniCategory}>{product.categoryName}</span>
-      </div>
+
+    <div className={styles.miniInfo}>
+      <h3 className={styles.miniTitle}>{product.name}</h3>
+      <span className={styles.miniCategory}>{product.categoryName}</span>
     </div>
   </motion.div>
 );

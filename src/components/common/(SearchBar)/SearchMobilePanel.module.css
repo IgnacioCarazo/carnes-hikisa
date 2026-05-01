@@ -4,11 +4,11 @@
   left: 0;
   width: 100%;
   height: 100dvh;
-  background-color: #ffffff;
+  background-color: #fbfbfb; /* Drawer blanco */
   transform: translateY(-100%);
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   visibility: hidden;
-  z-index: 2000;
+  z-index: 5000;
 }
 
 .showPanel {
@@ -21,15 +21,15 @@
   align-items: center;
   gap: 1rem;
   padding: 1rem;
-  border-bottom: 1px solid #eeeeee;
+  border-bottom: 1px solid #f0f0f0; /* Línea divisoria sutil */
 }
-
 .closePanel {
   border: none;
   background: none;
   font-size: 0.85rem;
-  font-weight: 600;
-  color: #666;
+  font-weight: 700;
+  color: #000000; /* Texto oscuro para fondo blanco */
+  cursor: pointer;
 }
 
 .searchPanelContent {
