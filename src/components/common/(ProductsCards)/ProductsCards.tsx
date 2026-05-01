@@ -4,28 +4,26 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
-import styles from "./ProductsCards.module.css";
+import { Product } from "@/types/product";
 
-interface Product {
-  id: number | string;
-  name: string;
-  category: string;
-  image: string;
-}
+import styles from "./ProductsCards.module.css";
 
 interface Category {
   id: string;
   name: string;
   image: string;
-  "image-white": string;
   products: Product[];
 }
 
 interface ProductsCardsProps {
   categories: Category[];
+  onProductClick: (product: Product) => void;
 }
 
-const ProductsCards: React.FC<ProductsCardsProps> = ({ categories }) => {
+const ProductsCards: React.FC<ProductsCardsProps> = ({
+  categories,
+  onProductClick,
+}) => {
   if (!categories) return null;
 
   return (
@@ -51,6 +49,7 @@ const ProductsCards: React.FC<ProductsCardsProps> = ({ categories }) => {
                 delay: index * 0.03,
               }}
               className={styles.card}
+              onClick={() => onProductClick(product)}
             >
               <div className={styles.imageContainer}>
                 <Image

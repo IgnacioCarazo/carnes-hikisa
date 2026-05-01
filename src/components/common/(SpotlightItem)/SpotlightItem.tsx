@@ -7,12 +7,14 @@ type SpotlightItemProps = {
   title: string;
   description: string;
   image: string;
+  onButtonClick?: () => void;
 };
 
 const SpotlightItem = ({
   title,
   description,
   image,
+  onButtonClick,
 }: SpotlightItemProps) => {
   const isMobile = useIsMobile();
 
@@ -31,11 +33,7 @@ const SpotlightItem = ({
     <div className={styles.spotlightItemTextContent}>
       <h2 className={styles.spotlightItemTitle}>{title}</h2>
 
-      <p className={styles.spotlightItemDescription}>
-        {description}
-      </p>
-
-    
+      <p className={styles.spotlightItemDescription}>{description}</p>
     </div>
   );
 
@@ -43,21 +41,16 @@ const SpotlightItem = ({
     <div className={styles.spotlightItemTextContent}>
       <h2 className={styles.spotlightItemTitle}>{title}</h2>
 
-      <p className={styles.spotlightItemDescription}>
-        {description}
-      </p>
-      <button className={styles.spotlightItemButton}>
+      <p className={styles.spotlightItemDescription}>{description}</p>
+      <button onClick={onButtonClick} className={styles.spotlightItemButton}>
         Ver producto en la galería
       </button>
-    
     </div>
   );
 
   const linkNode = (
     <div className={styles.spotlightItemTextContent}>
-     
-
-      <button className={styles.spotlightItemButton}>
+      <button onClick={onButtonClick} className={styles.spotlightItemButton}>
         Ver producto en la galería
       </button>
     </div>
@@ -75,7 +68,6 @@ const SpotlightItem = ({
         <>
           {imageNode}
           {textLinkNode}
-          
         </>
       )}
     </div>
