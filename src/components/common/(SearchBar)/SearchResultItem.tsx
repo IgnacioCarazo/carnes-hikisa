@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
+import Image from "next/image";
 
-import { Product } from "@/types/product"; // O la ruta donde la definas
+import { Product } from "@/types/product";
 
 import styles from "./SearchResultItem.module.css";
 
@@ -19,11 +20,17 @@ const SearchResultItem = ({ product, onClick, index = 0 }: Props) => (
     onClick={() => onClick(product.name)}
   >
     <div className={styles.miniImageContainer}>
-      <img
-        src={product.image}
-        alt={product.name}
-        className={styles.miniProductImage}
-      />
+      <div className={styles.miniImageWrapper}>
+        <Image
+          src={product.image}
+          alt={product.name}
+          width={80}
+          height={80}
+          className={styles.miniProductImage}
+          sizes="80px"
+          loading="lazy"
+        />
+      </div>
     </div>
     <div className={styles.miniFooter}>
       <div className={styles.miniInfo}>

@@ -234,7 +234,7 @@
 }
 
 /* Responsivo */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .contentLayout {
     padding: 1rem;
     gap: 0;

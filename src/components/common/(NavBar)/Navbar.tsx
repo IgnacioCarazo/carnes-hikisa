@@ -17,46 +17,62 @@ const Navbar = () => {
 
   const isCatalogoPage = pathname.includes("/catalogo");
 
-  return (
-    <nav className={styles.navbar}>
-      <div className={styles.navLeft}>
-        <button className={styles.hamburger} onClick={() => setIsOpen(!isOpen)}>
-          <Image src={iconMenu} alt="Menu" width={28} height={28} />
-        </button>
+  const closeMenu = () => setIsOpen(false);
 
-        <div className={`${styles.navbarLinks} ${isOpen ? styles.show : ""}`}>
-          <Link
-            href="/catalogo"
-            className={pathname.includes("/catalogo") ? styles.active : ""}
-            onClick={() => setIsOpen(false)}
+  return (
+    <>
+      {/* Overlay para cerrar el menú al hacer clic fuera en móviles */}
+      <div
+        className={`${styles.overlay} ${isOpen ? styles.overlayShow : ""}`}
+        onClick={closeMenu}
+      />
+
+      <nav className={styles.navbar}>
+        <div className={styles.navLeft}>
+          <button
+            className={styles.hamburger}
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Menu"
           >
-            Catálogo
-          </Link>
-          <Link
-            href="/contactos"
-            className={pathname === "/contactos" ? styles.active : ""}
-            onClick={() => setIsOpen(false)}
-          >
-            Contactos
+            <Image src={iconMenu} alt="Menu" width={28} height={28} />
+          </button>
+
+          <div className={`${styles.navbarLinks} ${isOpen ? styles.show : ""}`}>
+            <Link
+              href="/catalogo"
+              className={pathname.includes("/catalogo") ? styles.active : ""}
+              onClick={closeMenu}
+            >
+              Catálogo
+            </Link>
+            <Link
+              href="/contactos"
+              className={pathname === "/contactos" ? styles.active : ""}
+              onClick={closeMenu}
+            >
+              Contactos
+            </Link>
+          </div>
+        </div>
+
+        <div className={styles.navbarLogo}>
+          <Link href="/" onClick={closeMenu}>
+            <Image
+              src={logoHikisa}
+              alt="Logo Hikisa"
+              width={170}
+              height={52}
+              className={styles.logoImg}
+              priority
+            />
           </Link>
         </div>
-      </div>
 
-      <div className={styles.navbarLogo}>
-        <Link href="/" onClick={() => setIsOpen(false)}>
-          <Image
-            src={logoHikisa}
-            alt="Logo"
-            width={160}
-            height={60}
-            className={styles.logoImg}
-            priority
-          />
-        </Link>
-      </div>
-
-      <div className={styles.navRight}>{!isCatalogoPage && <SearchBar />}</div>
-    </nav>
+        <div className={styles.navRight}>
+          {!isCatalogoPage && <SearchBar />}
+        </div>
+      </nav>
+    </>
   );
 };
 

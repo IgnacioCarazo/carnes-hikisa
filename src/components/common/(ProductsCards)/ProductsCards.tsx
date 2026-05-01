@@ -45,18 +45,21 @@ const ProductsCards: React.FC<ProductsCardsProps> = ({ categories }) => {
               exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.2 } }}
               transition={{
                 type: "spring",
-                stiffness: 80, 
-                damping: 20, 
+                stiffness: 80,
+                damping: 20,
                 mass: 1,
                 delay: index * 0.03,
               }}
               className={styles.card}
             >
               <div className={styles.imageContainer}>
-                <img
+                <Image
                   src={product.image}
                   alt={product.name}
+                  width={300} // Ancho deseado en píxeles
+                  height={200} // Alto deseado en píxeles
                   className={styles.productImage}
+                  priority={true} // Úsalo si es la imagen principal de la página (LCP)
                 />
               </div>
 

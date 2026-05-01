@@ -3,31 +3,44 @@
 .navbar {
   position: sticky;
   top: 0;
-
   display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  /* El uso de minmax(0, 1fr) obliga a las columnas laterales a ser idénticas */
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
   align-items: center;
-
   height: var(--nav-height);
-  padding: 0 4rem;
-
+  padding: 0 2rem;
   background-color: #ffffff;
   border-bottom: 1px solid #eeeeee;
-
   z-index: 1000;
 }
 
-.navLeft,
+.navLeft {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .navRight {
   display: flex;
   align-items: center;
-}
-
-.navRight {
   justify-content: flex-end;
 }
 
-/* LINKS */
+/* LOGO - Centrado absoluto */
+.navbarLogo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.logoImg {
+  width: 170px;
+  height: auto;
+  display: block;
+}
+
+/* LINKS ESCRITORIO */
 .navbarLinks {
   display: flex;
   gap: 2.5rem;
@@ -35,30 +48,22 @@
 
 .navbarLinks a {
   position: relative;
-
   font-family: var(--font-inter), sans-serif;
-  font-size: 1.15rem;
-
+  font-size: 1.1rem;
   text-transform: uppercase;
   text-decoration: none;
-
   color: #333;
-
   transition: color 0.3s ease;
 }
 
 .navbarLinks a::after {
   content: "";
-
   position: absolute;
   left: 0;
   bottom: -4px;
-
   width: 0;
   height: 2px;
-
   background-color: var(--red-hikisa);
-
   transition: width 0.3s ease;
 }
 
@@ -72,70 +77,71 @@
   width: 100%;
 }
 
-/* LOGO */
-.navbarLogo {
-  display: flex;
-  justify-content: center;
-}
-
-.logoImg {
-  width: 170px;
-  height: auto;
-}
-
-/* MOBILE HIDDEN ELEMENTS */
 .hamburger {
   display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
 }
 
-/* RESPONSIVE (Móviles y Tablets / iPads) */
-@media (max-width: 1024px) {
+/* RESPONSIVE: IPADS Y MÓVILES (Menos de 1100px) */
+@media (max-width: 1100px) {
   .navbar {
-    grid-template-columns: auto 1fr auto;
-    padding: 0 1rem;
-    gap: 10px;
+    padding: 0 1.5rem;
   }
 
   .hamburger {
     display: block;
-    background: none;
-    border: none;
-    cursor: pointer;
   }
 
   .logoImg {
-    width: 120px;
+    width: 140px;
   }
 
-  /* SIDEBAR STYLES */
+  /* Menú lateral */
   .navbarLinks {
     position: fixed;
-    top: var(--nav-height);
-    left: -100%; /* Oculto fuera de la pantalla a la izquierda */
-    width: 250px; /* Ancho fijo para el menú lateral */
-    height: calc(
-      100vh - var(--nav-height)
-    ); /* Cubre el alto restante de la pantalla */
-
+    top: 0;
+    left: -100%;
+    width: 280px;
+    height: 100vh;
     background-color: #ffffff;
-    border-right: 1px solid #eeeeee; /* Borde a la derecha para separarlo del fondo */
-
     flex-direction: column;
-    align-items: flex-start; /* Alinea los enlaces a la izquierda */
-    padding: 3rem 2rem; /* Espaciado interno */
+    align-items: flex-start;
+    padding: 5rem 2rem;
     gap: 2rem;
-
-    /* Siempre se mantiene como flex, la posición controla su visibilidad */
-    display: flex;
-
-    /* Animación de deslizamiento */
-    transition: left 0.3s ease-in-out;
-
-    box-shadow: 4px 0 6px -1px rgba(0, 0, 0, 0.1);
+    transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 10px 0 15px -3px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
   }
 
-  /* MOSTRAR CUANDO EL ESTADO isOpen ES TRUE */
   .navbarLinks.show {
-    left: 0; /* Desliza el sidebar hacia adentro */
+    left: 0;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+    z-index: 1000;
+  }
+
+  .overlayShow {
+    display: block;
+  }
+}
+
+@media (max-width: 480px) {
+  .logoImg {
+    width: 110px;
+  }
+
+  .navbar {
+    padding: 0 1rem;
   }
 }

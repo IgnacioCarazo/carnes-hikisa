@@ -20,7 +20,6 @@ const categoriesData = categoriesDataRaw as Category[];
 const FilterSidebar = ({
   activeCategories,
   onCategoryChange,
-  onClearFilters,
   setIsOpen,
 }: FilterSidebarProps) => {
   return (

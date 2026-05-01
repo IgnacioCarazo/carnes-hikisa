@@ -13,7 +13,7 @@ import ProductsCards from "@/components/common/(ProductsCards)/ProductsCards";
 import CatalogSearchBar from "@/components/common/(SearchBar)/CatalogSearchBar";
 import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
 import categoriesDataRaw from "@/data/categories.json";
-import { useIsMobile } from "@/hooks/useIsMobile";
+import { useIsMobile } from "@/hooks/useIsTabletMobile";
 
 import styles from "./page.module.css";
 
@@ -300,8 +300,17 @@ function CatalogoContent() {
 
 export default function CatalogoPage() {
   return (
-    <Suspense fallback={<div>Cargando...</div>}>
-      <CatalogoContent />
-    </Suspense>
+    <main className={styles.pageWrapper}>
+      {/* Eliminadas las comillas en className */}
+      <SectionHeader
+        title="NUESTROS PRODUCTOS"
+        color="black"
+        className={styles.catalogHeaderMargin}
+      />
+
+      <Suspense fallback={<div>Cargando catálogo...</div>}>
+        <CatalogoContent />
+      </Suspense>
+    </main>
   );
 }

@@ -1,4 +1,6 @@
 "use client";
+import Image from 'next/image';
+
 import { useIsMobile } from "@/hooks/useIsMobile";
 
 import styles from "./ServiceItem.module.css";
@@ -35,27 +37,25 @@ const ServiceItem = ({
     <div className={styles.serviceItemTextContent}>
       <div className={styles.serviceItemTitleRow}>
         {icon && (
-          <img
+          <Image
             src={icon}
             className={styles.serviceItemIcon}
             alt=""
+            width={48}
+            height={48}
+            unoptimized
           />
         )}
 
         <h2 className={styles.serviceItemTitle}>{title}</h2>
       </div>
 
-      <p className={styles.serviceItemDescription}>
-        {description}
-      </p>
+      <p className={styles.serviceItemDescription}>{description}</p>
     </div>
   );
 
   return (
-    <div
-      className={styles.serviceItem}
-      data-reverse={reverse}
-    >
+    <div className={styles.serviceItem} data-reverse={reverse}>
       {isMobile ? (
         <>
           {textNode}

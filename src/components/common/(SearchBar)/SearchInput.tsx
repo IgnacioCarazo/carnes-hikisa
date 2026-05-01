@@ -25,6 +25,8 @@ const SearchInput = ({
   >
     {!isMobile && (
       <svg
+        width="20" 
+        height="20"
         className={styles.searchIconDesktop}
         viewBox="0 0 24 24"
         fill="none"

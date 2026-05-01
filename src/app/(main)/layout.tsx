@@ -1,8 +1,8 @@
+import "./globals.css";
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Be_Vietnam_Pro } from "next/font/google";
-
-import "./globals.css";
 
 import FloatingActions from "@/components/common/(FloatingActions)/FloatingActions";
 import ConditionalFooter from "@/components/common/(Footer)/ConditionalFooter";
