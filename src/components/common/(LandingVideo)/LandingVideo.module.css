@@ -1,15 +1,43 @@
 .landingVideoContainer {
   position: relative;
-
   width: 100%;
-
   overflow: hidden;
+
+  /* skeleton estructural (evita layout shift) */
+  aspect-ratio: 16 / 9;
+
+  background: #e9e9e9;
+}
+
+/* MOBILE */
+@media (max-width: 480px) {
+  .landingVideoContainer {
+    aspect-ratio: 8 / 16;
+  }
 }
 
 .landingVideo {
+  position: absolute;
+  inset: 0;
+
   width: 100%;
   height: 100%;
 
   object-fit: cover;
   object-position: center;
+
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+/* cuando el video ya está listo */
+.landingVideoLoaded {
+  opacity: 1;
+}
+
+/* placeholder opcional mientras carga (sin animaciones pesadas) */
+.placeholder {
+  position: absolute;
+  inset: 0;
+  background: #e9e9e9;
 }

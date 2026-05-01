@@ -6,8 +6,8 @@
   height: 420px;
   flex: 0 0 auto;
 
-  padding-left: 6%;
-  padding-right: 4%;
+  padding-left: 2%;
+  padding-right: 2%;
 
   gap: 70px;
 
@@ -22,7 +22,7 @@
   width: 520px;
   height: 300px;
   flex: 0 0 520px;
-
+  box-shadow: 0 8px 50px rgba(0, 0, 0, 0.4);
   background: rgba(0, 0, 0, 0.2);
   border-radius: 6px;
 }

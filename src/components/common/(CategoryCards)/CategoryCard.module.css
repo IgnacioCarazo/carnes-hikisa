@@ -12,10 +12,6 @@
   outline: none;
 }
 
-.active {
-  border: 2px solid #e31b23;
-}
-
 .iconContainer {
   display: flex;
   align-items: center;

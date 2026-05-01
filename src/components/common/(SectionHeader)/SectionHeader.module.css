@@ -37,6 +37,8 @@
 
   .sectionHeaderDescription {
     max-width: 90%;
+    padding: 10px;
+    text-align: center;
   }
 }
 
@@ -48,7 +50,7 @@
 
   .sectionHeaderDescription {
     max-width: 100%;
-
+    padding: 10px;
     padding: 0 1rem;
   }
 }

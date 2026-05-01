@@ -3,9 +3,9 @@ import { usePathname } from "next/navigation";
 
 export const useUIConfig = () => {
   const pathname = usePathname();
-  
-  const cleanPages = ["/catalogo"]; 
-  
+
+  const cleanPages = ["/catalogo", "/contactos"];
+
   return {
     showFooter: !cleanPages.includes(pathname),
   };
