@@ -1,8 +1,8 @@
 import "./globals.css";
 
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import { Be_Vietnam_Pro } from "next/font/google";
+import { Inter, Be_Vietnam_Pro } from "next/font/google";
+import { Suspense } from "react"; // 1. Importar Suspense
 
 import FloatingActions from "@/components/common/(FloatingActions)/FloatingActions";
 import ConditionalFooter from "@/components/common/(Footer)/ConditionalFooter";
@@ -34,12 +34,18 @@ export default function RootLayout({
       <body
         className={`layout-container ${inter.variable} ${beVietnam.variable}`}
       >
-        <Navbar />
+        {/* 2. Envolver Navbar porque suele manejar la búsqueda/URL */}
+        <Suspense fallback={<div style={{ height: "80px" }} />}>
+          <Navbar />
+        </Suspense>
 
         <main className="main-content">{children}</main>
 
+        {/* 3. Envolver FloatingActions por si acaso dependen de la URL */}
         <div className="floating-actions-wrapper">
-          <FloatingActions />
+          <Suspense fallback={null}>
+            <FloatingActions />
+          </Suspense>
         </div>
 
         <ConditionalFooter />
