@@ -1,0 +1,58 @@
+.card {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 8px 24px;
+  background-color: white;
+  border: 2px solid #e0e0e0;
+  border-radius: 40px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más fluida */
+  gap: 16px;
+  outline: none;
+  position: relative;
+}
+
+/* Hover: Borde rojo, elevación y sombra sutil */
+.card:hover {
+  border-color: #e31b23;
+  transform: translateY(-4px); /* Se eleva un poco */
+  box-shadow: 0 10px 20px rgba(227, 27, 35, 0.1); /* Resplandor rojo muy suave */
+}
+
+/* Cuando se presiona (Click) */
+.card:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(227, 27, 35, 0.15);
+}
+
+/* Estado seleccionado */
+.active {
+  border: 2px solid #e31b23;
+  background-color: #fff5f5; /* Un fondo rojizo casi imperceptible */
+}
+
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .iconContainer {
+  transform: scale(1.1); /* El icono crece un poco al pasar el mouse */
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #3c3c3c;
+  transition: color 0.3s ease;
+}
+
+.card:hover .name,
+.active .name {
+  color: black;
+}

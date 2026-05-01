@@ -1,0 +1,42 @@
+.searchPanelMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100dvh;
+  background-color: #ffffff;
+  transform: translateY(-100%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  visibility: hidden;
+  z-index: 2000;
+}
+
+.showPanel {
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.searchPanelHeader {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.closePanel {
+  border: none;
+  background: none;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.searchPanelContent {
+  padding: 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  overflow-y: auto;
+  height: calc(100% - 70px);
+}

@@ -1,0 +1,68 @@
+.sidebar {
+  width: 100%;
+  /* Importante: auto para que el modal no sea siempre gigante */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.innerContainer {
+  height: auto;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 24px;
+  padding: 1.5rem;
+}
+
+.filterContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Si hay muchas categorías, el scroll solo ocurre aquí dentro */
+  overflow-y: auto;
+  flex: 1;
+  padding-top: 1.5rem;
+}
+
+/* Estetica de la scrollbar interna */
+.filterContent::-webkit-scrollbar {
+  width: 4px;
+}
+.filterContent::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 10px;
+}
+
+.sidebarHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.titleGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.titleText {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #999;
+  display: flex;
+  padding: 4px;
+}
+
+.closeBtn:hover {
+  color: #e31b23;
+}

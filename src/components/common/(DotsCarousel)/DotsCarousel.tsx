@@ -8,6 +8,7 @@ type Props = {
   visibleCount?: number;
   variant?: "overlay" | "inline";
   theme?: "light" | "dark";
+  loop?: boolean; // New prop to toggle behavior
 };
 
 const DOT_SIZE = 10;
@@ -21,19 +22,30 @@ export default function DotsCarousel({
   visibleCount = 5,
   variant = "overlay",
   theme = "light",
+  loop = false, // Defaults to your current behavior
 }: Props) {
   const half = Math.floor(visibleCount / 2);
 
   const getCenterIndex = () => {
-    if (activeIndex <= half) return half;
-    if (activeIndex >= total - half - 1) return total - half - 1;
+    // FINITE LOGIC: Clamp the window at the start and end
+    if (!loop) {
+      if (activeIndex <= half) return half;
+      if (activeIndex >= total - half - 1) return total - half - 1;
+    }
+
+    // INFINITE LOGIC: The active dot is always the center of the movement
     return activeIndex;
   };
 
   const centerIndex = getCenterIndex();
 
-  const translateX =
-    -(centerIndex * STEP - (visibleCount * STEP) / 2 + STEP / 2);
+  // The math stays the same, but because centerIndex isn't clamped in loop mode,
+  // the track will keep sliding left/right infinitely.
+  const translateX = -(
+    centerIndex * STEP -
+    (visibleCount * STEP) / 2 +
+    STEP / 2
+  );
 
   return (
     <div

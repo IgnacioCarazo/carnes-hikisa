@@ -6,11 +6,18 @@ type SectionHeaderProps = {
   title: string;
   description?: string;
   color?: string;
+  className?: string; // 1. Tienes que decirle a TypeScript que acepte esta prop
 };
 
-const SectionHeader = ({ title, description, color }: SectionHeaderProps) => {
+// 2. Extraer 'className' de las props
+const SectionHeader = ({
+  title,
+  description,
+  color,
+  className,
+}: SectionHeaderProps) => {
   return (
-    <div className={styles.sectionHeader}>
+    <div className={`${styles.sectionHeader} ${className ? className : ""}`}>
       <h2
         className={styles.sectionHeaderTitle}
         style={{ color: color ?? "white" }}

@@ -4,7 +4,8 @@
   height: 420px;
   align-items: flex-start;
   gap: 100px;
-  padding-left: 5%;
+  padding-left: 8%;
+  padding-right: 8%;
   background: transparent;
 }
 
@@ -85,7 +86,6 @@
     justify-content: center;
     text-align: center;
     gap: 2rem;
-    padding-left: 0;
     height: auto;
   }
   .spotlightItemImage {

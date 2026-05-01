@@ -10,7 +10,10 @@
 
   text-align: center;
 }
-
+.sectionHeader.sectionHeaderCatalogo {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
 .sectionHeaderTitle {
   margin: 0;
 
@@ -37,6 +40,8 @@
 
   .sectionHeaderDescription {
     max-width: 90%;
+    padding: 10px;
+    text-align: center;
   }
 }
 
@@ -48,7 +53,7 @@
 
   .sectionHeaderDescription {
     max-width: 100%;
-
+    padding: 10px;
     padding: 0 1rem;
   }
 }

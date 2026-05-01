@@ -2,45 +2,53 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 
 import iconMenu from "@/assets/icons/Hamburger-Menu.webp";
 import logoHikisa from "@/assets/imgs/CarnesHikisa_RB.webp";
 
 import styles from "./Navbar.module.css";
 
+import SearchBar from "../(SearchBar)/SearchBar";
+
 const Navbar = () => {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const searchInputRef = useRef<HTMLInputElement>(null);
 
-  useEffect(() => {
-    if (isSearchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isSearchOpen]);
+  const isCatalogoPage = pathname.includes("/catalogo");
+
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <>
+      {/* Overlay para cerrar el menú al hacer clic fuera en móviles */}
+      <div
+        className={`${styles.overlay} ${isOpen ? styles.overlayShow : ""}`}
+        onClick={closeMenu}
+      />
+
       <nav className={styles.navbar}>
         <div className={styles.navLeft}>
           <button
             className={styles.hamburger}
             onClick={() => setIsOpen(!isOpen)}
+            aria-label="Menu"
           >
             <Image src={iconMenu} alt="Menu" width={28} height={28} />
           </button>
+
           <div className={`${styles.navbarLinks} ${isOpen ? styles.show : ""}`}>
             <Link
               href="/catalogo"
-              className={pathname === "/catalogo" ? styles.active : ""}
+              className={pathname.includes("/catalogo") ? styles.active : ""}
+              onClick={closeMenu}
             >
               Catálogo
             </Link>
             <Link
               href="/contactos"
               className={pathname === "/contactos" ? styles.active : ""}
+              onClick={closeMenu}
             >
               Contactos
             </Link>
@@ -48,12 +56,12 @@ const Navbar = () => {
         </div>
 
         <div className={styles.navbarLogo}>
-          <Link href="/">
+          <Link href="/" onClick={closeMenu}>
             <Image
               src={logoHikisa}
-              alt="Logo"
-              width={160}
-              height={60}
+              alt="Logo Hikisa"
+              width={170}
+              height={52}
               className={styles.logoImg}
               priority
             />
@@ -61,48 +69,9 @@ const Navbar = () => {
         </div>
 
         <div className={styles.navRight}>
-          {/* Lupa para abrir el panel en móvil */}
-          <button
-            className={styles.searchButtonMobile}
-            onClick={() => setIsSearchOpen(true)}
-          >
-            <svg
-              className={styles.searchIcon}
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-            >
-              <circle cx="11" cy="11" r="8"></circle>
-              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-            </svg>
-          </button>
-
-          <div className={styles.searchContainerDesktop}>
-            <input type="text" placeholder="Buscar..." />
-          </div>
+          {!isCatalogoPage && <SearchBar />}
         </div>
       </nav>
-
-      <div
-        className={`${styles.searchPanelMobile} ${isSearchOpen ? styles.showPanel : ""}`}
-      >
-        <div className={styles.searchPanelHeader}>
-          <div className={styles.searchField}>
-            <input
-              ref={searchInputRef}
-              type="text"
-              placeholder="¿Qué corte buscas?"
-            />
-          </div>
-          <button
-            className={styles.closePanel}
-            onClick={() => setIsSearchOpen(false)}
-          >
-            CANCELAR
-          </button>
-        </div>
-      </div>
     </>
   );
 };

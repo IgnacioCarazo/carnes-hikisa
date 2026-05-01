@@ -1,0 +1,257 @@
+.pageWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: #f9f9f9;
+  overflow: hidden;
+  position: fixed;
+}
+
+.catalogHeaderMargin {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.contentLayout {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  overflow: hidden;
+  padding: 0rem 1.5rem 0 1.5rem;
+  gap: 2rem;
+  position: relative;
+}
+
+.sidebarArea {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 100%;
+  z-index: 20;
+  align-items: center;
+}
+
+.buttonCenterer {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding-top: 1rem;
+}
+
+.mainContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 0;
+  overflow-y: auto;
+}
+
+/* Modal Mobile */
+.mobileDrawer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: 400px;
+  height: auto;
+  max-height: 85vh;
+  z-index: 3000;
+  padding: 10px;
+  background-color: white;
+  border-radius: 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2999;
+}
+
+.mobileFilterBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #e31b23;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(227, 27, 35, 0.2);
+}
+
+/* Filtros Header */
+.filterHeaderWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  width: 100%;
+  min-width: 0;
+}
+
+.leftFilterContent {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.filterCardsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  padding: 4px 2px;
+  /* Altura fija mínima para que el layout no salte al aparecer/desaparecer */
+  min-height: 45px;
+}
+
+.filterCardsContainer::-webkit-scrollbar {
+  display: none;
+}
+
+/* Píldoras */
+.searchBadge {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: #ffffff;
+  border: 1.5px dashed #d1d1d1;
+  border-radius: 32px;
+  gap: 8px;
+  flex: 0 0 auto;
+  transition: border-color 0.2s ease;
+}
+
+.searchBadge:hover {
+  border-color: #e31b23;
+  background-color: #fff5f5;
+}
+
+.miniCategoryCard {
+  display: flex;
+  align-items: center;
+  padding: 6px 10px;
+  background: white;
+  border: 1.5px solid #eee;
+  border-radius: 32px;
+  gap: 6px;
+  flex: 0 0 auto;
+}
+
+.miniName {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #333;
+  white-space: nowrap;
+}
+
+.closeBtnIcon {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  color: #999;
+  padding: 2px;
+  transition: color 0.2s ease;
+}
+
+.closeBtnIcon:hover {
+  color: #e31b23;
+}
+
+.removeAllBadge {
+  background: #e31b23;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.allProductsText {
+  font-weight: 800;
+  font-size: 25px;
+}
+
+/* Buscador y Sidebar Toggle */
+.rightSearchContainer {
+  flex: 0 0 auto;
+}
+
+.sidebarToggleBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f6f6f6;
+  border: 2px solid #000000;
+  border-radius: 12px;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #000000;
+}
+
+.sidebarToggleBtn:hover {
+  border-color: #ff0000;
+  color: #ff0000;
+  box-shadow: 0 4px 12px rgba(255, 0, 0, 0.15);
+  background-color: #fffafa;
+}
+
+.emptyMessage {
+  padding: 3rem;
+  text-align: center;
+  color: #666;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+  .contentLayout {
+    padding: 1rem;
+    gap: 0;
+  }
+  .filterHeaderWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .leftFilterContent {
+    width: 100%;
+  }
+  .rightSearchContainer {
+    width: 100%;
+  }
+  .rightSearchContainer > div,
+  .rightSearchContainer input {
+    width: 100% !important;
+  }
+}
