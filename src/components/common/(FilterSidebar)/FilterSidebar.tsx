@@ -1,7 +1,7 @@
 "use client";
 
-import { Category } from "@/app/(main)/catalogo/page";
 import categoriesDataRaw from "@/data/categories.json";
+import { Category } from "@/types/product";
 
 import styles from "./FilterSidebar.module.css";
 import FilterSidebarHeader from "./FilterSidebarHeader";
