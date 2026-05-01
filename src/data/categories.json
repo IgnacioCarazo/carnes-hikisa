@@ -32,7 +32,7 @@
         "name": "Riñones de Res",
         "description": "Sabor característico y textura delicada. Se recomienda limpieza previa y cocción en guisos o salteados.",
         "category": "Carnes de Res",
-        "image": "/productos/carneRes.webp"
+        "image": "/productos/rinonesres.jpeg"
       },
       {
         "id": "res-5",
@@ -88,14 +88,14 @@
         "name": "Hueso Carnudo Entero",
         "description": "Hueso con abundante carne adherida, perfecto para caldos sustanciosos.",
         "category": "Carnes de Res",
-        "image": "/productos/carneRes.webp"
+        "image": "/productos/huesocarnudoentero.jpeg"
       },
       {
         "id": "res-13",
         "name": "Hueso Carnudo Picado",
         "description": "Versión troceada para facilitar su uso en sopas y preparaciones largas.",
         "category": "Carnes de Res",
-        "image": "/productos/carneRes.webp"
+        "image": "/productos/huesocarnudopicado.jpeg"
       },
       {
         "id": "res-14",
@@ -137,42 +137,35 @@
         "name": "Molida de Res Especial",
         "description": "Carne molida balanceada en grasa, ideal para uso diario en múltiples preparaciones.",
         "category": "Carnes de Res",
-        "image": "/productos/carneRes.webp"
+        "image": "/productos/molidaresespecial.jpeg"
       },
       {
         "id": "res-20",
         "name": "Molida de Res Premium",
         "description": "Selección de cortes de mayor calidad, con mejor textura y sabor.",
         "category": "Carnes de Res",
-        "image": "/productos/carneRes.webp"
+        "image": "/productos/molidarespremium.jpeg"
       },
       {
         "id": "res-21",
         "name": "Bistec de Bolita",
         "description": "Corte magro, de fibra firme. Recomendado para plancha o empanizado.",
         "category": "Carnes de Res",
-        "image": "/productos/postadebolita.jpeg"
+        "image": "/productos/bistecbolita.jpeg"
       },
       {
         "id": "res-22",
         "name": "Bistec de Posta de Cuarto",
         "description": "Corte versátil, equilibrado en textura y sabor. Ideal para sartén o parrilla.",
         "category": "Carnes de Res",
-        "image": "/productos/postadecuarzo.jpeg"
+        "image": "/productos/bistecpostacuarto.jpeg"
       },
       {
         "id": "res-23",
         "name": "Bistec de Lomo",
         "description": "Corte suave y jugoso, de cocción rápida. Excelente para plancha o parrilla.",
         "category": "Carnes de Res",
-        "image": "/productos/lomito.jpeg"
-      },
-      {
-        "id": "res-24",
-        "name": "Bistec Adobado",
-        "description": "Bistec previamente sazonado, listo para cocinar. Práctico y de sabor intenso.",
-        "category": "Carnes de Res",
-        "image": "/productos/carneAdobada.webp"
+        "image": "/productos/bisteclomo.jpeg"
       },
       {
         "id": "res-25",
@@ -321,21 +314,21 @@
         "name": "Trocitos de Cerdo",
         "description": "Carne en cubos lista para guisos, estofados o salteados.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/carneCerdo.webp"
+        "image": "/productos/trocitoscerdo.jpeg"
       },
       {
         "id": "cerdo-6",
         "name": "Chuleta Cabeza Picada",
         "description": "Corte con hueso, troceado. Aporta sabor intenso para fritura o guisos.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/carneCerdo.webp"
+        "image": "/productos/chuletacabezapicada.jpeg"
       },
       {
         "id": "cerdo-7",
         "name": "Chuleta Riñonada Picada",
         "description": "Chuleta troceada con buena proporción de carne y grasa. Ideal para cocción rápida.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/carneCerdo.webp"
+        "image": "/productos/chuletarinonadapicada.jpeg"
       },
       {
         "id": "cerdo-8",
@@ -349,14 +342,14 @@
         "name": "Chuleta Riñonada Entera",
         "description": "Corte completo, jugoso y con hueso. Recomendado para parrilla o plancha.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/carneCerdo.webp"
+        "image": "/productos/chuletarinonadaentera.jpeg"
       },
       {
         "id": "cerdo-10",
         "name": "Chuleta Cabeza Entera",
         "description": "Chuleta con mayor contenido de grasa, que aporta jugosidad y sabor.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/carneCerdo.webp"
+        "image": "/productos/chuletacabezaentera.jpeg"
       },
       {
         "id": "cerdo-11",
@@ -370,7 +363,7 @@
         "name": "Papada de Cerdo",
         "description": "Corte graso y sabroso. Apto para fritura, embutidos o cocción lenta.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/carneCerdo.webp"
+        "image": "/productos/papadacerdo.jpeg"
       },
       {
         "id": "cerdo-13",
@@ -398,14 +391,14 @@
         "name": "Chuleta Ahumada Entera",
         "description": "Chuleta con proceso de ahumado, sabor intenso y lista para calentar o cocinar.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/carneCerdo.webp"
+        "image": "/productos/chuletaahumadaentera.jpeg"
       },
       {
         "id": "cerdo-17",
         "name": "Chuleta Ahumada Picada",
         "description": "Versión troceada, práctica para preparaciones rápidas.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/carneCerdo.webp"
+        "image": "/productos/chuletaahumadapicada.jpeg"
       },
       {
         "id": "cerdo-18",
@@ -493,7 +486,7 @@
         "name": "Filet de Tilapia",
         "description": "Filete limpio, sin espinas, de sabor suave y textura firme. Ideal para plancha, fritura o al vapor.",
         "category": "Frutos del Mar",
-        "image": "/productos/filetdetilapia.jpeg"
+        "image": "/productos/filettilapia.jpeg"
       },
       {
         "id": "mar-2",
@@ -514,49 +507,49 @@
         "name": "Filet Bolillo",
         "description": "Filete de pescado de carne firme, apto para fritura, empanizado o plancha.",
         "category": "Frutos del Mar",
-        "image": "/productos/pescado.webp"
+        "image": "/productos/filetbolillo.jpeg"
       },
       {
         "id": "mar-5",
         "name": "Chuleta Bolillo",
         "description": "Corte con hueso, de sabor más intenso. Recomendado para fritura o guisos.",
         "category": "Frutos del Mar",
-        "image": "/productos/pescado.webp"
+        "image": "/productos/chuletabolillo.jpeg"
       },
       {
         "id": "mar-6",
         "name": "Mariscada",
         "description": "Mezcla de mariscos seleccionados, lista para sopas, arroces o preparaciones mixtas.",
         "category": "Frutos del Mar",
-        "image": "/productos/pescado.webp"
+        "image": "/productos/mariscada.jpeg"
       },
       {
         "id": "mar-7",
         "name": "Camarones Pinky",
         "description": "Camarones pequeños, prácticos y versátiles. Ideales para arroces, pastas y salteados.",
         "category": "Frutos del Mar",
-        "image": "/productos/pescado.webp"
+        "image": "/productos/camaronespinky.jpeg"
       },
       {
         "id": "mar-8",
         "name": "Macarella Medallones",
         "description": "Porciones de macarela en corte transversal, con buen contenido graso y sabor marcado. Aptas para fritura o parrilla.",
         "category": "Frutos del Mar",
-        "image": "/productos/pescado.webp"
+        "image": "/productos/macarellamedallones.jpeg"
       },
       {
         "id": "mar-9",
         "name": "Picadura para Ceviche de Bolillo",
         "description": "Pescado fresco en trozos pequeños, listo para preparar ceviche. Textura firme y adecuada para marinar.",
         "category": "Frutos del Mar",
-        "image": "/productos/pescado.webp"
+        "image": "/productos/bolillopicadoceviche.png"
       },
       {
         "id": "mar-10",
         "name": "Pargo Rojo Cultivo 1kg",
         "description": "Pescado entero de cultivo. Ideal para freír, hornear o cocinar entero.",
         "category": "Frutos del Mar",
-        "image": "/productos/pescado.webp"
+        "image": "/productos/pargos.jpg"
       }
     ]
   },
@@ -565,7 +558,7 @@
     "name": "Embutidos",
     "image": "embutido.png",
     "image-white": "embutidoBlanco.png",
-    "imageCarousell": "https://images.unsplash.com/photo-1595295333158-4742f28fbd85?q=80&w=600&auto=format&fit=crop",
+    "imageCarousell": "https://imgmedia.buenazo.pe/970x533/buenazo/original/2023/01/03/63b46e1847deb8340e430774.webp",
     "products": [
       {
         "id": "embutidos-1",
@@ -644,41 +637,41 @@
     "name": "Paquetería",
     "image": "paquete.png",
     "image-white": "paqueteBlanco.png",
-    "imageCarousell": "https://images.unsplash.com/photo-1610832958506-aa56368176cf?q=80&w=600&auto=format&fit=crop",
+    "imageCarousell": "https://img.pikbest.com/ai/illus_our/20230423/8629197741abe82bea00ccaa172c0e29.jpg!w700wp",
     "products": [
       {
         "id": "paqueteria-1",
         "name": "Papas para freír 2.5kg",
         "description": "Papas seleccionadas y listas para freír. Corte uniforme para una cocción pareja y textura crujiente.",
         "category": "Paquetería",
-        "image": "/productos/papas.webp"
+        "image": "/productos/papas25.jpeg"
       },
       {
         "id": "paqueteria-2",
         "name": "Papas para freír 1kg",
         "description": "Presentación práctica de papas listas para freír. Ideales para uso doméstico.",
         "category": "Paquetería",
-        "image": "/productos/papas.webp"
+        "image": "/productos/papabolsa1kcaja.jpeg"
       },
       {
         "id": "paqueteria-3",
         "name": "Caja de papas para freír 10kg",
         "description": "Formato en volumen para uso comercial o alto consumo. Corte uniforme y rendimiento consistente.",
         "category": "Paquetería",
-        "image": "/productos/papabolsa1kcaja.jpeg"
+        "image": "/productos/papas10.jpeg"
       },
       {
         "id": "paqueteria-4",
         "name": "Papa Gajo",
         "description": "Papas cortadas en gajos, listas para freír u hornear. Exterior crujiente e interior suave, ideales como acompañamiento.",
         "category": "Paquetería",
-        "image": "/productos/papas.webp"
+        "image": "/productos/gajo.png"
       }
     ]
   },
   {
     "id": "lacteos",
-    "name": "Lácteos",
+    "name": "Lácteos y Huevos",
     "image": "lacteo.png",
     "image-white": "lacteoBlanco.png",
     "imageCarousell": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?q=80&w=600&auto=format&fit=crop",
@@ -709,7 +702,7 @@
         "name": "Huevos",
         "description": "Producto fresco y versátil, apto para múltiples preparaciones en cocina diaria.",
         "category": "Lácteos",
-        "image": "/productos/huevo.webp"
+        "image": "/productos/huevos.jpeg"
       }
     ]
   },

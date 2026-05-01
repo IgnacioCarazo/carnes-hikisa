@@ -36,11 +36,9 @@ const SearchBar = () => {
   const fuse = useMemo(
     () =>
       new Fuse<Product>(allProducts, {
-        keys: [
-          { name: "name", weight: 0.95 },
-          { name: "categoryName", weight: 0.05 },
-        ],
-        threshold: 0.2,
+        keys: ["name", "categoryName"],
+        threshold: 0.3,
+        useExtendedSearch: true,
       }),
     [allProducts],
   );
@@ -48,11 +46,15 @@ const SearchBar = () => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       const query = tempSearch.trim();
+      const terms = query.toLowerCase().split(" ");
       if (query.length < 2) {
         setResults([]);
         setIsLoading(false);
       } else {
-        const fuzzyResults = fuse.search(query).map((r) => r.item);
+        let fuzzyResults = fuse.search(query).map((r) => r.item);
+        fuzzyResults = fuzzyResults.filter((item) =>
+          terms.every((t) => item.name.toLowerCase().includes(t)),
+        );
         setResults(fuzzyResults.slice(0, 4));
         setIsLoading(false);
       }

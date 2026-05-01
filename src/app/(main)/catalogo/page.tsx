@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import Fuse from "fuse.js";
 import { Filter, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
@@ -12,29 +11,15 @@ import ProductGrid from "@/components/common/(ProductGrid)/ProductGrid";
 import ProductsCards from "@/components/common/(ProductsCards)/ProductsCards";
 import CatalogSearchBar from "@/components/common/(SearchBar)/CatalogSearchBar";
 import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
+import ProductModal from "@/components/common/ProductModal/ProductModal";
 import categoriesDataRaw from "@/data/categories.json";
+import { useCatalogSearch } from "@/hooks/useCatalogSearch";
 import { useIsMobile } from "@/hooks/useIsTabletMobile";
+import type { Category, Product } from "@/types/product";
 
 import styles from "./page.module.css";
 
-export interface Product {
-  id: string | number;
-  name: string;
-  description: string;
-  category: string;
-  image: string;
-}
-
-export interface Category {
-  id: string;
-  name: string;
-  image: string;
-  "image-white": string;
-  imageCarousell?: string;
-  products: Product[];
-}
-
-const categoriesData = categoriesDataRaw as Category[];
+const categoriesData = categoriesDataRaw;
 
 function CatalogoContent() {
   const router = useRouter();
@@ -43,6 +28,9 @@ function CatalogoContent() {
   const isMobile = useIsMobile();
 
   const [isOpen, setIsOpen] = useState(false);
+
+  // --- ESTADO PARA EL MODAL ---
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
 
   const activeCategories = useMemo(() => {
     const params = searchParams.get("categories");
@@ -82,30 +70,10 @@ function CatalogoContent() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const filteredCategories = useMemo(() => {
-    if (!searchQuery && activeCategories.length === 0) return categoriesData;
-    return categoriesData
-      .map((cat) => {
-        if (activeCategories.length > 0 && !activeCategories.includes(cat.id))
-          return null;
-        if (!searchQuery) return cat;
-        const fuse = new Fuse(cat.products, { keys: ["name"], threshold: 0.3 });
-        const searchResults = fuse.search(searchQuery).map((r) => r.item);
-        return searchResults.length > 0
-          ? { ...cat, products: searchResults }
-          : null;
-      })
-      .filter((cat): cat is Category => cat !== null);
-  }, [activeCategories, searchQuery]);
+  const filteredCategories = useCatalogSearch(searchQuery, activeCategories);
 
   return (
     <main className={styles.pageWrapper}>
-      <SectionHeader
-        title="NUESTROS PRODUCTOS"
-        color="black"
-        className={styles.catalogHeaderMargin}
-      />
-
       <div className={styles.contentLayout}>
         {!isMobile && (
           <motion.div
@@ -130,19 +98,21 @@ function CatalogoContent() {
                   />
                 </motion.div>
               ) : (
-                <motion.div
-                  key="sidebar-closed"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className={styles.buttonCenterer}
-                >
-                  <button
-                    className={styles.sidebarToggleBtn}
-                    onClick={() => setIsOpen(true)}
+                !isMobile && (
+                  <motion.div
+                    key="sidebar-closed"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className={styles.buttonCenterer}
                   >
-                    <Filter size={24} />
-                  </button>
-                </motion.div>
+                    <button
+                      className={styles.sidebarToggleBtn}
+                      onClick={() => setIsOpen(true)}
+                    >
+                      <Filter size={24} />
+                    </button>
+                  </motion.div>
+                )
               )}
             </AnimatePresence>
           </motion.div>
@@ -279,6 +249,7 @@ function CatalogoContent() {
                 <ProductsCards
                   key="list-container"
                   categories={filteredCategories}
+                  onProductClick={setSelectedProduct}
                 />
               ) : (
                 <motion.div
@@ -294,6 +265,12 @@ function CatalogoContent() {
           </ProductGrid>
         </motion.div>
       </div>
+
+      <ProductModal
+        isOpen={!!selectedProduct}
+        onClose={() => setSelectedProduct(null)}
+        product={selectedProduct}
+      />
     </main>
   );
 }
@@ -301,7 +278,6 @@ function CatalogoContent() {
 export default function CatalogoPage() {
   return (
     <main className={styles.pageWrapper}>
-      {/* Eliminadas las comillas en className */}
       <SectionHeader
         title="NUESTROS PRODUCTOS"
         color="black"

@@ -1,130 +1,91 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useRef, useState, useMemo, useCallback } from "react";
+
+import categoriesDataRaw from "@/data/categories.json";
 
 import styles from "./SpotlightCarousel.module.css";
 
 import DotsCarousel from "../(DotsCarousel)/DotsCarousel";
 import SpotlightItem from "../(SpotlightItem)/SpotlightItem";
 
-type Item = {
-  title: string;
+// Definimos interfaces para mantener el tipado limpio
+interface Product {
+  id: string | number;
+  name: string;
   description: string;
   image: string;
-};
+}
 
-// The description should be between 380–400 characters, especially on mobile
-const items: Item[] = [
-  {
-    title: "Picanha",
-    description:
-      "La picaña es un corte de res reconocido por su suavidad y por su característica capa de grasa externa, la cual aporta jugosidad y potencia el sabor durante la cocción. Al asarse o sellarse, mantiene una textura tierna y un perfil intenso y equilibrado. Es especialmente valorada para parrilla por su capacidad de conservar humedad y ofrecer resultados consistentes en preparaciones de alta calidad.",
-    image: "/images/picanha.jpg",
-  },
-  {
-    title: "Ribeye",
-    description:
-      "El ribeye proviene de la sección alta del lomo de la res y se distingue por su alto nivel de marmoleo intramuscular. Esta distribución de grasa se funde durante la cocción, generando una textura jugosa y un sabor profundo. Es un corte versátil que responde bien a parrilla, sartén o sellado a alta temperatura, manteniendo un balance entre terneza y riqueza que lo hace uno de los más apreciados.",
-    image: "/images/ribeye.jpg",
-  },
-  {
-    title: "Pollo Entero",
-    description:
-      "El pollo entero es una opción versátil que permite diversas técnicas de cocción como horno, parrilla o rostizado lento. Su estructura completa ayuda a conservar la jugosidad en cada una de sus partes, integrando carne blanca y oscura en una sola preparación. Ofrece un sabor suave que se adapta fácilmente a marinados y especias, siendo adecuado para recetas familiares y presentaciones compartidas.",
-    image: "/images/pollo.jpg",
-  },
-  {
-    title: "Queso Maduro",
-    description:
-      "El queso maduro es un producto lácteo de textura firme sometido a un proceso de curación controlada que intensifica su sabor y complejidad aromática. A diferencia de los quesos frescos, presenta un perfil más profundo y ligeramente salino. Su consistencia permite cortes definidos, lo que lo hace adecuado para tablas, acompañamientos o preparaciones que requieren mayor intensidad de sabor.",
-    image: "/images/queso.jpg",
-  },
-  {
-    title: "Picanha",
-    description:
-      "La picaña es un corte de res reconocido por su suavidad y por su característica capa de grasa externa, la cual aporta jugosidad y potencia el sabor durante la cocción. Al asarse o sellarse, mantiene una textura tierna y un perfil intenso y equilibrado. Es especialmente valorada para parrilla por su capacidad de conservar humedad y ofrecer resultados consistentes en preparaciones de alta calidad.",
-    image: "/images/picanha.jpg",
-  },
-  {
-    title: "Ribeye",
-    description:
-      "El ribeye proviene de la sección alta del lomo de la res y se distingue por su alto nivel de marmoleo intramuscular. Esta distribución de grasa se funde durante la cocción, generando una textura jugosa y un sabor profundo. Es un corte versátil que responde bien a parrilla, sartén o sellado a alta temperatura, manteniendo un balance entre terneza y riqueza que lo hace uno de los más apreciados.",
-    image: "/images/ribeye.jpg",
-  },
-  {
-    title: "Pollo Entero",
-    description:
-      "El pollo entero es una opción versátil que permite diversas técnicas de cocción como horno, parrilla o rostizado lento. Su estructura completa ayuda a conservar la jugosidad en cada una de sus partes, integrando carne blanca y oscura en una sola preparación. Ofrece un sabor suave que se adapta fácilmente a marinados y especias, siendo adecuado para recetas familiares y presentaciones compartidas.",
-    image: "/images/pollo.jpg",
-  },
-  {
-    title: "Queso Maduro",
-    description:
-      "El queso maduro es un producto lácteo de textura firme sometido a un proceso de curación controlada que intensifica su sabor y complejidad aromática. A diferencia de los quesos frescos, presenta un perfil más profundo y ligeramente salino. Su consistencia permite cortes definidos, lo que lo hace adecuado para tablas, acompañamientos o preparaciones que requieren mayor intensidad de sabor.",
-    image: "/images/queso.jpg",
-  },
-  {
-    title: "Picanha",
-    description:
-      "La picaña es un corte de res reconocido por su suavidad y por su característica capa de grasa externa, la cual aporta jugosidad y potencia el sabor durante la cocción. Al asarse o sellarse, mantiene una textura tierna y un perfil intenso y equilibrado. Es especialmente valorada para parrilla por su capacidad de conservar humedad y ofrecer resultados consistentes en preparaciones de alta calidad.",
-    image: "/images/picanha.jpg",
-  },
-  {
-    title: "Ribeye",
-    description:
-      "El ribeye proviene de la sección alta del lomo de la res y se distingue por su alto nivel de marmoleo intramuscular. Esta distribución de grasa se funde durante la cocción, generando una textura jugosa y un sabor profundo. Es un corte versátil que responde bien a parrilla, sartén o sellado a alta temperatura, manteniendo un balance entre terneza y riqueza que lo hace uno de los más apreciados.",
-    image: "/images/ribeye.jpg",
-  },
-  {
-    title: "Pollo Entero",
-    description:
-      "El pollo entero es una opción versátil que permite diversas técnicas de cocción como horno, parrilla o rostizado lento. Su estructura completa ayuda a conservar la jugosidad en cada una de sus partes, integrando carne blanca y oscura en una sola preparación. Ofrece un sabor suave que se adapta fácilmente a marinados y especias, siendo adecuado para recetas familiares y presentaciones compartidas.",
-    image: "/images/pollo.jpg",
-  },
-  {
-    title: "Queso Maduro",
-    description:
-      "El queso maduro es un producto lácteo de textura firme sometido a un proceso de curación controlada que intensifica su sabor y complejidad aromática. A diferencia de los quesos frescos, presenta un perfil más profundo y ligeramente salino. Su consistencia permite cortes definidos, lo que lo hace adecuado para tablas, acompañamientos o preparaciones que requieren mayor intensidad de sabor.",
-    image: "/images/queso.jpg",
-  },
-];
+interface Category {
+  id: string;
+  products: Product[];
+}
+
+const categoriesData = categoriesDataRaw as Category[];
 
 const TRANSITION_TIME = 300;
 
 const SpotlightCarousel = () => {
+  const router = useRouter();
+
+  // 1. Extraer los primeros 3 productos de cada categoría dinámicamente
+  const items = useMemo(() => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const extracted: any[] = [];
+    categoriesData.forEach((category) => {
+      const topProducts = category.products?.slice(0, 3) || [];
+      topProducts.forEach((product) => {
+        extracted.push({
+          title: product.name,
+          description: product.description,
+          image: product.image,
+          categoryId: category.id, // Guardamos esto para el filtro del catálogo
+        });
+      });
+    });
+    return extracted;
+  }, []);
+
   const [activeIndex, setActiveIndex] = useState(
-    Math.floor(items.length / 2)
+    items.length > 0 ? Math.floor(items.length / 2) : 0,
   );
   const [visible, setVisible] = useState(true);
 
-  // --- SWIPE ---
+  // --- NAVEGACIÓN AL CATÁLOGO ---
+  const handleViewProduct = useCallback(() => {
+    const activeItem = items[activeIndex];
+    if (!activeItem) return;
+
+    // Usamos 'search' para que el catálogo filtre por nombre (Fuse.js)
+    // y 'categories' para activar el filtro de categoría en el sidebar.
+    const query = new URLSearchParams({
+      search: activeItem.title,
+    });
+
+    console.log("Navegando a catálogo con query:", query.toString());
+
+    router.push(`/catalogo?${query.toString()}`);
+  }, [activeIndex, items, router]);
+
+  // --- LÓGICA DE CARROUSEL (SWIPE & CAMBIO) ---
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
   const MIN_SWIPE = 50;
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
-  };
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    touchEndX.current = e.touches[0].clientX;
-  };
-
+  const handleTouchStart = (e: React.TouchEvent) =>
+    (touchStartX.current = e.touches[0].clientX);
+  const handleTouchMove = (e: React.TouchEvent) =>
+    (touchEndX.current = e.touches[0].clientX);
   const handleTouchEnd = () => {
     const distance = touchStartX.current - touchEndX.current;
-
     if (Math.abs(distance) < MIN_SWIPE) return;
-
-    if (distance > 0) {
-      handleNext();
-    } else {
-      handlePrev();
-    }
+    distance > 0 ? handleNext() : handlePrev();
   };
 
   const changeItem = (newIndex: number) => {
-    if (newIndex < 0 || newIndex >= items.length) return;
-    if (newIndex === activeIndex) return;
-
+    if (newIndex < 0 || newIndex >= items.length || newIndex === activeIndex)
+      return;
     setVisible(false);
     setTimeout(() => {
       setActiveIndex(newIndex);
@@ -135,31 +96,13 @@ const SpotlightCarousel = () => {
   const handlePrev = () => changeItem(activeIndex - 1);
   const handleNext = () => changeItem(activeIndex + 1);
 
+  if (items.length === 0) return null;
+
   const activeItem = items[activeIndex];
-
-  const DOT_SIZE = 10;
-  const GAP = 10;
-  const STEP = DOT_SIZE + GAP;
-  const VISIBLE = 5;
-
-  const getTranslateX = () => {
-    const total = items.length;
-    const half = Math.floor(VISIBLE / 2);
-
-    let centerIndex = activeIndex;
-
-    if (activeIndex <= half) {
-      centerIndex = half;
-    } else if (activeIndex >= total - half - 1) {
-      centerIndex = total - half - 1;
-    }
-
-    return -(centerIndex * STEP - (VISIBLE * STEP) / 2 + STEP / 2);
-  };
 
   return (
     <div className={styles.spotlightCarousel}>
-      {/* LEFT */}
+      {/* BOTÓN PREV */}
       <button
         onClick={handlePrev}
         disabled={activeIndex === 0}
@@ -172,11 +115,9 @@ const SpotlightCarousel = () => {
         />
       </button>
 
-      {/* CONTENT */}
+      {/* CONTENIDO DEL SPOTLIGHT */}
       <div
-        className={`${styles.spotlightWrapper} ${
-          visible ? styles.visible : styles.hidden
-        }`}
+        className={`${styles.spotlightWrapper} ${visible ? styles.visible : styles.hidden}`}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
@@ -186,10 +127,12 @@ const SpotlightCarousel = () => {
           title={activeItem.title}
           description={activeItem.description}
           image={activeItem.image}
+          // Pasamos la función al componente hijo
+          onButtonClick={handleViewProduct}
         />
       </div>
 
-      {/* RIGHT */}
+      {/* BOTÓN NEXT */}
       <button
         onClick={handleNext}
         disabled={activeIndex === items.length - 1}
@@ -202,7 +145,7 @@ const SpotlightCarousel = () => {
         />
       </button>
 
-      {/* DOTS */}
+      {/* INDICADORES (DOTS) */}
       <DotsCarousel
         total={items.length}
         activeIndex={activeIndex}

@@ -4,8 +4,8 @@
   width: 100%;
   height: 100vh;
   background-color: #f9f9f9;
-  overflow: hidden;
-  position: fixed;
+  overflow: hidden; /* importante */
+  position: relative; /* en vez de fixed */
 }
 
 .catalogHeaderMargin {
@@ -45,6 +45,7 @@
   flex-direction: column;
   height: 100%;
   min-width: 0;
+  min-height: 0;
   overflow-y: auto;
 }
 

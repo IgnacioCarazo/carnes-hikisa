@@ -1,0 +1,147 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+}
+
+.backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.modalContent {
+  position: relative;
+  background: #000000;
+  border: 1px solid #272727;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 900px;
+  /* ALTURA REDUCIDA */
+  height: auto;
+  z-index: 1001;
+  overflow: hidden;
+  padding: 0;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+}
+
+.contentLayout {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 450px; /* Igual a la altura del modal */
+  padding: 50px 40px;
+  gap: 20px;
+}
+
+.modalImage {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  /* BORDES REDONDEADOS EN LA IMAGEN */
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.modalImage img {
+  object-fit: cover;
+}
+
+.modalTextContent {
+  width: 50%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  color: white;
+}
+
+/* ESTILOS ESPECÍFICOS PARA EL TEXTO */
+
+.modalTextContent h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.2;
+}
+
+/* Selecciona cualquier p que esté DENTRO de .modalTextContent */
+.modalTextContent p {
+  font-size: 1rem;
+  color: #a0a0a0;
+  line-height: 1.6;
+  margin: 0;
+  text-align: justify;
+}
+
+.productDescription {
+  font-size: 1rem;
+  color: #a0a0a0;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: #1a1a1a;
+  border: none;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1010;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+.closeButton:hover {
+  background: #333;
+}
+
+@media (max-width: 768px) {
+  .contentLayout {
+    flex-direction: column;
+    height: auto;
+    padding: 60px 40px;
+  }
+  .modalContent {
+    min-height: auto;
+  }
+  .modalImage {
+    width: 100%;
+    height: 150px;
+  }
+  .modalTextContent {
+    width: 100%;
+    padding: 10px;
+    gap: 30px;
+  }
+  .modalTextContent h2 {
+    font-size: 1.8rem;
+  }
+
+  .modalTextContent p {
+    text-align: center;
+  }
+}

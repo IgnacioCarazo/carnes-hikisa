@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "images.pexels.com",
       },
+      {
+        protocol: "https",
+        hostname: "imgmedia.buenazo.pe",
+      },
+      {
+        protocol: "https",
+        hostname: "img.pikbest.com",
+      },
     ],
   },
 };
