@@ -5,7 +5,7 @@ import Fuse from "fuse.js";
 import { Filter, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { useState, useMemo, Suspense, useEffect } from "react";
+import { useState, useMemo, Suspense } from "react";
 
 import FilterSidebar from "@/components/common/(FilterSidebar)/FilterSidebar";
 import ProductGrid from "@/components/common/(ProductGrid)/ProductGrid";
@@ -76,6 +76,12 @@ function CatalogoContent() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
+  const handleClearSearch = () => {
+    const params = new URLSearchParams(searchParams.toString());
+    params.delete("search");
+    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+
   const filteredCategories = useMemo(() => {
     if (!searchQuery && activeCategories.length === 0) return categoriesData;
     return categoriesData
@@ -94,10 +100,13 @@ function CatalogoContent() {
 
   return (
     <main className={styles.pageWrapper}>
-      <SectionHeader title="NUESTROS PRODUCTOS" color="black" />
+      <SectionHeader
+        title="NUESTROS PRODUCTOS"
+        color="black"
+        className={styles.catalogHeaderMargin}
+      />
 
       <div className={styles.contentLayout}>
-        {/* SIDEBAR DESKTOP */}
         {!isMobile && (
           <motion.div
             className={styles.sidebarArea}
@@ -107,10 +116,10 @@ function CatalogoContent() {
             <AnimatePresence mode="wait">
               {isOpen ? (
                 <motion.div
-                  key="sidebar"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+                  key="sidebar-open"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
                 >
                   <FilterSidebar
                     isOpen={isOpen}
@@ -121,20 +130,24 @@ function CatalogoContent() {
                   />
                 </motion.div>
               ) : (
-                <div className={styles.buttonCenterer}>
+                <motion.div
+                  key="sidebar-closed"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className={styles.buttonCenterer}
+                >
                   <button
                     className={styles.sidebarToggleBtn}
                     onClick={() => setIsOpen(true)}
                   >
                     <Filter size={24} />
                   </button>
-                </div>
+                </motion.div>
               )}
             </AnimatePresence>
           </motion.div>
         )}
 
-        {/* MODAL CENTRADO MOBILE */}
         {isMobile && (
           <AnimatePresence>
             {isOpen && (
@@ -189,7 +202,33 @@ function CatalogoContent() {
                         Limpiar todo
                       </button>
                       <div className={styles.filterCardsContainer}>
-                        <AnimatePresence>
+                        <AnimatePresence mode="popLayout" initial={false}>
+                          {searchQuery && (
+                            <motion.div
+                              key="search-pill-static"
+                              layout
+                              initial={{ opacity: 0, scale: 0.8 }}
+                              animate={{ opacity: 1, scale: 1 }}
+                              exit={{ opacity: 0, scale: 0.8 }}
+                              transition={{
+                                type: "spring",
+                                stiffness: 500,
+                                damping: 30,
+                              }}
+                              className={styles.searchBadge}
+                            >
+                              <span className={styles.miniName}>
+                                Buscando: <strong>{`"${searchQuery}"`}</strong>
+                              </span>
+                              <button
+                                onClick={handleClearSearch}
+                                className={styles.closeBtnIcon}
+                              >
+                                <X size={12} />
+                              </button>
+                            </motion.div>
+                          )}
+
                           {activeCategories.map((id) => {
                             const cat = categoriesData.find((c) => c.id === id);
                             if (!cat) return null;
@@ -197,6 +236,9 @@ function CatalogoContent() {
                               <motion.div
                                 key={id}
                                 layout
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
                                 className={styles.miniCategoryCard}
                               >
                                 <Image
@@ -210,6 +252,7 @@ function CatalogoContent() {
                                 </span>
                                 <button
                                   onClick={() => handleCategoryChange(id)}
+                                  className={styles.closeBtnIcon}
                                 >
                                   <X size={12} />
                                 </button>
@@ -233,11 +276,19 @@ function CatalogoContent() {
           >
             <AnimatePresence mode="popLayout">
               {filteredCategories.length > 0 ? (
-                <ProductsCards key="list" categories={filteredCategories} />
+                <ProductsCards
+                  key="list-container"
+                  categories={filteredCategories}
+                />
               ) : (
-                <div className={styles.emptyMessage}>
-                  No se encontraron resultados.
-                </div>
+                <motion.div
+                  key="empty-msg"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className={styles.emptyMessage}
+                >
+                  No se encontraron productos que coincidan con tu búsqueda.
+                </motion.div>
               )}
             </AnimatePresence>
           </ProductGrid>

@@ -1,4 +1,4 @@
-"use client"; // Indispensable para usar hooks
+"use client"; 
 
 import { usePathname } from "next/navigation";
 
