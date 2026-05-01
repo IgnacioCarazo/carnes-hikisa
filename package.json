@@ -19,6 +19,8 @@
     ]
   },
   "dependencies": {
+    "embla-carousel": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
     "framer-motion": "^12.38.0",
     "fuse.js": "^7.3.0",
     "lucide-react": "^1.8.0",

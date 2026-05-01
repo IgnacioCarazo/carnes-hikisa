@@ -1,164 +1,107 @@
 .categoriesCarousel {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  width: 100%;
-
-  padding: 20px 0;
   gap: 50px;
-
+  padding: 40px 0;
   background: white;
 }
 
-/* CONTROLS */
-.categoriesCarouselControls {
+.emblaViewport {
+  width: 100%;
+  overflow: hidden;
+  padding: 40px 0;
+}
+
+.emblaContainer {
+  display: flex;
+}
+
+.emblaSlide {
+  position: relative;
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardAnimator {
+  width: 280px;
+  height: 400px;
+  cursor: pointer;
+  transition:
+    transform 0.45s cubic-bezier(0.25, 1, 0.5, 1),
+    opacity 0.45s ease;
+  will-change: transform;
+}
+
+.isActive {
+  transform: scale(1.1);
+  opacity: 1;
+  z-index: 10;
+}
+
+.isNear {
+  transform: scale(0.9);
+  opacity: 0.7;
+  z-index: 5;
+}
+
+.isFar {
+  transform: scale(0.8);
+  opacity: 0.4;
+  z-index: 1;
+}
+
+.controls {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 20px;
 }
 
-.categoriesCarouselArrowButton {
+.arrowBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
-
   background: transparent;
   border: none;
+  padding: 0;
+  border-radius: 50%;
+  transition: background-color 0.3s ease; /* Transición para el hover */
+}
+
+/* ESTADO HOVER: Círculo gris oscuro */
+.arrowBtn:hover {
+  background-color: rgba(0, 0, 0, 0.1); /* Gris oscuro suave */
 }
 
 .arrowIcon {
   display: block;
-
-  width: 40px;
-  height: 40px;
-
+  width: 44px;
+  height: 44px;
   padding: 10px;
-
-  border-radius: 9999px;
-
-  filter: invert(0);
+  /* El border-radius aquí asegura que el padding también sea circular */
+  border-radius: 50%;
 }
 
 .left {
   transform: rotate(180deg);
 }
 
-.right {
-  transform: rotate(0deg);
-}
-
-/* CARDS */
-.cardsHolderViewport {
-  width: 100%;
-  max-width: 100%;
-
-  overflow: hidden;
-}
-
-.cardsHolder {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-
-  gap: 50px;
-
-  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
-  perspective: 1000px;
-}
-
-.cardWrapper {
-  flex-shrink: 0;
-  border-radius: 5px;
-  overflow: hidden;
-
-  transition:
-    transform 0.4s ease,
-    opacity 0.4s ease;
-  will-change: transform;
-}
-/* STATES */
-.categoriesCarouselCardActive {
-  transform: scale(1);
-  opacity: 1;
-  z-index: 3;
-}
-
-.categoriesCarouselCardNear {
-  transform: scale(0.9);
-  opacity: 0.7;
-  z-index: 2;
-}
-
-.categoriesCarouselCardFar {
-  transform: scale(0.8);
-  opacity: 0.5;
-  z-index: 1;
-}
-
-@keyframes bumpLeft {
-  0% {
-    transform: translateX(var(--tx));
-  }
-  30% {
-    transform: translateX(calc(var(--tx) - 18px));
-  }
-  100% {
-    transform: translateX(var(--tx));
-  }
-}
-
-@keyframes bumpRight {
-  0% {
-    transform: translateX(var(--tx));
-  }
-  30% {
-    transform: translateX(calc(var(--tx) + 18px));
-  }
-  100% {
-    transform: translateX(var(--tx));
-  }
-}
-
-.bumpLeft {
-  animation: bumpLeft 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
-}
-
-.bumpRight {
-  animation: bumpRight 0.35s cubic-bezier(0.36, 0.07, 0.19, 0.97) forwards;
-}
-
-/* INTERACTIONS */
-@media (hover: hover) and (pointer: fine) {
-  .arrowIcon:hover {
-    background: rgba(0, 0, 0, 0.1);
-  }
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .categoriesCarousel {
-    height: auto;
-
-    padding: 2rem 0;
-    gap: 24px;
-  }
-
-  .cardsHolder {
-    gap: 16px;
-  }
-}
-
 @media (max-width: 480px) {
-  .cardsHolder {
-    gap: 16px;
+  .categoriesCarousel {
+    gap: 0px;
+    padding: 20px 0;
   }
 
-  .arrowIcon {
-    width: 32px;
-    height: 32px;
+  .emblaSlide {
+    height: 320px;
+  }
+  .cardAnimator {
+    width: 180px;
+    height: 280px;
   }
 }

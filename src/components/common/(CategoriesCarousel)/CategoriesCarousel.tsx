@@ -1,7 +1,8 @@
 "use client";
+import useEmblaCarousel from "embla-carousel-react";
 import Image from "next/image";
-import { useRouter } from "next/navigation"; // Importamos el router
-import { useState, useRef, useLayoutEffect } from "react";
+import { useRouter } from "next/navigation";
+import React, { useState, useEffect, useCallback } from "react";
 
 import categoriesData from "@/data/categories.json";
 import { useIsMobile } from "@/hooks/useIsMobile";
@@ -11,102 +12,94 @@ import styles from "./CategoriesCarousel.module.css";
 import CatCarouselCard from "../(CatCarouselCard)/CatCarouselCard";
 import DotsCarousel from "../(DotsCarousel)/DotsCarousel";
 
+// Calculamos el índice del medio (ej. si son 5, será el 2)
+const MIDDLE_INDEX = Math.floor(categoriesData.length / 2);
+
 const CategoriesCarousel = () => {
-  const router = useRouter(); // Inicializamos el router para la navegación
+  const router = useRouter();
   const isMobile = useIsMobile(480);
+  const totalItems = categoriesData.length;
 
-  // Inicializamos el índice en el medio
-  const [activeIndex, setActiveIndex] = useState(() =>
-    Math.floor(categoriesData.length / 2),
-  );
+  // El estado inicial ahora es el del medio
+  const [activeIndex, setActiveIndex] = useState(MIDDLE_INDEX);
 
-  const viewportRef = useRef<HTMLDivElement>(null);
-  const [viewportWidth, setViewportWidth] = useState<number | null>(null);
+  const [emblaRef, emblaApi] = useEmblaCarousel({
+    loop: true,
+    align: "center",
+    skipSnaps: false,
+    duration: 30,
+    startIndex: MIDDLE_INDEX, // Esto le dice a Embla que abra en esa posición
+  });
 
-  const cardWidth = isMobile ? 180 : 280;
-  const gap = isMobile ? 16 : 50;
-  const step = cardWidth + gap;
-
-  useLayoutEffect(() => {
-    if (!viewportRef.current) return;
-    const update = () => setViewportWidth(viewportRef.current!.offsetWidth);
-
-    update();
-
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const onSelect = useCallback((api: any) => {
+    setActiveIndex(api.selectedScrollSnap());
   }, []);
 
-  const currentWidth = viewportWidth || 1150;
-  const translateX = -(activeIndex * step) + (currentWidth / 2 - cardWidth / 2);
+  useEffect(() => {
+    if (!emblaApi) return;
+    emblaApi.on("select", onSelect);
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
+  }, [emblaApi, onSelect]);
 
-  const handlePrev = () => setActiveIndex((prev) => Math.max(prev - 1, 0));
-  const handleNext = () =>
-    setActiveIndex((prev) => Math.min(prev + 1, categoriesData.length - 1));
-
-  // LÓGICA DE NAVEGACIÓN:
-  const handleCardClick = (index: number) => {
-    if (index !== activeIndex) {
-      // Si la tarjeta no es la activa, solo la centramos
-      setActiveIndex(index);
-    } else {
-      // Si ya es la activa, navegamos al catálogo con el ID de la categoría
-      const categoryId = categoriesData[index].id;
-      router.push(`/catalogo?categories=${categoryId}`);
-    }
-  };
+  const scrollTo = useCallback(
+    (i: number) => emblaApi?.scrollTo(i),
+    [emblaApi],
+  );
 
   return (
     <div className={styles.categoriesCarousel}>
-      <div ref={viewportRef} className={styles.cardsHolderViewport}>
-        <div
-          className={styles.cardsHolder}
-          style={{
-            transform: `translateX(${translateX}px)`,
-            transition:
-              viewportWidth !== null
-                ? "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)"
-                : "none",
-          }}
-        >
+      <div className={styles.emblaViewport} ref={emblaRef}>
+        <div className={styles.emblaContainer}>
           {categoriesData.map((category, i) => {
-            const isActive = i === activeIndex;
-            const distance = Math.abs(i - activeIndex);
+            const diff = Math.abs(i - activeIndex);
+            const distance = Math.min(diff, totalItems - diff);
 
-            let stateClass = styles.categoriesCarouselCardFar;
-            if (isActive) stateClass = styles.categoriesCarouselCardActive;
-            else if (distance === 1)
-              stateClass = styles.categoriesCarouselCardNear;
+            const isActive = i === activeIndex;
+            const isNear = distance === 1;
 
             return (
               <div
                 key={category.id}
-                className={`${styles.cardWrapper} ${stateClass}`}
-                onClick={() => handleCardClick(i)}
+                className={styles.emblaSlide}
                 style={{
-                  width: `${cardWidth}px`,
-                  height: isMobile ? "300px" : "420px",
-                  flexShrink: 0,
-                  cursor: "pointer", // Siempre puntero para indicar interactividad
+                  flex: `0 0 ${isMobile ? "200px" : "330px"}`,
                 }}
               >
-                <CatCarouselCard
-                  title={category.name}
-                  image={category.imageCarousell}
-                  isActive={isActive}
-                />
+                <div
+                  className={`${styles.cardAnimator} ${
+                    isActive
+                      ? styles.isActive
+                      : isNear
+                        ? styles.isNear
+                        : styles.isFar
+                  }`}
+                  onClick={() =>
+                    isActive
+                      ? router.push(`/catalogo?categories=${category.id}`)
+                      : scrollTo(i)
+                  }
+                >
+                  <CatCarouselCard
+                    title={category.name}
+                    image={category.imageCarousell}
+                    isActive={isActive}
+                  />
+                </div>
               </div>
             );
           })}
         </div>
       </div>
 
-      <div className={styles.categoriesCarouselControls}>
+      <div className={styles.controls}>
         <button
-          className={styles.categoriesCarouselArrowButton}
-          onClick={handlePrev}
-          disabled={activeIndex === 0}
-          style={{ opacity: activeIndex === 0 ? 0.3 : 1 }}
+          onClick={() => emblaApi?.scrollPrev()}
+          className={styles.arrowBtn}
         >
           <Image
             src="/icons/chevron.svg"
@@ -118,24 +111,21 @@ const CategoriesCarousel = () => {
         </button>
 
         <DotsCarousel
-          total={categoriesData.length}
+          total={totalItems}
           activeIndex={activeIndex}
-          onChange={setActiveIndex}
+          onChange={scrollTo}
           variant="inline"
           theme="dark"
+          loop={true}
         />
 
         <button
-          className={styles.categoriesCarouselArrowButton}
-          onClick={handleNext}
-          disabled={activeIndex === categoriesData.length - 1}
-          style={{
-            opacity: activeIndex === categoriesData.length - 1 ? 0.3 : 1,
-          }}
+          onClick={() => emblaApi?.scrollNext()}
+          className={styles.arrowBtn}
         >
           <Image
             src="/icons/chevron.svg"
-            className={`${styles.arrowIcon} ${styles.right}`}
+            className={styles.arrowIcon}
             alt="next"
             width={40}
             height={40}
