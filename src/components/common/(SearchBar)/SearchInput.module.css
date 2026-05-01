@@ -1,64 +1,86 @@
-.searchContainerDesktop {
+/* Contenedor principal del input */
+.searchContainerDesktop,
+.searchField {
   position: relative;
   display: flex;
   align-items: center;
-  width: 240px;
-  padding: 0.6rem 1.2rem;
-  border: 1px solid #e2e2e5;
-  border-radius: 50px;
-  background: #fdfdfd;
-  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.02);
-  transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  width: 100%;
 }
 
-.searchContainerDesktop:focus-within {
-  width: 310px;
-  border-color: var(--red-hikisa);
-  background: #ffffff;
-  box-shadow: 0 8px 24px rgba(229, 62, 62, 0.12);
-}
-
-.searchIconDesktop {
-  width: 18px;
-  height: 18px;
-  margin-right: 10px;
-  color: #a0a0a5;
-  flex-shrink: 0;
-}
-
+/* El input propiamente */
 .searchContainerDesktop input,
 .searchField input {
   width: 100%;
-  border: none;
-  outline: none;
-  background: transparent;
+  padding: 12px 45px; /* Espacio a la izquierda para la lupa y derecha para la X */
+  padding-left: 40px;
+  background-color: #ffffff;
+  border: 1.5px solid #eee;
+  border-radius: 12px;
   font-size: 0.95rem;
+  font-weight: 500;
+  color: #333;
+  outline: none;
+  transition: all 0.2s ease;
 }
 
-/* Estilos específicos para el input dentro del panel móvil */
-.searchField {
-  display: flex;
-  align-items: center;
-  flex: 1;
-  padding: 0.6rem 1rem;
-  border-radius: 50px;
-  background-color: #f5f5f7;
+.searchContainerDesktop input:focus,
+.searchField input:focus {
+  border-color: #e31b23;
+  box-shadow: 0 0 0 4px rgba(227, 27, 35, 0.1);
 }
 
+/* Icono de Lupa (Izquierda) */
+.searchIconDesktop {
+  position: absolute;
+  left: 14px;
+  width: 18px;
+  height: 18px;
+  color: #999;
+  pointer-events: none;
+}
+
+/* Botón de Limpiar (La X) */
 .clearButtonDesktop,
 .clearButtonMobile {
-  background: none;
+  position: absolute;
+  right: 12px;
+  background: #f0f0f0;
   border: none;
-  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
-  color: #c0c0c5;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  color: #666;
+  transition: background-color 0.2s;
 }
 
-.clearButtonMobile {
-  background: #e1e1e3;
-  border-radius: 50%;
-  width: 22px;
-  height: 22px;
-  justify-content: center;
+.clearButtonDesktop:hover,
+.clearButtonMobile:hover {
+  background-color: #e0e0e0;
+  color: #333;
+}
+
+.clearButtonDesktop svg,
+.clearButtonMobile svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* Ajustes específicos para Mobile */
+@media (max-width: 768px) {
+  .searchField input {
+    padding: 10px 40px;
+    padding-left: 15px; /* En mobile a veces es mejor quitar la lupa interna para ganar espacio */
+    font-size: 0.9rem;
+  }
+
+  .clearButtonMobile {
+    right: 10px;
+    width: 22px;
+    height: 22px;
+  }
 }

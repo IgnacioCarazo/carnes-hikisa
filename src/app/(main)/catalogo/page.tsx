@@ -5,7 +5,7 @@ import Fuse from "fuse.js";
 import { Filter, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { useState, useMemo, Suspense } from "react";
+import { useState, useMemo, Suspense, useEffect } from "react";
 
 import FilterSidebar from "@/components/common/(FilterSidebar)/FilterSidebar";
 import ProductGrid from "@/components/common/(ProductGrid)/ProductGrid";
@@ -13,10 +13,10 @@ import ProductsCards from "@/components/common/(ProductsCards)/ProductsCards";
 import CatalogSearchBar from "@/components/common/(SearchBar)/CatalogSearchBar";
 import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
 import categoriesDataRaw from "@/data/categories.json";
+import { useIsMobile } from "@/hooks/useIsMobile";
 
 import styles from "./page.module.css";
 
-// Interfaces de datos
 export interface Product {
   id: string | number;
   name: string;
@@ -29,7 +29,7 @@ export interface Category {
   id: string;
   name: string;
   image: string;
-  "image-white": string; // Se quitó el "?" para coincidir con lo que esperan tus componentes hijos
+  "image-white": string;
   imageCarousell?: string;
   products: Product[];
 }
@@ -40,10 +40,10 @@ function CatalogoContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+  const isMobile = useIsMobile();
 
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
-  // 1. Obtener filtros de la URL
   const activeCategories = useMemo(() => {
     const params = searchParams.get("categories");
     return params ? params.split(",") : [];
@@ -54,14 +54,11 @@ function CatalogoContent() {
     [searchParams],
   );
 
-  // 2. Sincronizar cambios con la URL
   const updateURL = (newCategories: string[]) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (newCategories.length > 0) {
+    if (newCategories.length > 0)
       params.set("categories", newCategories.join(","));
-    } else {
-      params.delete("categories");
-    }
+    else params.delete("categories");
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
@@ -79,88 +76,106 @@ function CatalogoContent() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  // 3. Lógica de filtrado combinada (Categoría + Fuse.js)
   const filteredCategories = useMemo(() => {
     if (!searchQuery && activeCategories.length === 0) return categoriesData;
-
     return categoriesData
       .map((cat) => {
-        // Filtrar por categoría seleccionada
-        if (activeCategories.length > 0 && !activeCategories.includes(cat.id)) {
+        if (activeCategories.length > 0 && !activeCategories.includes(cat.id))
           return null;
-        }
-
-        // Si no hay búsqueda de texto, devolvemos la categoría completa
         if (!searchQuery) return cat;
-
-        // Búsqueda Fuzzy dentro de los productos de la categoría
-        const fuse = new Fuse(cat.products, {
-          keys: ["name"],
-          threshold: 0.3,
-        });
-
+        const fuse = new Fuse(cat.products, { keys: ["name"], threshold: 0.3 });
         const searchResults = fuse.search(searchQuery).map((r) => r.item);
-
-        if (searchResults.length > 0) {
-          return { ...cat, products: searchResults };
-        }
-        return null;
+        return searchResults.length > 0
+          ? { ...cat, products: searchResults }
+          : null;
       })
       .filter((cat): cat is Category => cat !== null);
   }, [activeCategories, searchQuery]);
 
   return (
     <main className={styles.pageWrapper}>
-      <SectionHeader
-        title="NUESTROS PRODUCTOS"
-        description="Explore nuestra selección de cortes premium y productos frescos."
-        color="black"
-      />
+      <SectionHeader title="NUESTROS PRODUCTOS" color="black" />
 
       <div className={styles.contentLayout}>
-        {/* Lado Izquierdo: Sidebar Animado */}
-        <motion.div
-          className={styles.sidebarArea}
-          animate={{ width: isOpen ? "340px" : "80px" }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
-          <AnimatePresence mode="wait" initial={false}>
-            {isOpen ? (
-              <motion.div
-                key="sidebar"
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-              >
-                <FilterSidebar
-                  isOpen={isOpen}
-                  setIsOpen={setIsOpen}
-                  activeCategories={activeCategories}
-                  onCategoryChange={handleCategoryChange}
-                  onClearFilters={handleClearFilters}
-                />
-              </motion.div>
-            ) : (
-              <motion.div
-                key="toggle"
-                className={styles.buttonCenterer}
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.8 }}
-              >
-                <button
-                  className={styles.sidebarToggleBtn}
-                  onClick={() => setIsOpen(true)}
+        {/* SIDEBAR DESKTOP */}
+        {!isMobile && (
+          <motion.div
+            className={styles.sidebarArea}
+            animate={{ width: isOpen ? "340px" : "80px" }}
+            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          >
+            <AnimatePresence mode="wait">
+              {isOpen ? (
+                <motion.div
+                  key="sidebar"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
                 >
-                  <Filter size={24} />
-                </button>
-              </motion.div>
+                  <FilterSidebar
+                    isOpen={isOpen}
+                    setIsOpen={setIsOpen}
+                    activeCategories={activeCategories}
+                    onCategoryChange={handleCategoryChange}
+                    onClearFilters={handleClearFilters}
+                  />
+                </motion.div>
+              ) : (
+                <div className={styles.buttonCenterer}>
+                  <button
+                    className={styles.sidebarToggleBtn}
+                    onClick={() => setIsOpen(true)}
+                  >
+                    <Filter size={24} />
+                  </button>
+                </div>
+              )}
+            </AnimatePresence>
+          </motion.div>
+        )}
+
+        {/* MODAL CENTRADO MOBILE */}
+        {isMobile && (
+          <AnimatePresence>
+            {isOpen && (
+              <>
+                <motion.div
+                  className={styles.backdrop}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  onClick={() => setIsOpen(false)}
+                />
+                <motion.div
+                  className={styles.mobileDrawer}
+                  initial={{ opacity: 0, scale: 0.9, x: "-50%", y: "-40%" }}
+                  animate={{ opacity: 1, scale: 1, x: "-50%", y: "-50%" }}
+                  exit={{ opacity: 0, scale: 0.9, x: "-50%", y: "-40%" }}
+                  transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                >
+                  <FilterSidebar
+                    isOpen={true}
+                    setIsOpen={setIsOpen}
+                    activeCategories={activeCategories}
+                    onCategoryChange={handleCategoryChange}
+                    onClearFilters={handleClearFilters}
+                  />
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
-        </motion.div>
+        )}
 
-        {/* Lado Derecho: Contenido Principal */}
         <motion.div layout className={styles.mainContent}>
+          {isMobile && (
+            <button
+              className={styles.mobileFilterBtn}
+              onClick={() => setIsOpen(true)}
+            >
+              <Filter size={20} /> Filtrar Categorías
+            </button>
+          )}
+
           <ProductGrid
             categoryTitle={
               <div className={styles.filterHeaderWrapper}>
@@ -173,14 +188,6 @@ function CatalogoContent() {
                       >
                         Limpiar todo
                       </button>
-                      {searchQuery && (
-                        <div className={styles.searchTermBadge}>
-                          Buscando:{" "}
-                          <span className={styles.highlightText}>
-                            &quot;{searchQuery}&quot;
-                          </span>
-                        </div>
-                      )}
                       <div className={styles.filterCardsContainer}>
                         <AnimatePresence>
                           {activeCategories.map((id) => {
@@ -190,9 +197,6 @@ function CatalogoContent() {
                               <motion.div
                                 key={id}
                                 layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
                                 className={styles.miniCategoryCard}
                               >
                                 <Image
@@ -231,16 +235,9 @@ function CatalogoContent() {
               {filteredCategories.length > 0 ? (
                 <ProductsCards key="list" categories={filteredCategories} />
               ) : (
-                <motion.div
-                  key="empty"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className={styles.emptyMessage}
-                >
-                  <p>
-                    No se encontraron cortes que coincidan con tu selección.
-                  </p>
-                </motion.div>
+                <div className={styles.emptyMessage}>
+                  No se encontraron resultados.
+                </div>
               )}
             </AnimatePresence>
           </ProductGrid>
@@ -252,13 +249,7 @@ function CatalogoContent() {
 
 export default function CatalogoPage() {
   return (
-    <Suspense
-      fallback={
-        <div className={styles.loading}>
-          Cargando catálogo de Carnes Hikisa...
-        </div>
-      }
-    >
+    <Suspense fallback={<div>Cargando...</div>}>
       <CatalogoContent />
     </Suspense>
   );

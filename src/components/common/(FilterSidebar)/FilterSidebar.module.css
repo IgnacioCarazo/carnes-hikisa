@@ -1,24 +1,45 @@
 .sidebar {
-  height: 100%;
-  width: 340px; /* Ancho fijo para que el padre lo anime */
-  padding: 10px;
+  width: 100%;
+  /* Importante: auto para que el modal no sea siempre gigante */
+  height: auto;
+  display: flex;
+  flex-direction: column;
 }
 
 .innerContainer {
-  height: 100%;
+  height: auto;
+  max-height: 85vh;
   display: flex;
   flex-direction: column;
   background-color: white;
   border-radius: 24px;
-  border: 1px solid #eee;
   padding: 1.5rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+.filterContent {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Si hay muchas categorías, el scroll solo ocurre aquí dentro */
+  overflow-y: auto;
+  flex: 1;
+  padding-top: 1.5rem;
+}
+
+/* Estetica de la scrollbar interna */
+.filterContent::-webkit-scrollbar {
+  width: 4px;
+}
+.filterContent::-webkit-scrollbar-thumb {
+  background: #eee;
+  border-radius: 10px;
 }
 
 .sidebarHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .titleGroup {
@@ -26,6 +47,7 @@
   align-items: center;
   gap: 8px;
 }
+
 .titleText {
   font-weight: 800;
   text-transform: uppercase;
@@ -43,32 +65,4 @@
 
 .closeBtn:hover {
   color: #e31b23;
-}
-
-.filterContent {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  overflow-y: auto;
-  flex: 1;
-  padding-top: 1.5rem;
-}
-
-.clearAllBtn {
-  background: none;
-  border: none;
-  color: #e31b23;
-  font-weight: 700;
-  font-size: 0.8rem;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100% !important;
-    z-index: 100;
-  }
 }

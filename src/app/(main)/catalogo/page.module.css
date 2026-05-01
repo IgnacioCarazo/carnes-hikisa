@@ -15,22 +15,16 @@
   overflow: hidden;
   padding: 1rem 1.5rem 0 1.5rem;
   gap: 2rem;
+  position: relative;
 }
 
+/* Sidebar solo para Desktop */
 .sidebarArea {
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
   height: 100%;
   z-index: 20;
-  position: relative;
-}
-
-.buttonCenterer {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
 }
 
 .mainContent {
@@ -38,34 +32,67 @@
   display: flex;
   flex-direction: column;
   height: 100%;
-  min-width: 0;
+  min-width: 0; /* Evita que el grid desborde */
   overflow-y: auto;
   padding-bottom: 2rem;
 }
 
-.sidebarToggleBtn {
+/* MODAL CENTRADO Y ESCALABLE EN MOBILE */
+.mobileDrawer {
+  position: fixed;
+  /* Centrado absoluto */
+  top: 50%;
+  left: 50%;
+  /* El transform se complementa con Framer Motion en el TSX */
+
+  width: 90%;
+  max-width: 400px;
+
+  /* Altura dinámica según contenido */
+  height: auto;
+  max-height: 85vh;
+
+  /* Z-INDEX superior al botón de WhatsApp (2000) */
+  z-index: 3000;
+
+  padding: 10px;
+  background-color: white;
+  border-radius: 28px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 2999; /* Justo debajo del modal centrado */
+}
+
+.mobileFilterBtn {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background-color: white;
-  border: 1.5px solid #e0e0e0;
-  width: 48px;
-  height: 48px;
+  gap: 8px;
+  background-color: #e31b23;
+  color: white;
+  padding: 12px 18px;
   border-radius: 12px;
+  border: none;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  font-size: 0.8rem;
   cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  transition: all 0.2s ease;
-  margin-top: 5px;
-  color: #333;
+  box-shadow: 0 4px 12px rgba(227, 27, 35, 0.2);
 }
 
-.sidebarToggleBtn:hover {
-  border-color: #e31b23;
-  color: #e31b23;
-  transform: translateY(-2px);
-}
-
-/* --- Header de Filtros con Truncado --- */
+/* Header de Filtros */
 .filterHeaderWrapper {
   display: flex;
   align-items: center;
@@ -73,7 +100,7 @@
   gap: 16px;
   width: 100%;
   padding-bottom: 1.5rem;
-  min-width: 0; /* Permite que el contenedor se encoja */
+  min-width: 0;
 }
 
 .leftFilterContent {
@@ -81,17 +108,9 @@
   align-items: center;
   gap: 12px;
   flex: 1;
-  min-width: 0; /* Crucial para que los hijos puedan truncar */
+  min-width: 0;
 }
 
-.rightSearchContainer {
-  flex: 0 0 auto; /* El buscador mantiene su tamaño */
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-}
-
-/* --- Contenedor de Pills Elástico --- */
 .filterCardsContainer {
   display: flex;
   flex-direction: row;
@@ -99,7 +118,7 @@
   align-items: center;
   flex: 1;
   min-width: 0;
-  overflow: hidden; /* Eliminamos el scroll para forzar el truncado */
+  overflow: hidden;
 }
 
 .miniCategoryCard {
@@ -110,16 +129,8 @@
   border: 1.5px solid #eee;
   border-radius: 32px;
   gap: 6px;
-  min-width: 40px; /* Espacio mínimo para el icono y algo de texto */
-  flex: 0 1 auto; /* Permite que la pill se encoja si es necesario */
+  flex: 0 1 auto;
   overflow: hidden;
-}
-
-.miniIconContainer {
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  width: 18px;
 }
 
 .miniName {
@@ -128,23 +139,9 @@
   color: #333;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis; /* Aquí aparecen los puntitos */
-  flex: 1;
+  text-overflow: ellipsis;
 }
 
-.miniRemoveBtn {
-  background: none;
-  border: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2px;
-  cursor: pointer;
-  color: #999;
-  flex-shrink: 0;
-}
-
-/* --- Estilos de Apoyo --- */
 .removeAllBadge {
   background: #e31b23;
   color: white;
@@ -158,34 +155,35 @@
   flex-shrink: 0;
 }
 
-.allProductsText {
-  font-size: 1.1rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  color: #1a1a1a;
-  white-space: nowrap;
+.rightSearchContainer {
+  flex: 0 0 auto;
 }
 
-.searchTermBadge {
-  background-color: #f0f0f0;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-size: 0.75rem;
-  color: #444;
-  border: 1px dashed #ccc;
-  white-space: nowrap;
-  flex-shrink: 0;
-}
+@media (max-width: 768px) {
+  .contentLayout {
+    padding: 1rem;
+    gap: 0;
+  }
 
-.highlightText {
-  color: #e31b23;
-  font-weight: 800;
-}
+  .filterHeaderWrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px; /* Espacio entre los filtros y el search bar */
+  }
 
-.emptyMessage {
-  text-align: center;
-  padding: 3rem;
-  color: #666;
-  font-weight: 500;
-  width: 100%;
+  .leftFilterContent {
+    width: 100%; /* Asegura que los badges tengan su espacio */
+  }
+
+  .rightSearchContainer {
+    width: 100%; /* <-- Esto hace que el contenedor del buscador crezca */
+    flex: none;
+  }
+
+  /* Si el componente CatalogSearchBar tiene un div interno, 
+     esto asegura que se expanda al 100% del contenedor */
+  .rightSearchContainer > div,
+  .rightSearchContainer input {
+    width: 100% !important;
+  }
 }

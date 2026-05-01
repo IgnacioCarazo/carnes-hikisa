@@ -1,11 +1,13 @@
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
 
 import styles from "./SearchInput.module.css";
+
 interface Props {
   value: string;
   onChange: (val: string) => void;
   onClear: () => void;
-  onKeyDown?: (e: React.KeyboardEvent) => void;
+  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
   placeholder?: string;
   isMobile?: boolean;
 }
@@ -39,6 +41,7 @@ const SearchInput = ({
       value={value}
       onChange={(e) => onChange(e.target.value)}
       onKeyDown={onKeyDown}
+      enterKeyHint="search" // Cambia el icono del teclado a una lupa
     />
     <AnimatePresence>
       {value.length > 0 && (
@@ -49,7 +52,11 @@ const SearchInput = ({
           className={
             isMobile ? styles.clearButtonMobile : styles.clearButtonDesktop
           }
-          onClick={onClear}
+          onClick={(e) => {
+            e.preventDefault(); // Evita cualquier acción por defecto
+            onClear();
+          }}
+          type="button" // CRÍTICO: Evita que el botón cierre el teclado accidentalmente
         >
           <svg
             viewBox="0 0 24 24"

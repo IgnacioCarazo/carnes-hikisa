@@ -7,36 +7,30 @@
 }
 
 .categoryTitle {
-  flex-shrink: 0; /* Evita que el título se aplaste */
+  flex-shrink: 0;
   margin-bottom: 1.5rem;
   width: 100%;
 }
 
-/* --- ESTA ES LA ÚNICA ZONA QUE SCROLLEA --- */
 .grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   gap: 1.5rem;
   width: 100%;
-
   flex: 1;
-  overflow-y: auto; /* Scroll vertical activado */
+  overflow-y: auto;
   padding-right: 10px;
   padding-bottom: 4rem;
-
-  /* Arreglo para el "Barcode": */
   grid-auto-rows: min-content;
   align-content: start;
 }
 
-/* Asegura que los hijos (las cards) no colapsen */
 .grid > * {
-  min-height: 300px; /* Dale una altura mínima base a tus cards */
+  min-height: 300px;
   display: flex;
   flex-direction: column;
 }
 
-/* Scrollbar estética */
 .grid::-webkit-scrollbar {
   width: 6px;
 }
@@ -45,7 +39,6 @@
   border-radius: 10px;
 }
 
-/* Responsividad */
 @media (max-width: 1400px) {
   .grid {
     grid-template-columns: repeat(4, 1fr);
@@ -56,13 +49,27 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
 @media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .grid > * {
+    min-height: 220px;
+  }
+  .categoryTitle {
+    margin-bottom: 1rem;
   }
 }
+
 @media (max-width: 480px) {
   .grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    padding-right: 5px;
+  }
+  .grid > * {
+    min-height: 180px;
   }
 }
