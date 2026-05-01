@@ -11,27 +11,39 @@ const CatalogSearchBar = () => {
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
-  // Inicializamos el input con lo que venga en la URL
-  const initialSearch = searchParams.get("search") || "";
-  const [tempSearch, setTempSearch] = useState(initialSearch);
+  // 1. Valor actual en la URL
+  const searchInUrl = searchParams.get("search") || "";
 
-  // Efecto para actualizar la URL automáticamente mientras escribes
+  // 2. Estado local para lo que el usuario escribe
+  const [tempSearch, setTempSearch] = useState(searchInUrl);
+
+  // 3. Estado para rastrear el último valor de la URL que vimos
+  const [prevSearchInUrl, setPrevSearchInUrl] = useState(searchInUrl);
+
+  if (searchInUrl !== prevSearchInUrl) {
+    setPrevSearchInUrl(searchInUrl);
+    setTempSearch(searchInUrl);
+  }
+
+  // 4. Efecto para actualizar la URL (Debounce)
   useEffect(() => {
+    // Si el texto local es igual a lo que ya está en la URL, no hacemos nada
+    if (tempSearch.trim() === searchInUrl) return;
+
     const delayDebounceFn = setTimeout(() => {
       const params = new URLSearchParams(searchParams.toString());
-      
+
       if (tempSearch.trim().length > 0) {
         params.set("search", tempSearch.trim());
       } else {
         params.delete("search");
       }
-      
-      // scroll: false evita que la página salte al inicio al filtrar
+
       router.push(`${pathname}?${params.toString()}`, { scroll: false });
-    }, 300); // 300ms es el tiempo ideal para no saturar la URL mientras escribe rápido
+    }, 300);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [tempSearch, pathname, router, searchParams]);
+  }, [tempSearch, pathname, router, searchInUrl, searchParams]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTempSearch(e.target.value);

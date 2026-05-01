@@ -1,11 +1,12 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { Filter, ChevronLeft } from "lucide-react";
+// Cambiamos ChevronLeft por X
+import { Filter, X } from "lucide-react"; 
 import Image from "next/image";
 
 import CategoryCard from "@/components/common/(CategoryCards)/CategoryCard";
-import categoriesData from "@/data/categories.json";
+import categoriesDataRaw from "@/data/categories.json";
 
 import styles from "./FilterSidebar.module.css";
 
@@ -13,8 +14,8 @@ interface FilterSidebarProps {
   isOpen: boolean;
   setIsOpen: (open: boolean) => void;
   activeCategories: string[];
-  onCategoryChange: (id: string) => void; // Agregada de nuevo
-  onClearFilters: () => void; // Agregada de nuevo
+  onCategoryChange: (id: string) => void;
+  onClearFilters: () => void;
 }
 
 interface Category {
@@ -23,6 +24,8 @@ interface Category {
   image: string;
 }
 
+const categoriesData = categoriesDataRaw as Category[];
+
 const FilterSidebar = ({
   isOpen,
   setIsOpen,
@@ -30,7 +33,6 @@ const FilterSidebar = ({
   onCategoryChange,
   onClearFilters,
 }: FilterSidebarProps) => {
-  const typedCategories = categoriesData as Category[];
   const hasActiveFilters = activeCategories.length > 0;
 
   return (
@@ -38,9 +40,10 @@ const FilterSidebar = ({
       {isOpen && (
         <motion.aside
           key="sidebar"
-          initial={{ width: 0, opacity: 0 }}
-          animate={{ width: 320, opacity: 1 }}
-          exit={{ width: 0, opacity: 0 }}
+          // Ajuste de animación para que en móvil ocupe toda la pantalla
+          initial={{ x: "-100%", opacity: 0 }}
+          animate={{ x: 0, opacity: 1 }}
+          exit={{ x: "-100%", opacity: 0 }}
           transition={{ type: "spring", damping: 25, stiffness: 200 }}
           className={styles.sidebar}
         >
@@ -60,17 +63,19 @@ const FilterSidebar = ({
                     Limpiar
                   </button>
                 )}
+                {/* Botón de cierre mejorado */}
                 <button
                   className={styles.closeBtn}
                   onClick={() => setIsOpen(false)}
+                  aria-label="Cerrar filtros"
                 >
-                  <ChevronLeft size={24} />
+                  <X size={28} />
                 </button>
               </div>
             </div>
 
             <nav className={styles.filterContent}>
-              {typedCategories.map((cat) => (
+              {categoriesData.map((cat) => (
                 <CategoryCard
                   key={cat.id}
                   name={cat.name}
@@ -90,6 +95,14 @@ const FilterSidebar = ({
                 />
               ))}
             </nav>
+
+            {/* Botón opcional de ver resultados al final en móvil */}
+            <button 
+              className={styles.viewResultsBtn}
+              onClick={() => setIsOpen(false)}
+            >
+              Ver Resultados
+            </button>
           </div>
         </motion.aside>
       )}

@@ -45,10 +45,9 @@ const ProductsCards: React.FC<ProductsCardsProps> = ({ categories }) => {
               exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.2 } }}
               transition={{
                 type: "spring",
-                stiffness: 80, // Mucho más bajo (antes 400) para suavidad
-                damping: 20, // Controla que no rebote
+                stiffness: 80, 
+                damping: 20, 
                 mass: 1,
-                // Esto hace que los productos aparezcan uno tras otro sutilmente
                 delay: index * 0.03,
               }}
               className={styles.card}

@@ -1,5 +1,6 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
+import Fuse from "fuse.js";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, useRef, useMemo, ChangeEvent } from "react";
@@ -41,12 +42,12 @@ const SearchBar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [results, setResults] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-
   const [tempSearch, setTempSearch] = useState(
     searchParams.get("search") || "",
   );
   const searchInputRef = useRef<HTMLInputElement>(null);
 
+  // 1. Aplanamos los productos una sola vez
   const allProducts = useMemo(() => {
     return menuData.flatMap((cat: Category) =>
       cat.products.map((p) => ({
@@ -57,6 +58,22 @@ const SearchBar = () => {
     ) as Product[];
   }, []);
 
+  // 2. Configuración estricta de Fuse.js
+  const fuse = useMemo(() => {
+    return new Fuse(allProducts, {
+      keys: [
+        { name: "name", weight: 0.95 }, // Prioridad máxima al nombre
+        { name: "categoryName", weight: 0.05 }, // Peso mínimo a la categoría para evitar falsos positivos
+      ],
+      threshold: 0.2, // Muy estricto (0.0 es match exacto)
+      location: 0, // El match debe estar al inicio
+      distance: 0, // No permite que el match esté lejos del inicio
+      minMatchCharLength: 2,
+      ignoreLocation: false, // Importante para que "res" no coincida con "fresco"
+    });
+  }, [allProducts]);
+
+  // 3. Lógica de búsqueda con Debounce y Filtro de Seguridad
   useEffect(() => {
     const query = tempSearch.trim().toLowerCase();
 
@@ -65,29 +82,32 @@ const SearchBar = () => {
         setResults([]);
         setIsLoading(false);
       } else {
-        const filtered = allProducts
-          .filter(
-            (p) =>
-              p.name.toLowerCase().includes(query) ||
-              p.description.toLowerCase().includes(query),
-          )
-          .slice(0, 4);
+        // Ejecutar búsqueda fuzzy
+        let fuzzyResults = fuse.search(query).map((r) => r.item);
 
-        setResults(filtered);
+        // Filtro de seguridad para palabras cortas (ej. "res")
+        // Si la búsqueda es corta, forzamos que el texto esté incluido literalmente
+        if (query.length <= 3) {
+          fuzzyResults = fuzzyResults.filter(
+            (item) =>
+              item.name.toLowerCase().includes(query) ||
+              item.categoryName.toLowerCase().includes(query),
+          );
+        }
+
+        setResults(fuzzyResults.slice(0, 4));
         setIsLoading(false);
       }
-    }, 1000);
+    }, 350);
 
     return () => clearTimeout(delayDebounceFn);
-  }, [tempSearch, allProducts]);
+  }, [tempSearch, fuse]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setTempSearch(value);
-
-    if (value.trim().length >= 2) {
-      setIsLoading(true);
-    } else {
+    if (value.trim().length >= 2) setIsLoading(true);
+    else {
       setIsLoading(false);
       setResults([]);
     }
@@ -97,16 +117,8 @@ const SearchBar = () => {
     setTempSearch("");
     setResults([]);
     setIsLoading(false);
-    if (searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
+    searchInputRef.current?.focus();
   };
-
-  useEffect(() => {
-    if (isSearchOpen && searchInputRef.current) {
-      searchInputRef.current.focus();
-    }
-  }, [isSearchOpen]);
 
   const executeSearch = (name: string) => {
     const params = new URLSearchParams(searchParams.toString());
@@ -192,7 +204,6 @@ const SearchBar = () => {
               initial={{ opacity: 0, y: 10, scale: 0.98 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: 10, scale: 0.98 }}
-              transition={{ duration: 0.2, ease: "easeOut" }}
               className={styles.searchResultsDropdown}
             >
               {isLoading && results.length === 0 ? (
@@ -224,15 +235,6 @@ const SearchBar = () => {
                         <span className={styles.miniCategory}>
                           {product.categoryName}
                         </span>
-                      </div>
-                      <div className={styles.miniViewButton}>
-                        <Image
-                          src={`/icons/categoryIcons/${product.categoryIcon}`}
-                          alt="icon"
-                          width={14}
-                          height={14}
-                          style={{ filter: "brightness(0)" }}
-                        />
                       </div>
                     </div>
                   </motion.div>
@@ -282,39 +284,29 @@ const SearchBar = () => {
           </button>
         </div>
         <div className={styles.searchPanelContent}>
-          {isLoading && results.length === 0 && (
-            <p className={styles.searchStatus}>Buscando productos...</p>
-          )}
-          {isNoResults && (
-            <p className={styles.searchStatus}>
-              No encontramos nada para &quot;{tempSearch}&quot;
-            </p>
-          )}
-          {results.length > 0 &&
-            !isNoResults &&
-            results.map((product) => (
-              <div
-                key={product.id}
-                className={styles.miniCard}
-                onClick={() => executeSearch(product.name)}
-              >
-                <div className={styles.miniImageContainer}>
-                  <img
-                    src={product.image}
-                    alt={product.name}
-                    className={styles.miniProductImage}
-                  />
-                </div>
-                <div className={styles.miniFooter}>
-                  <div className={styles.miniInfo}>
-                    <h3 className={styles.miniTitle}>{product.name}</h3>
-                    <span className={styles.miniCategory}>
-                      {product.categoryName}
-                    </span>
-                  </div>
+          {results.map((product) => (
+            <div
+              key={product.id}
+              className={styles.miniCard}
+              onClick={() => executeSearch(product.name)}
+            >
+              <div className={styles.miniImageContainer}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={styles.miniProductImage}
+                />
+              </div>
+              <div className={styles.miniFooter}>
+                <div className={styles.miniInfo}>
+                  <h3 className={styles.miniTitle}>{product.name}</h3>
+                  <span className={styles.miniCategory}>
+                    {product.categoryName}
+                  </span>
                 </div>
               </div>
-            ))}
+            </div>
+          ))}
         </div>
       </div>
     </>
