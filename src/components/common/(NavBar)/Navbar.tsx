@@ -8,7 +8,8 @@ import iconMenu from "@/assets/icons/Hamburger-Menu.webp";
 import logoHikisa from "@/assets/imgs/CarnesHikisa_RB.webp";
 
 import styles from "./Navbar.module.css";
-import SearchBar from "./SearchBar";
+
+import SearchBar from "../(SearchBar)/SearchBar";
 
 const Navbar = () => {
   const pathname = usePathname();

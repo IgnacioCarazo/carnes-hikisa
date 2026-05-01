@@ -1,0 +1,10 @@
+.searchContainerDesktop {
+  position: relative;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .searchContainerDesktop {
+    display: none;
+  }
+}

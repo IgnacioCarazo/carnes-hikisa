@@ -8,16 +8,17 @@ import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { useState, useMemo, Suspense } from "react";
 
 import FilterSidebar from "@/components/common/(FilterSidebar)/FilterSidebar";
-import CatalogSearchBar from "@/components/common/(NavBar)/CatalogSearchBar";
 import ProductGrid from "@/components/common/(ProductGrid)/ProductGrid";
 import ProductsCards from "@/components/common/(ProductsCards)/ProductsCards";
+import CatalogSearchBar from "@/components/common/(SearchBar)/CatalogSearchBar";
 import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
 import categoriesDataRaw from "@/data/categories.json";
 
 import styles from "./page.module.css";
 
+// Interfaces de datos
 export interface Product {
-  id: string;
+  id: string | number;
   name: string;
   description: string;
   category: string;
@@ -28,8 +29,8 @@ export interface Category {
   id: string;
   name: string;
   image: string;
-  "image-white": string;
-  imageCarousell: string;
+  "image-white": string; // Se quitó el "?" para coincidir con lo que esperan tus componentes hijos
+  imageCarousell?: string;
   products: Product[];
 }
 
@@ -39,8 +40,10 @@ function CatalogoContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
+
   const [isOpen, setIsOpen] = useState(true);
 
+  // 1. Obtener filtros de la URL
   const activeCategories = useMemo(() => {
     const params = searchParams.get("categories");
     return params ? params.split(",") : [];
@@ -51,11 +54,14 @@ function CatalogoContent() {
     [searchParams],
   );
 
+  // 2. Sincronizar cambios con la URL
   const updateURL = (newCategories: string[]) => {
     const params = new URLSearchParams(searchParams.toString());
-    if (newCategories.length > 0)
+    if (newCategories.length > 0) {
       params.set("categories", newCategories.join(","));
-    else params.delete("categories");
+    } else {
+      params.delete("categories");
+    }
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
@@ -73,17 +79,31 @@ function CatalogoContent() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
+  // 3. Lógica de filtrado combinada (Categoría + Fuse.js)
   const filteredCategories = useMemo(() => {
     if (!searchQuery && activeCategories.length === 0) return categoriesData;
+
     return categoriesData
       .map((cat) => {
-        if (activeCategories.length > 0 && !activeCategories.includes(cat.id))
+        // Filtrar por categoría seleccionada
+        if (activeCategories.length > 0 && !activeCategories.includes(cat.id)) {
           return null;
+        }
+
+        // Si no hay búsqueda de texto, devolvemos la categoría completa
         if (!searchQuery) return cat;
-        const fuse = new Fuse(cat.products, { keys: ["name"], threshold: 0.3 });
+
+        // Búsqueda Fuzzy dentro de los productos de la categoría
+        const fuse = new Fuse(cat.products, {
+          keys: ["name"],
+          threshold: 0.3,
+        });
+
         const searchResults = fuse.search(searchQuery).map((r) => r.item);
-        if (searchResults.length > 0)
+
+        if (searchResults.length > 0) {
           return { ...cat, products: searchResults };
+        }
         return null;
       })
       .filter((cat): cat is Category => cat !== null);
@@ -96,21 +116,21 @@ function CatalogoContent() {
         description="Explore nuestra selección de cortes premium y productos frescos."
         color="black"
       />
+
       <div className={styles.contentLayout}>
+        {/* Lado Izquierdo: Sidebar Animado */}
         <motion.div
           className={styles.sidebarArea}
-          animate={{ width: isOpen ? "340px" : "60px" }}
+          animate={{ width: isOpen ? "340px" : "80px" }}
           transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-          {/* Cambiado a popLayout para evitar el parpadeo de espera */}
-          <AnimatePresence mode="popLayout" initial={false}>
+          <AnimatePresence mode="wait" initial={false}>
             {isOpen ? (
               <motion.div
                 key="sidebar"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
               >
                 <FilterSidebar
                   isOpen={isOpen}
@@ -122,17 +142,15 @@ function CatalogoContent() {
               </motion.div>
             ) : (
               <motion.div
-                key="button-container"
+                key="toggle"
                 className={styles.buttonCenterer}
-                initial={{ opacity: 0, scale: 0.5 }}
+                initial={{ opacity: 0, scale: 0.8 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.5 }}
-                transition={{ duration: 0.2 }}
+                exit={{ opacity: 0, scale: 0.8 }}
               >
                 <button
                   className={styles.sidebarToggleBtn}
                   onClick={() => setIsOpen(true)}
-                  title="Mostrar Filtros"
                 >
                   <Filter size={24} />
                 </button>
@@ -141,6 +159,7 @@ function CatalogoContent() {
           </AnimatePresence>
         </motion.div>
 
+        {/* Lado Derecho: Contenido Principal */}
         <motion.div layout className={styles.mainContent}>
           <ProductGrid
             categoryTitle={
@@ -171,27 +190,24 @@ function CatalogoContent() {
                               <motion.div
                                 key={id}
                                 layout
-                                initial={{ opacity: 0 }}
-                                animate={{ opacity: 1 }}
-                                exit={{ opacity: 0 }}
+                                initial={{ opacity: 0, scale: 0.9 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.9 }}
                                 className={styles.miniCategoryCard}
                               >
-                                <div className={styles.miniIconContainer}>
-                                  <Image
-                                    src={`/icons/categoryIcons/${cat.image}`}
-                                    alt={cat.name}
-                                    width={20}
-                                    height={20}
-                                  />
-                                </div>
+                                <Image
+                                  src={`/icons/categoryIcons/${cat.image}`}
+                                  alt={cat.name}
+                                  width={18}
+                                  height={18}
+                                />
                                 <span className={styles.miniName}>
                                   {cat.name}
                                 </span>
                                 <button
-                                  className={styles.miniRemoveBtn}
                                   onClick={() => handleCategoryChange(id)}
                                 >
-                                  <X size={10} strokeWidth={4} />
+                                  <X size={12} />
                                 </button>
                               </motion.div>
                             );
@@ -215,14 +231,16 @@ function CatalogoContent() {
               {filteredCategories.length > 0 ? (
                 <ProductsCards key="list" categories={filteredCategories} />
               ) : (
-                <motion.p
+                <motion.div
                   key="empty"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   className={styles.emptyMessage}
                 >
-                  No se encontraron productos que coincidan con tu búsqueda.
-                </motion.p>
+                  <p>
+                    No se encontraron cortes que coincidan con tu selección.
+                  </p>
+                </motion.div>
               )}
             </AnimatePresence>
           </ProductGrid>
@@ -234,7 +252,13 @@ function CatalogoContent() {
 
 export default function CatalogoPage() {
   return (
-    <Suspense fallback={<div>Cargando catálogo...</div>}>
+    <Suspense
+      fallback={
+        <div className={styles.loading}>
+          Cargando catálogo de Carnes Hikisa...
+        </div>
+      }
+    >
       <CatalogoContent />
     </Suspense>
   );
