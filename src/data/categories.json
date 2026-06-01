@@ -8,7 +8,7 @@
       {
         "id": "res-1",
         "name": "Corazón de Res",
-        "description": "Corte magro de textura firme y sabor intenso. Ideal para parrilla o guisos prolongados.",
+        "description": "Corte carnoso, magro y de sabor intenso, ideal para guisos, sopas y comidas tradicionales.",
         "category": "Carnes de Res",
         "image": "/productos/corazon.jpeg"
       },
@@ -71,20 +71,20 @@
       {
         "id": "res-10",
         "name": "Costilla Entera",
-        "description": "Corte con hueso y grasa que aporta sabor. Ideal para parrilla, horno o ahumado.",
+        "description": "Corte con hueso y grasa que aporta sabor. Ideal para parrilla, horno, ahumada y sopas.",
         "category": "Carnes de Res",
         "image": "/productos/costillaentera.jpeg"
       },
       {
         "id": "res-11",
         "name": "Costilla Picada",
-        "description": "Costilla troceada para preparación rápida en parrilla o guisos.",
+        "description": "Costilla troceada para preparación rápida en parrilla o sopas.",
         "category": "Carnes de Res",
         "image": "/productos/costillapicada.jpeg"
       },
       {
         "id": "res-12",
-        "name": "Hueso Carnudo Entero",
+        "name": "Hueso Carnudo Entero - REVISAR NO EXISTE EN PDF",
         "description": "Hueso con abundante carne adherida, perfecto para caldos sustanciosos.",
         "category": "Carnes de Res",
         "image": "/productos/huesocarnudoentero.jpeg"
@@ -92,7 +92,7 @@
       {
         "id": "res-13",
         "name": "Hueso Carnudo Picado",
-        "description": "Versión troceada para facilitar su uso en sopas y preparaciones largas.",
+        "description": "Versión troceada del hueso carnudo para facilitar su uso en sopas y preparaciones largas.",
         "category": "Carnes de Res",
         "image": "/productos/huesocarnudopicado.jpeg"
       },
@@ -112,7 +112,7 @@
       },
       {
         "id": "res-16",
-        "name": "Osobuco",
+        "name": "Osobuco Entero",
         "description": "Corte transversal con hueso y tuétano. Ideal para estofados ricos en colágeno.",
         "category": "Carnes de Res",
         "image": "/productos/osobucoentero.jpeg"
@@ -182,7 +182,7 @@
       },
       {
         "id": "res-27",
-        "name": "Vuelta de Lomo",
+        "name": "Vuelta de Lomo - REVISAR NO EXISTE EN PDF",
         "description": "Corte tierno, adecuado para bistec o preparaciones rápidas.",
         "category": "Carnes de Res",
         "image": "/productos/vueltadelomo.jpeg"
@@ -197,7 +197,7 @@
       {
         "id": "res-29",
         "name": "Posta Quititeña",
-        "description": "Corte tradicional, firme y magro. Ideal para cocción prolongada.",
+        "description": "Corte tradicional, firme y magro. Ideal para cocción prolongada y para hacer carne mechada.",
         "category": "Carnes de Res",
         "image": "/productos/postaquititena.jpeg"
       },
@@ -211,7 +211,7 @@
       {
         "id": "res-31",
         "name": "Posta Cecina",
-        "description": "Corte ideal para curar o preparar a la plancha en láminas delgadas.",
+        "description": "Corte de res ideal para preparar carne mechada y sopas, gracias a su textura suave y facilidad para deshilachar después de la cocción.",
         "category": "Carnes de Res",
         "image": "/productos/postacecina.jpeg"
       },
@@ -232,7 +232,7 @@
       {
         "id": "res-34",
         "name": "Mano de Piedra",
-        "description": "Corte firme, recomendado para ablandar y cocinar en guisos o mechados.",
+        "description": "Corte firme, recomendado para ablandar. Perfecto para cocinar entero y tajadear.",
         "category": "Carnes de Res",
         "image": "/productos/manodepiedra.jpeg"
       },
@@ -246,7 +246,7 @@
       {
         "id": "res-36",
         "name": "Solomo",
-        "description": "Corte suave y versátil, apto para bistec, parrilla o sartén.",
+        "description": "Corte perfecto para hacer tacos y carne mechada.",
         "category": "Carnes de Res",
         "image": "/productos/solomo.jpeg"
       },
@@ -259,14 +259,14 @@
       },
       {
         "id": "res-38",
-        "name": "Hueso Pescuezo Entero",
+        "name": "Hueso Pescuezo Entero - REVISAR NO EXISTE EN PDF",
         "description": "Hueso de cuello con carne adherida y alto contenido de colágeno. Ideal para caldos y sopas de cocción prolongada.",
         "category": "Carnes de Res",
         "image": "/productos/huesopescuezoentero.jpeg"
       },
       {
         "id": "res-39",
-        "name": "Hueso Pescuezo Picado",
+        "name": "Hueso Pescuezo Picado - REVISAR NO EXISTE EN PDF",
         "description": "Presentación troceada para facilitar su uso. Hueso de cuello con carne adherida y alto contenido de colágeno. Ideal para caldos y sopas de cocción prolongada.",
         "category": "Carnes de Res",
         "image": "/productos/huesopescuezopicado.jpeg"
@@ -288,7 +288,7 @@
       },
       {
         "id": "cerdo-2",
-        "name": "Pierna de Cerdo",
+        "name": "Pierna de Cerdo Entera",
         "description": "Corte magro y versátil, apto para hornear, asar o porcionar en bistec.",
         "category": "Carnes de Cerdo",
         "image": "/productos/postapierna.jpeg"
@@ -296,7 +296,7 @@
       {
         "id": "cerdo-3",
         "name": "Paleta de Cerdo",
-        "description": "Corte con mayor contenido de grasa y colágeno. Ideal para cocción lenta y desmechado.",
+        "description": "Corte con mayor contenido de grasa y colágeno. Ideal para cocción lenta y desmechado. También es ideal para hacer chicharrones.",
         "category": "Carnes de Cerdo",
         "image": "/productos/postadepaleta.jpeg"
       },
@@ -333,7 +333,7 @@
         "name": "Costilla de Cerdo Picada",
         "description": "Costilla en porciones pequeñas, perfecta para parrilla o preparaciones al horno.",
         "category": "Carnes de Cerdo",
-        "image": "/productos/costilapicada.jpeg"
+        "image": "/productos/costillapicada.jpeg"
       },
       {
         "id": "cerdo-9",
@@ -411,6 +411,27 @@
         "description": "Porciones listas para facilitar su cocción y servicio.",
         "category": "Carnes de Cerdo",
         "image": "/productos/costillaahumadapicada.jpeg"
+      },
+      {
+        "id": "cerdo-20",
+        "name": "Posta de Cerdo",
+        "description": "Corte magro y versátil, ideal para preparar asados, chuletas, bistecs o recetas al horno. Se caracteriza por su excelente sabor, textura suave y bajo contenido de grasa.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/carneCerdo.webp"
+      },
+      {
+        "id": "cerdo-21",
+        "name": "Falda de Cerdo",
+        "description": "Corte jugoso y sabroso, ideal para preparar chicharrones, asados y guisos. Su equilibrio entre carne y grasa le aporta una textura suave y mucho sabor.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/papadacerdo.jpeg"
+      },
+      {
+        "id": "cerdo-22",
+        "name": "Costilla de Cerdo Ahumada",
+        "description": "Destaca por su sabor intenso y su textura jugosa. Es ideal para asar, hornear o preparar en parrilla, aportando un delicioso toque ahumado a cualquier comida.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/costillaahumadaentera.jpeg"
       }
     ]
   },
@@ -468,6 +489,62 @@
         "description": "Corte magro de pollo, de textura suave y cocción rápida. Versátil para diferentes usos.",
         "category": "Pollo",
         "image": "/productos/pechuga.jpeg"
+      },
+      {
+        "id": "pollo-8",
+        "name": "Muslito de Muslo",
+        "description": "Corte jugoso y de excelente sabor, ideal para freír, hornear, asar o preparar en salsa. Su carne suave lo convierte en una opción práctica y versátil.",
+        "category": "Pollo",
+        "image": "/productos/muslitodemuslo.jpeg"
+      },
+      {
+        "id": "pollo-9",
+        "name": "Trozos de Pollo",
+        "description": "Incluyen diferentes partes del pollo, perfectas para comidas rendidoras y llenas de sabor.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-10",
+        "name": "Filet de Pechuga",
+        "description": "Corte magro, suave y versátil, ideal para asar, empanizar, cocinar a la plancha o preparar en múltiples recetas. Perfecto para quienes buscan una opción práctica y de excelente sabor.",
+        "category": "Pollo",
+        "image": "/productos/pechuga.jpeg"
+      },
+      {
+        "id": "pollo-11",
+        "name": "Fajitas de Pollo",
+        "description": "Tiras de pechuga listas para cocinar, ideales para saltear, preparar wraps, tacos, ensaladas y muchas otras recetas rápidas y deliciosas.",
+        "category": "Pollo",
+        "image": "/productos/pechuga.jpeg"
+      },
+      {
+        "id": "pollo-12",
+        "name": "Muslo Deshuesado",
+        "description": "Corte jugoso y lleno de sabor, ideal para asar, hornear, saltear o preparar en una gran variedad de recetas. Su practicidad y suavidad lo convierten en una excelente opción para cualquier comida.",
+        "category": "Pollo",
+        "image": "/productos/musloentero.jpeg"
+      },
+      {
+        "id": "pollo-13",
+        "name": "Menudos de Pollo",
+        "description": "Incluyen partes como hígado, corazón y molleja, ideales para sopas, arroces y recetas tradicionales llenas de sabor.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-14",
+        "name": "Patas de Pollo",
+        "description": "Ideales para preparar sopas y caldos, aportando un excelente sabor y una textura gelatinosa que enriquece cualquier receta.",
+        "category": "Pollo",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "pollo-15",
+        "name": "Gallina",
+        "description": "Ideal para preparar sopas y caldos con un sabor más intenso y tradicional. Su carne firme y sabrosa la convierte en una excelente opción para recetas caseras y rendidoras.",
+        "category": "Pollo",
+        "image": "/productos/polloentero.jpeg"
       }
     ]
   },
@@ -528,24 +605,10 @@
       },
       {
         "id": "mar-8",
-        "name": "Macarella Medallones",
+        "name": "Trozos de Macarella",
         "description": "Porciones de macarela en corte transversal, con buen contenido graso y sabor marcado. Aptas para fritura o parrilla.",
         "category": "Frutos del Mar",
-        "image": "/productos/macarellamedallones.jpeg"
-      },
-      {
-        "id": "mar-9",
-        "name": "Picadura para Ceviche de Bolillo",
-        "description": "Pescado fresco en trozos pequeños, listo para preparar ceviche. Textura firme y adecuada para marinar.",
-        "category": "Frutos del Mar",
-        "image": "/productos/bolillopicadoceviche.png"
-      },
-      {
-        "id": "mar-10",
-        "name": "Pargo Rojo Cultivo 1kg",
-        "description": "Pescado entero de cultivo. Ideal para freír, hornear o cocinar entero.",
-        "category": "Frutos del Mar",
-        "image": "/productos/pargos.jpg"
+        "image": "/productos/trozosdemacarella.jpeg"
       }
     ]
   },
@@ -577,13 +640,6 @@
         "image": "/productos/chorizoconchile.jpeg"
       },
       {
-        "id": "embutidos-4",
-        "name": "Salchichón de Pollo",
-        "description": "Embutido a base de carne de pollo, de textura suave y sabor ligero.",
-        "category": "Embutidos",
-        "image": "/productos/salchichondepollo.jpeg"
-      },
-      {
         "id": "embutidos-5",
         "name": "Salchichón Campesino",
         "description": "Producto de estilo tradicional, con mezcla de carnes y especias. Sabor robusto.",
@@ -599,10 +655,10 @@
       },
       {
         "id": "embutidos-7",
-        "name": "Burbujas Salchichón",
+        "name": "Anillos Salchichón",
         "description": "Presentación en pequeñas porciones, práctica para consumo rápido o bocadillos.",
         "category": "Embutidos",
-        "image": "/productos/burbujasdesalchichon.jpeg"
+        "image": "/productos/anillosdesalchichon.jpeg"
       },
       {
         "id": "embutidos-8",
@@ -624,6 +680,20 @@
         "description": "Embutido elaborado con sangre de cerdo y especias. Sabor intenso, ideal para fritura o parrilla.",
         "category": "Embutidos",
         "image": "/productos/morcilla.jpeg"
+      },
+      {
+        "id": "embutidos-11",
+        "name": "Paté",
+        "description": "Opción práctica y deliciosa, ideal para untar en pan, galletas o preparar bocadillos rápidos. Su textura suave y sabor característico lo convierten en un favorito para compartir en cualquier ocasión.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
+      },
+      {
+        "id": "embutidos-12",
+        "name": "Picado para Arroz",
+        "description": "Mezcla de jamón cortado en pequeños trozos, ideal para preparar arroz, pastas, ensaladas y otras recetas prácticas y llenas de sabor.",
+        "category": "Embutidos",
+        "image": "/productos/embutidos.webp"
       }
     ]
   },
@@ -656,10 +726,73 @@
       },
       {
         "id": "paqueteria-4",
-        "name": "Papa Gajo",
-        "description": "Papas cortadas en gajos, listas para freír u hornear. Exterior crujiente e interior suave, ideales como acompañamiento.",
+        "name": "Muslito Pollo Empanizado Kimby",
+        "description": "Opción práctica y deliciosa, con una cobertura crujiente y dorada. Ideal para freír u hornear y disfrutar de una comida rápida y llena de sabor.",
         "category": "Paquetería",
-        "image": "/productos/gajo.png"
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "paqueteria-5",
+        "name": "Tortas de Pollo Empanizadas Kimby",
+        "description": "Opción práctica y deliciosa, con una cobertura crujiente y un interior jugoso. Ideales para preparar hamburguesas o acompañar con tus guarniciones favoritas.",
+        "category": "Paquetería",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "paqueteria-6",
+        "name": "Rocadinos Kimby",
+        "description": "Bocaditos de pollo empanizados, crujientes por fuera y jugosos por dentro. Ideales para preparar de forma rápida y disfrutar como merienda, acompañamiento o plato principal.",
+        "category": "Paquetería",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "paqueteria-7",
+        "name": "Palitos Pollo Kimby",
+        "description": "Tiras de pollo empanizadas, crujientes y deliciosas. Ideales para preparar de forma rápida y disfrutar como merienda o acompañamiento.",
+        "category": "Paquetería",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "paqueteria-8",
+        "name": "Aritos Pollo Kimby",
+        "description": "Aritos empanizados, crujientes por fuera y jugosos por dentro. Ideales para preparar rápidamente y disfrutar como merienda o acompañamiento.",
+        "category": "Paquetería",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "paqueteria-9",
+        "name": "Medallones Pollo Kimby",
+        "description": "Piezas de pollo empanizadas, crujientes por fuera y suaves por dentro. Ideales para preparar de forma rápida y disfrutar en cualquier comida.",
+        "category": "Paquetería",
+        "image": "/productos/pollo.webp"
+      },
+      {
+        "id": "paqueteria-10",
+        "name": "Tortas de Papa",
+        "description": "Opción práctica y deliciosa, con una textura suave por dentro y dorada por fuera. Ideales como acompañamiento o para disfrutar como merienda.",
+        "category": "Paquetería",
+        "image": "/productos/papas.webp"
+      },
+      {
+        "id": "paqueteria-11",
+        "name": "Torta Res Hamburguesas Unidad",
+        "description": "Porciones individuales listas para cocinar, ideales para preparar hamburguesas caseras jugosas y llenas de sabor. Perfectas para una comida rápida y deliciosa.",
+        "category": "Paquetería",
+        "image": "/productos/carneRes.webp"
+      },
+      {
+        "id": "paqueteria-12",
+        "name": "Maíz para Pozol",
+        "description": "Ingrediente ideal para preparar esta tradicional receta costarricense. Su textura y sabor lo hacen perfecto para obtener un pozol casero, espeso y delicioso.",
+        "category": "Paquetería",
+        "image": "/productos/papas.webp"
+      },
+      {
+        "id": "paqueteria-13",
+        "name": "Mano de Piedra Ahumada",
+        "description": "Corte de res de gran sabor y textura suave, listo para calentar y disfrutar. Su delicioso toque ahumado la hace ideal para acompañar comidas, preparar sándwiches o servir con tus guarniciones favoritas.",
+        "category": "Paquetería",
+        "image": "/productos/manodepiedra.jpeg"
       }
     ]
   },
@@ -696,6 +829,34 @@
         "description": "Producto fresco y versátil, apto para múltiples preparaciones en cocina diaria.",
         "category": "Lácteos",
         "image": "/productos/huevos.jpeg"
+      },
+      {
+        "id": "lacteos-5",
+        "name": "Queso Mozarella Barra 3 Kilos",
+        "description": "Ideal para negocios y preparaciones en grandes cantidades. Su excelente capacidad para derretirse lo hace perfecto para pizzas, lasañas, gratinados y muchas otras recetas.",
+        "category": "Lácteos",
+        "image": "/productos/queso.webp"
+      },
+      {
+        "id": "lacteos-6",
+        "name": "Queso Mozarella Porcionado",
+        "description": "Opción práctica y lista para usar, ideal para pizzas, lasañas, gratinados y otras recetas. Se derrite fácilmente y aporta una textura suave y un delicioso sabor.",
+        "category": "Lácteos",
+        "image": "/productos/queso.webp"
+      },
+      {
+        "id": "lacteos-7",
+        "name": "Queso en Polvo",
+        "description": "Ideal para dar un toque de sabor a pastas, pizzas, ensaladas y otras preparaciones. Práctico y listo para usar, aporta un delicioso sabor a queso en cada receta.",
+        "category": "Lácteos",
+        "image": "/productos/queso.webp"
+      },
+      {
+        "id": "lacteos-8",
+        "name": "Natilla Kilo",
+        "description": "Se caracteriza por su textura cremosa y su delicioso sabor suave y ligeramente ácido.",
+        "category": "Lácteos",
+        "image": "/productos/queso.webp"
       }
     ]
   },
@@ -709,6 +870,41 @@
         "id": "carnitas-1",
         "name": "Bistec Adobado",
         "description": "Bistec previamente sazonado, listo para cocinar. Práctico y de sabor intenso.",
+        "category": "Carnitas Adobadas",
+        "image": "/productos/carneAdobada.webp"
+      },
+      {
+        "id": "carnitas-2",
+        "name": "Bistec de Cerdo Adobado",
+        "description": "Opción práctica y llena de sabor, sazonada con una mezcla especial de especias que realza su jugosidad. Ideal para cocinar a la plancha, freír o asar y disfrutar de una comida rápida y deliciosa.",
+        "category": "Carnitas Adobadas",
+        "image": "/productos/carneAdobada.webp"
+      },
+      {
+        "id": "carnitas-3",
+        "name": "Pechuga de Pollo Adobada",
+        "description": "Sazonada con una mezcla especial de especias que realza su sabor y jugosidad. Ideal para cocinar a la plancha, asar u hornear y disfrutar de una comida práctica y deliciosa.",
+        "category": "Carnitas Adobadas",
+        "image": "/productos/carneAdobada.webp"
+      },
+      {
+        "id": "carnitas-4",
+        "name": "Costilla de Cerdo Adobada",
+        "description": "Sazonada con una mezcla especial de especias que realza su sabor y jugosidad. Ideal para hornear, asar o preparar a la parrilla y disfrutar de una comida llena de sabor.",
+        "category": "Carnitas Adobadas",
+        "image": "/productos/carneAdobada.webp"
+      },
+      {
+        "id": "carnitas-5",
+        "name": "Chuleta de Cerdo Adobada",
+        "description": "Sazonada con una mezcla especial de especias que realza su sabor y jugosidad. Ideal para freír, asar o cocinar a la plancha de forma rápida y deliciosa.",
+        "category": "Carnitas Adobadas",
+        "image": "/productos/carneAdobada.webp"
+      },
+      {
+        "id": "carnitas-6",
+        "name": "Combo Parrillero",
+        "description": "Incluye 1 kg de costilla de cerdo adobada, 1 kg de bistec de res adobado, 1 kg de filet de pollo adobado, 500 g de salchichón parrillero y 500 g de chorizo parrillero. Una selección perfecta para disfrutar de una parrillada variada, práctica y llena de sabor.",
         "category": "Carnitas Adobadas",
         "image": "/productos/carneAdobada.webp"
       }
