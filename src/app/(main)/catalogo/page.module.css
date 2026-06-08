@@ -241,11 +241,14 @@
 }
 
 .emptyMessage {
-  padding: 3rem;
+  padding: 3rem 1rem;
   text-align: center;
   color: #666;
   font-weight: 600;
   font-size: 1rem;
+  grid-column: 1 / -1;
+  justify-self: center;
+  align-self: start;
 }
 
 /* Responsivo */

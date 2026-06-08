@@ -160,13 +160,6 @@
         "image": "/newimages/postaCuartoEntera.webp"
       },
       {
-        "id": "res-27",
-        "name": "Vuelta de Lomo - REVISAR NO EXISTE EN PDF",
-        "description": "Corte tierno, adecuado para bistec o preparaciones rápidas.",
-        "category": "Carnes de Res",
-        "image": "/newimages/vueltaLomoRevisarNoExistePdf.webp"
-      },
-      {
         "id": "res-28",
         "name": "Trocitos de Res",
         "description": "Carne en cubos lista para guisos, estofados o salteados.",
@@ -235,20 +228,6 @@
         "description": "Carne de res joven, más suave y de sabor delicado. Ideal para preparaciones finas.",
         "category": "Carnes de Res",
         "image": "/newimages/postaTernero.webp"
-      },
-      {
-        "id": "res-38",
-        "name": "Hueso Pescuezo Entero - REVISAR NO EXISTE EN PDF",
-        "description": "Hueso de cuello con carne adherida y alto contenido de colágeno. Ideal para caldos y sopas de cocción prolongada.",
-        "category": "Carnes de Res",
-        "image": "/newimages/huesoPescuezoEnteroRevisarNoExistePdf.webp"
-      },
-      {
-        "id": "res-39",
-        "name": "Hueso Pescuezo Picado - REVISAR NO EXISTE EN PDF",
-        "description": "Presentación troceada para facilitar su uso. Hueso de cuello con carne adherida y alto contenido de colágeno. Ideal para caldos y sopas de cocción prolongada.",
-        "category": "Carnes de Res",
-        "image": "/newimages/huesoPescuezoPicadoRevisarNoExistePdf.webp"
       }
     ]
   },
