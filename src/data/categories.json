@@ -3,7 +3,7 @@
     "id": "res",
     "name": "Carnes de Res",
     "image": "vaca.png",
-    "imageCarousell": "https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=600&auto=format&fit=crop",
+    "imageCarrousel": "/images/categorias/catcarne.jpeg",
     "products": [
       {
         "id": "res-1",
@@ -17,7 +17,7 @@
         "name": "Bazo de Res",
         "description": "Víscera de sabor fuerte y textura suave. Recomendado para preparaciones tradicionales y guisos.",
         "category": "Carnes de Res",
-        "image": "/newimages/bazoRes.webp"
+        "image": "/newimages/bazo.webp"
       },
       {
         "id": "res-3",
@@ -55,18 +55,11 @@
         "image": "/newimages/mondongoPicado.webp"
       },
       {
-        "id": "res-8",
-        "name": "Caja Mondongo",
-        "description": "Presentación en volumen de mondongo seleccionado, lista para procesos comerciales o familiares.",
-        "category": "Carnes de Res",
-        "image": "/newimages/cajaMondongo.webp"
-      },
-      {
         "id": "res-9",
         "name": "Jarrete Picado",
         "description": "Corte con hueso y colágeno, ideal para caldos y estofados de larga cocción.",
         "category": "Carnes de Res",
-        "image": "/newimages/jarretePicado.webp"
+        "image": "/newimages/jarrete.webp"
       },
       {
         "id": "res-10",
@@ -83,25 +76,11 @@
         "image": "/newimages/costillaPicada.webp"
       },
       {
-        "id": "res-12",
-        "name": "Hueso Carnudo Entero - REVISAR NO EXISTE EN PDF",
-        "description": "Hueso con abundante carne adherida, perfecto para caldos sustanciosos.",
-        "category": "Carnes de Res",
-        "image": "/newimages/huesoCarnudoEnteroRevisarNoExistePdf.webp"
-      },
-      {
         "id": "res-13",
         "name": "Hueso Carnudo Picado",
         "description": "Versión troceada del hueso carnudo para facilitar su uso en sopas y preparaciones largas.",
         "category": "Carnes de Res",
         "image": "/newimages/huesoCarnudoPicado.webp"
-      },
-      {
-        "id": "res-14",
-        "name": "Hueso Consome Entero",
-        "description": "Hueso seleccionado para caldos claros y concentrados en sabor.",
-        "category": "Carnes de Res",
-        "image": "/newimages/huesoConsomeEntero.webp"
       },
       {
         "id": "res-15",
@@ -277,7 +256,7 @@
     "id": "cerdo",
     "name": "Carnes de Cerdo",
     "image": "cerdo.png",
-    "imageCarousell": "https://images.pexels.com/photos/410648/pexels-photo-410648.jpeg?auto=compress&cs=tinysrgb&h=600",
+    "imageCarrousel": "/images/categorias/catcerdo.jpeg",
     "products": [
       {
         "id": "cerdo-1",
@@ -425,13 +404,6 @@
         "description": "Corte jugoso y sabroso, ideal para preparar chicharrones, asados y guisos. Su equilibrio entre carne y grasa le aporta una textura suave y mucho sabor.",
         "category": "Carnes de Cerdo",
         "image": "/newimages/faldaCerdo.webp"
-      },
-      {
-        "id": "cerdo-22",
-        "name": "Costilla de Cerdo Ahumada",
-        "description": "Destaca por su sabor intenso y su textura jugosa. Es ideal para asar, hornear o preparar en parrilla, aportando un delicioso toque ahumado a cualquier comida.",
-        "category": "Carnes de Cerdo",
-        "image": "/newimages/costillaCerdoAhumada.webp"
       }
     ]
   },
@@ -439,7 +411,7 @@
     "id": "pollo",
     "name": "Pollo",
     "image": "pollo.png",
-    "imageCarousell": "https://images.unsplash.com/photo-1604503468506-a8da13d82791?q=80&w=600&auto=format&fit=crop",
+    "imageCarrousel": "/images/categorias/catpollo.jpeg",
     "products": [
       {
         "id": "pollo-1",
@@ -456,13 +428,6 @@
         "image": "/newimages/musloEntero.webp"
       },
       {
-        "id": "pollo-3",
-        "name": "Pollo Entero",
-        "description": "Pieza completa, versátil para asar, hornear o despresar según necesidad.",
-        "category": "Pollo",
-        "image": "/newimages/polloEntero.webp"
-      },
-      {
         "id": "pollo-4",
         "name": "Pechuga con Hueso",
         "description": "Corte que conserva el hueso para mayor jugosidad y sabor durante la cocción.",
@@ -474,7 +439,7 @@
         "name": "Muslito de Pollo",
         "description": "Corte pequeño con hueso, ideal para fritura, horno o preparaciones rápidas.",
         "category": "Pollo",
-        "image": "/newimages/muslitoPollo.webp"
+        "image": "/newimages/muslitosPollo.webp"
       },
       {
         "id": "pollo-6",
@@ -489,13 +454,6 @@
         "description": "Corte magro de pollo, de textura suave y cocción rápida. Versátil para diferentes usos.",
         "category": "Pollo",
         "image": "/newimages/pechuga.webp"
-      },
-      {
-        "id": "pollo-8",
-        "name": "Muslito de Muslo",
-        "description": "Corte jugoso y de excelente sabor, ideal para freír, hornear, asar o preparar en salsa. Su carne suave lo convierte en una opción práctica y versátil.",
-        "category": "Pollo",
-        "image": "/newimages/muslitoMuslo.webp"
       },
       {
         "id": "pollo-9",
@@ -552,7 +510,7 @@
     "id": "mar",
     "name": "Frutos del Mar",
     "image": "pescado.png",
-    "imageCarousell": "https://images.unsplash.com/photo-1615141982883-c7ad0e69fd62?q=80&w=600&auto=format&fit=crop",
+    "imageCarrousel": "/images/categorias/catmar.jpeg",
     "products": [
       {
         "id": "mar-1",
@@ -616,7 +574,7 @@
     "id": "embutidos",
     "name": "Embutidos",
     "image": "embutido.png",
-    "imageCarousell": "https://imgmedia.buenazo.pe/970x533/buenazo/original/2023/01/03/63b46e1847deb8340e430774.webp",
+    "imageCarrousel": "/images/categorias/catembutidos.jpeg",
     "products": [
       {
         "id": "embutidos-1",
@@ -701,7 +659,7 @@
     "id": "paqueteria",
     "name": "Paquetería",
     "image": "paquete.png",
-    "imageCarousell": "https://img.pikbest.com/ai/illus_our/20230423/8629197741abe82bea00ccaa172c0e29.jpg!w700wp",
+    "imageCarrousel": "/images/categorias/catpaqueteria.jpeg",
     "products": [
       {
         "id": "paqueteria-1",
@@ -715,7 +673,7 @@
         "name": "Papas para freír 1kg",
         "description": "Presentación práctica de papas listas para freír. Ideales para uso doméstico.",
         "category": "Paquetería",
-        "image": "/newimages/papasFreir1kg.webp"
+        "image": "/newimages/papaFreir1k.webp"
       },
       {
         "id": "paqueteria-3",
@@ -729,28 +687,28 @@
         "name": "Muslito Pollo Empanizado Kimby",
         "description": "Opción práctica y deliciosa, con una cobertura crujiente y dorada. Ideal para freír u hornear y disfrutar de una comida rápida y llena de sabor.",
         "category": "Paquetería",
-        "image": "/newimages/muslitoPolloEmpanizadoKimby.webp"
+        "image": "/newimages/muslitosKimby.webp"
       },
       {
         "id": "paqueteria-5",
         "name": "Tortas de Pollo Empanizadas Kimby",
         "description": "Opción práctica y deliciosa, con una cobertura crujiente y un interior jugoso. Ideales para preparar hamburguesas o acompañar con tus guarniciones favoritas.",
         "category": "Paquetería",
-        "image": "/newimages/tortasPolloEmpanizadasKimby.webp"
+        "image": "/newimages/tortitasKimby.webp"
       },
       {
         "id": "paqueteria-6",
         "name": "Rocadinos Kimby",
         "description": "Bocaditos de pollo empanizados, crujientes por fuera y jugosos por dentro. Ideales para preparar de forma rápida y disfrutar como merienda, acompañamiento o plato principal.",
         "category": "Paquetería",
-        "image": "/newimages/rocadinosKimby.webp"
+        "image": "/newimages/rocaditosKimby.webp"
       },
       {
         "id": "paqueteria-7",
         "name": "Palitos Pollo Kimby",
         "description": "Tiras de pollo empanizadas, crujientes y deliciosas. Ideales para preparar de forma rápida y disfrutar como merienda o acompañamiento.",
         "category": "Paquetería",
-        "image": "/newimages/palitosPolloKimby.webp"
+        "image": "/newimages/palitosKimby.webp"
       },
       {
         "id": "paqueteria-8",
@@ -764,7 +722,7 @@
         "name": "Medallones Pollo Kimby",
         "description": "Piezas de pollo empanizadas, crujientes por fuera y suaves por dentro. Ideales para preparar de forma rápida y disfrutar en cualquier comida.",
         "category": "Paquetería",
-        "image": "/newimages/medallonesPolloKimby.webp"
+        "image": "/newimages/medallonesKimby.webp"
       },
       {
         "id": "paqueteria-10",
@@ -785,7 +743,7 @@
         "name": "Maíz para Pozol",
         "description": "Ingrediente ideal para preparar esta tradicional receta costarricense. Su textura y sabor lo hacen perfecto para obtener un pozol casero, espeso y delicioso.",
         "category": "Paquetería",
-        "image": "/newimages/maizPozol.webp"
+        "image": "/newimages/maizParaPozol.webp"
       },
       {
         "id": "paqueteria-13",
@@ -800,7 +758,7 @@
     "id": "lacteos",
     "name": "Lácteos y Huevos",
     "image": "lacteo.png",
-    "imageCarousell": "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?q=80&w=600&auto=format&fit=crop",
+    "imageCarrousel": "/images/categorias/cathuevos.jpeg",
     "products": [
       {
         "id": "lacteos-1",
@@ -864,7 +822,7 @@
     "id": "carnitas",
     "name": "Carnitas Adobadas",
     "image": "fuego.png",
-    "imageCarousell": "https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600&auto=format&fit=crop",
+    "imageCarrousel": "/images/categorias/catadobada.jpeg",
     "products": [
       {
         "id": "carnitas-1",

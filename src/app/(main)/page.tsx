@@ -5,15 +5,20 @@ import FadeSeparator from "@/components/common/(FadeSeparator)/FadeSeparator";
 import LandingVideo from "@/components/common/(LandingVideo)/LandingVideo";
 import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
 import ServicesSection from "@/components/common/(ServicesSection)/ServicesSection";
-import SimpleVideo from "@/components/common/(SimpleVideo)/SimpleVideo";
 import SpotlightCarousel from "@/components/common/(SpotlightCarousel)/SpotlightCarousel";
 
 export default function Home() {
   return (
     /* 2. Envolver todo el contenido que pueda contener hooks de búsqueda */
     <Suspense fallback={<div>Cargando...</div>}>
-      <div>
-        <LandingVideo src="/video/landing.mp4" />
+      <div
+        style={{
+          flex: 1,
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <LandingVideo src="/video/landing.webm" />
         <SectionHeader
           title="Productos"
           description="Descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa."

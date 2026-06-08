@@ -33,13 +33,34 @@ export default function RootLayout({
     <html lang="es">
       <body
         className={`layout-container ${inter.variable} ${beVietnam.variable}`}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          width: "100%",
+          height: "100dvh",
+          overflow: "hidden",
+          margin: 0,
+        }}
       >
         {/* 2. Envolver Navbar porque suele manejar la búsqueda/URL */}
-        <Suspense fallback={<div style={{ height: "80px" }} />}>
+        <Suspense fallback={<div style={{ height: "65px" }} />}>
           <Navbar />
         </Suspense>
 
-        <main className="main-content">{children}</main>
+        <main
+          className="main-content"
+          style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            width: "100%",
+            minHeight: 0,
+            overflow: "hidden auto",
+          }}
+        >
+          {children}
+          <ConditionalFooter />
+        </main>
 
         {/* 3. Envolver FloatingActions por si acaso dependen de la URL */}
         <div className="floating-actions-wrapper">
@@ -47,8 +68,6 @@ export default function RootLayout({
             <FloatingActions />
           </Suspense>
         </div>
-
-        <ConditionalFooter />
       </body>
     </html>
   );

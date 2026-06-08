@@ -73,7 +73,7 @@ function CatalogoContent() {
   const filteredCategories = useCatalogSearch(searchQuery, activeCategories);
 
   return (
-    <main className={styles.pageWrapper}>
+    <div className={styles.contentLayoutFull}>
       <div className={styles.contentLayout}>
         {!isMobile && (
           <motion.div
@@ -271,7 +271,7 @@ function CatalogoContent() {
         onClose={() => setSelectedProduct(null)}
         product={selectedProduct}
       />
-    </main>
+    </div>
   );
 }
 
