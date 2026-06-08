@@ -13,3 +13,9 @@
 
   overflow: hidden;
 }
+
+@media (max-width: 1024px) {
+  .servicesSection {
+    padding: 15px;
+  }
+}

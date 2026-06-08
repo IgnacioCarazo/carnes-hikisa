@@ -79,6 +79,20 @@
   }
 }
 
+@media (max-width: 1024px) {
+  .spotlightItem {
+    gap: 40px;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+  .spotlightItemImage {
+    width: 320px;
+    height: 320px;
+    flex: 0 0 320px;
+    margin-top: 0;
+  }
+}
+
 @media (max-width: 770px) {
   .spotlightItem {
     flex-direction: column;

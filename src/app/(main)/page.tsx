@@ -15,7 +15,7 @@ export default function Home() {
       <div>
         <LandingVideo src="/video/landing.mp4" />
         <SectionHeader
-          title="Todo lo que ofrecemos"
+          title="Productos"
           description="Descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa."
           color="black"
         />
@@ -25,7 +25,6 @@ export default function Home() {
         <FadeSeparator height={100} />
         <SectionHeader title="¿Cómo nos destacamos?" color="black" />
         <ServicesSection />
-        <SimpleVideo src="/video/landing.mp4" />
       </div>
     </Suspense>
   );
