@@ -1,7 +1,7 @@
 [
   {
     "id": "res",
-    "name": "Carnes de Res",
+    "name": "Res",
     "image": "vaca.png",
     "imageCarrousel": "/images/categorias/catcarne.jpeg",
     "products": [
@@ -233,7 +233,7 @@
   },
   {
     "id": "cerdo",
-    "name": "Carnes de Cerdo",
+    "name": "Cerdo",
     "image": "cerdo.png",
     "imageCarrousel": "/images/categorias/catcerdo.jpeg",
     "products": [
@@ -487,7 +487,7 @@
   },
   {
     "id": "mar",
-    "name": "Frutos del Mar",
+    "name": "Pescado",
     "image": "pescado.png",
     "imageCarrousel": "/images/categorias/catmar.jpeg",
     "products": [
@@ -799,7 +799,7 @@
   },
   {
     "id": "carnitas",
-    "name": "Carnitas Adobadas",
+    "name": "Adobados",
     "image": "fuego.png",
     "imageCarrousel": "/images/categorias/catadobada.jpeg",
     "products": [

@@ -28,7 +28,7 @@ export default function Home() {
         <SectionHeader title="Nuestra Selección" color="black" />
         <SpotlightCarousel />
         <FadeSeparator height={100} />
-        <SectionHeader title="¿Cómo nos destacamos?" color="black" />
+        <SectionHeader title="¿Por qué elegirnos?" color="black" />
         <ServicesSection />
       </div>
     </Suspense>
