@@ -1,5 +1,5 @@
 "use client";
-import Image from 'next/image';
+import Image from "next/image";
 
 import { useIsMobile } from "@/hooks/useIsMobile";
 

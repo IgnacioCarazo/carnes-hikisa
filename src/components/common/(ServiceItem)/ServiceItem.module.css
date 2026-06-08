@@ -44,7 +44,7 @@
 .serviceItemTitleRow {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 24px;
 }
 
 .serviceItemTitle {
@@ -65,6 +65,26 @@
 
   opacity: 0.9;
   text-align: justify;
+}
+
+@media (max-width: 1024px) {
+  .serviceItem {
+    width: 90%;
+  }
+  .serviceItemImage {
+    width: 320px;
+    height: 260px;
+
+    flex: 0 0 auto;
+  }
+
+  .serviceItemTitle {
+    font-size: 28px;
+  }
+
+  .serviceItemDescription {
+    font-size: 16px;
+  }
 }
 
 @media (max-width: 768px) {

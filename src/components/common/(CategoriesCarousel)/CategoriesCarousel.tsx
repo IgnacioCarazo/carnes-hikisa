@@ -86,7 +86,7 @@ const CategoriesCarousel = () => {
                 >
                   <CatCarouselCard
                     title={category.name}
-                    image={category.imageCarousell}
+                    image={category.imageCarrousel}
                     isActive={isActive}
                   />
                 </div>
