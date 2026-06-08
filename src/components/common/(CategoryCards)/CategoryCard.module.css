@@ -7,29 +7,33 @@
   border: 2px solid #e0e0e0;
   border-radius: 40px;
   cursor: pointer;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Transición más fluida */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   gap: 16px;
   outline: none;
   position: relative;
 }
 
-/* Hover: Borde rojo, elevación y sombra sutil */
 .card:hover {
   border-color: #e31b23;
-  transform: translateY(-4px); /* Se eleva un poco */
-  box-shadow: 0 10px 20px rgba(227, 27, 35, 0.1); /* Resplandor rojo muy suave */
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(227, 27, 35, 0.1);
 }
 
-/* Cuando se presiona (Click) */
 .card:active {
   transform: translateY(-1px);
   box-shadow: 0 5px 10px rgba(227, 27, 35, 0.15);
 }
 
-/* Estado seleccionado */
+/* ------------------------------
+   ON / OFF lógico con .active
+   - Sin active → borde gris (#e0e0e0), fondo blanco
+   - Con active  → borde rojo (#e31b23), fondo rojizo
+   Con !important para evitar
+   conflicto con hover/active
+   ------------------------------ */
 .active {
-  border: 2px solid #e31b23;
-  background-color: #fff5f5; /* Un fondo rojizo casi imperceptible */
+  border: 2px solid #e31b23 !important;
+  background-color: #fff5f5 !important;
 }
 
 .iconContainer {
@@ -42,7 +46,7 @@
 }
 
 .card:hover .iconContainer {
-  transform: scale(1.1); /* El icono crece un poco al pasar el mouse */
+  transform: scale(1.1);
 }
 
 .name {

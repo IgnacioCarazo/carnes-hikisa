@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-
 import SearchResultItem from "@/components/common/(SearchBar)/SearchResultItem";
 import { Product } from "@/types/product";
 
@@ -18,21 +16,18 @@ const SearchDropdown = ({
   isNoResults,
   onSelect,
 }: Props) => (
-  <motion.div
-    initial={{ opacity: 0, y: 10, scale: 0.98 }}
-    animate={{ opacity: 1, y: 0, scale: 1 }}
-    exit={{ opacity: 0, y: 10, scale: 0.98 }}
-    className={styles.searchResultsDropdown}
-  >
+  <div className={styles.searchResultsDropdown}>
     {isLoading && <div className={styles.searchStatus}>Buscando...</div>}
     {!isLoading && isNoResults && (
-      <div className={styles.searchStatus}>No hay resultados</div>
+      <div className={styles.searchStatus}>
+        No se encontraron productos que coincidan con tu búsqueda.
+      </div>
     )}
     {!isLoading &&
-      results.map((p, i) => (
-        <SearchResultItem key={p.id} product={p} index={i} onClick={onSelect} />
+      results.map((p) => (
+        <SearchResultItem key={p.id} product={p} onClick={onSelect} />
       ))}
-  </motion.div>
+  </div>
 );
 
 export default SearchDropdown;

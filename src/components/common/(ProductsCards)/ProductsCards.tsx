@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import Image from "next/image";
 import React from "react";
 
@@ -20,13 +20,42 @@ interface ProductsCardsProps {
   onProductClick: (product: Product) => void;
 }
 
+/* ------------------------------------------------------------------ */
+/*  Variantes de cada tarjeta individual (cardVariants).              */
+/*  DEFINIDAS FUERA del componente: no se recrean en cada render.     */
+/*  El stagger lo controla el padre (ProductGrid) con staggerChildren.*/
+/*  Solo animamos propiedades ligeras (opacity, y, scale) con spring  */
+/*  elástico suave para evitar recálculos de layout pesados.          */
+/* ------------------------------------------------------------------ */
+const cardVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    y: 25,
+    scale: 0.93,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring",
+      stiffness: 130,
+      damping: 13,
+      mass: 0.8,
+    },
+  },
+};
+
+/* ------------------------------------------------------------------ */
+/*  Componente                                                        */
+/* ------------------------------------------------------------------ */
 const ProductsCards: React.FC<ProductsCardsProps> = ({
   categories,
   onProductClick,
 }) => {
   if (!categories) return null;
 
-  // Aplanamos todos los productos con su respectivo índice global
+  // Aplanamos todos los productos con su respectiva categoría
   const allProducts = categories.flatMap((category) =>
     category.products.map((product) => ({ product, category })),
   );
@@ -39,18 +68,9 @@ const ProductsCards: React.FC<ProductsCardsProps> = ({
         return (
           <motion.div
             key={product.id}
-            layout
-            initial={{ opacity: 0, scale: 0.98, y: 10 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.98, transition: { duration: 0.2 } }}
-            transition={{
-              type: "spring",
-              stiffness: 80,
-              damping: 20,
-              mass: 1,
-              delay: globalIndex * 0.03,
-            }}
-            className={styles.card}
+            layout="position" // ← Solo reordena con transforms (GPU), sin FLIP costoso
+            variants={cardVariants} // ← Hereda el staggerChildren del padre (ProductGrid)
+            className={`${styles.card} will-change-transform`}
             onClick={() => onProductClick(product)}
           >
             <div className={styles.imageContainer}>

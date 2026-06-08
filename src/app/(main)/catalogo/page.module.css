@@ -253,9 +253,19 @@
 
 /* Responsivo */
 @media (max-width: 1024px) {
+  .pageWrapper {
+    overflow: visible;
+  }
+  .contentLayoutFull {
+    overflow: visible;
+  }
   .contentLayout {
     padding: 1rem;
     gap: 0;
+    overflow: visible;
+  }
+  .mainContent {
+    overflow: visible;
   }
   .filterHeaderWrapper {
     flex-direction: column;
@@ -271,5 +281,10 @@
   .rightSearchContainer > div,
   .rightSearchContainer input {
     width: 100% !important;
+  }
+
+  .filterCardsContainer {
+    overflow-x: visible;
+    flex-wrap: wrap;
   }
 }

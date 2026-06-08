@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import Image from "next/image";
 
 import { Product } from "@/types/product";
@@ -8,17 +7,10 @@ import styles from "./SearchResultItem.module.css";
 interface Props {
   product: Product;
   onClick: (name: string) => void;
-  index?: number;
 }
 
-const SearchResultItem = ({ product, onClick, index = 0 }: Props) => (
-  <motion.div
-    initial={{ opacity: 0, x: -10 }}
-    animate={{ opacity: 1, x: 0 }}
-    transition={{ delay: index * 0.05 }}
-    className={styles.miniCard}
-    onClick={() => onClick(product.name)}
-  >
+const SearchResultItem = ({ product, onClick }: Props) => (
+  <div className={styles.miniCard} onClick={() => onClick(product.name)}>
     <div className={styles.miniImageContainer}>
       <Image
         src={product.image}
@@ -35,7 +27,7 @@ const SearchResultItem = ({ product, onClick, index = 0 }: Props) => (
       <h3 className={styles.miniTitle}>{product.name}</h3>
       <span className={styles.miniCategory}>{product.categoryName}</span>
     </div>
-  </motion.div>
+  </div>
 );
 
 export default SearchResultItem;

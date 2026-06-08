@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useState, useEffect, useMemo } from "react";
 
 import menuDataRaw from "@/data/categories.json";
+import { buildExtendedQuery } from "@/lib/search";
 import { Product, Category } from "@/types/product";
 
 import styles from "./SearchBar.module.css";
@@ -16,6 +17,7 @@ const SearchBar = () => {
   const searchParams = useSearchParams();
 
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [tempSearch, setTempSearch] = useState(
     searchParams.get("search") || "",
@@ -28,6 +30,7 @@ const SearchBar = () => {
     return data.flatMap((cat: Category) =>
       cat.products.map((p) => ({
         ...p,
+        image: p.image,
         categoryName: cat.name,
       })),
     );
@@ -46,17 +49,15 @@ const SearchBar = () => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       const query = tempSearch.trim();
-      const terms = query.toLowerCase().split(" ");
       if (query.length < 2) {
         setResults([]);
         setIsLoading(false);
       } else {
-        let fuzzyResults = fuse.search(query).map((r) => r.item);
-        fuzzyResults = fuzzyResults.filter((item) =>
-          terms.every((t) => item.name.toLowerCase().includes(t)),
-        );
+        const extended = buildExtendedQuery(query);
+        const fuzzyResults = fuse.search(extended).map((r) => r.item);
         setResults(fuzzyResults.slice(0, 4));
         setIsLoading(false);
+        setIsDropdownOpen(true);
       }
     }, 350);
     return () => clearTimeout(delayDebounceFn);
@@ -78,22 +79,35 @@ const SearchBar = () => {
           value={tempSearch}
           onChange={(val) => {
             setTempSearch(val);
-            setIsLoading(true);
           }}
           onClear={() => {
             setTempSearch("");
             setResults([]);
+            setIsDropdownOpen(false);
           }}
           onKeyDown={(e) => e.key === "Enter" && executeSearch(tempSearch)}
           placeholder="Buscar cortes..."
         />
-        {(results.length > 0 || isLoading) && (
-          <SearchDropdown
-            results={results}
-            isLoading={isLoading}
-            isNoResults={results.length === 0}
-            onSelect={executeSearch}
-          />
+        {isDropdownOpen && (
+          <>
+            <div
+              className={styles.searchOverlay}
+              onClick={() => {
+                setIsDropdownOpen(false);
+                setTempSearch("");
+                setResults([]);
+              }}
+            />
+            <SearchDropdown
+              results={results}
+              isLoading={isLoading}
+              isNoResults={results.length === 0}
+              onSelect={(name) => {
+                executeSearch(name);
+                setIsDropdownOpen(false);
+              }}
+            />
+          </>
         )}
       </div>
 

@@ -14,8 +14,8 @@ import SectionHeader from "@/components/common/(SectionHeader)/SectionHeader";
 import ProductModal from "@/components/common/ProductModal/ProductModal";
 import categoriesDataRaw from "@/data/categories.json";
 import { useCatalogSearch } from "@/hooks/useCatalogSearch";
-import { useIsMobile } from "@/hooks/useIsTabletMobile";
-import type { Category, Product } from "@/types/product";
+import { useIsMobile } from "@/hooks/useIsMobile";
+import type { Product } from "@/types/product";
 
 import styles from "./page.module.css";
 
@@ -25,7 +25,7 @@ function CatalogoContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile(1024);
 
   const [isOpen, setIsOpen] = useState(false);
 
@@ -47,7 +47,7 @@ function CatalogoContent() {
     if (newCategories.length > 0)
       params.set("categories", newCategories.join(","));
     else params.delete("categories");
-    router.push(`${pathname}?${params.toString()}`, { scroll: false });
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
   const handleCategoryChange = (id: string) => {
@@ -76,10 +76,10 @@ function CatalogoContent() {
     <div className={styles.contentLayoutFull}>
       <div className={styles.contentLayout}>
         {!isMobile && (
-          <motion.div
-            className={styles.sidebarArea}
-            animate={{ width: isOpen ? "340px" : "80px" }}
-            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          <div
+            className={`${styles.sidebarArea} transition-all duration-300 ease-in-out ${
+              isOpen ? "w-[340px]" : "w-[80px]"
+            }`}
           >
             <AnimatePresence mode="wait">
               {isOpen ? (
@@ -115,7 +115,7 @@ function CatalogoContent() {
                 )
               )}
             </AnimatePresence>
-          </motion.div>
+          </div>
         )}
 
         {isMobile && (

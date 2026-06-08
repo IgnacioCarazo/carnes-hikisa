@@ -1,7 +1,8 @@
 import Fuse from "fuse.js";
-import { useMemo } from "react";
+import { useDeferredValue, useMemo } from "react";
 
 import categoriesDataRaw from "@/data/categories.json";
+import { buildExtendedQuery } from "@/lib/search";
 import { Product, Category } from "@/types/product";
 
 const categoriesData = categoriesDataRaw as Category[];
@@ -14,31 +15,24 @@ type ProductIndexed = Product & {
   categoryName: string;
 };
 
-function buildExtendedQuery(query: string) {
-  const terms = query.trim().toLowerCase().split(" ").filter(Boolean);
-  return terms.map((t) => `'${t}`).join(" ");
-}
-
 export function useCatalogSearch(
   searchQuery: string,
   activeCategories: string[],
 ) {
-  /**
-   * Indexación de productos con metadata de categoría
-   */
+  const deferredQuery = useDeferredValue(searchQuery);
+  const isSearchStale = searchQuery !== deferredQuery;
+
   const allProducts = useMemo<ProductIndexed[]>(() => {
     return categoriesData.flatMap((cat) =>
       cat.products.map((p) => ({
         ...p,
+        image: p.image,
         categoryId: cat.id,
         categoryName: cat.name,
       })),
     );
   }, []);
 
-  /**
-   * Índice Fuse único
-   */
   const fuse = useMemo(() => {
     return new Fuse<ProductIndexed>(allProducts, {
       keys: ["name", "categoryName"],
@@ -47,18 +41,15 @@ export function useCatalogSearch(
     });
   }, [allProducts]);
 
-  /**
-   * Pipeline de búsqueda + filtros
-   */
-  return useMemo(() => {
-    const hasSearch = searchQuery.trim().length > 0;
+  const results = useMemo(() => {
+    const hasSearch = deferredQuery.trim().length > 0;
     const hasFilters = activeCategories.length > 0;
 
     let results: ProductIndexed[] = allProducts;
 
-    // 1. SEARCH GLOBAL
+    // 1. SEARCH GLOBAL (usa deferredQuery, no searchQuery)
     if (hasSearch) {
-      const extended = buildExtendedQuery(searchQuery);
+      const extended = buildExtendedQuery(deferredQuery);
       results = fuse.search(extended).map((r) => r.item);
     }
 
@@ -76,5 +67,7 @@ export function useCatalogSearch(
       .filter((cat) => cat.products.length > 0);
 
     return grouped;
-  }, [searchQuery, activeCategories, fuse, allProducts]);
+  }, [deferredQuery, activeCategories, fuse, allProducts]);
+
+  return results;
 }

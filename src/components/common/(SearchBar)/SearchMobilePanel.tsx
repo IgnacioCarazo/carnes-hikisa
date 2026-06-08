@@ -39,6 +39,11 @@ const SearchMobilePanel = ({
       </button>
     </div>
     <div className={styles.searchPanelContent}>
+      {value.trim().length >= 1 && results.length === 0 && (
+        <div className={styles.noResultsMessage}>
+          No se encontraron productos que coincidan con tu búsqueda.
+        </div>
+      )}
       {results.map((p) => (
         <SearchResultItem key={p.id} product={p} onClick={onSelect} />
       ))}
