@@ -73,9 +73,7 @@ const SpotlightCarousel = () => {
     return extracted;
   }, []);
 
-  const [activeIndex, setActiveIndex] = useState(
-    items.length > 0 ? Math.floor(items.length / 2) : 0,
-  );
+  const [activeIndex, setActiveIndex] = useState(0);
   const [visible, setVisible] = useState(true);
 
   // --- NAVEGACIÓN AL CATÁLOGO ---
