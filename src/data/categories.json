@@ -43,14 +43,14 @@
       {
         "id": "res-7",
         "name": "Costilla de Res Entera",
-        "description": "",
+        "description": "Corte con hueso y grasa que aporta sabor. Ideal para parrilla, horno, ahumada y sopas.",
         "category": "Carnes de Res",
         "image": "/productos/costillaResEntera.webp"
       },
       {
         "id": "res-8",
         "name": "Costilla de Res Picada",
-        "description": "",
+        "description": "Costilla troceada para preparación rápida en parrilla o sopas.",
         "category": "Carnes de Res",
         "image": "/productos/costillaResPicada.webp"
       },
@@ -69,25 +69,11 @@
         "image": "/productos/huesoCarnudoPicado.webp"
       },
       {
-        "id": "res-13",
-        "name": "Hueso Consomé",
-        "description": "",
-        "category": "Carnes de Res",
-        "image": "/productos/huesoConsome.webp"
-      },
-      {
         "id": "res-14",
-        "name": "Hueso Consome Picado",
+        "name": "Hueso Consomé Picado",
         "description": "Presentación práctica para una extracción rápida de sabor en sopas.",
         "category": "Carnes de Res",
         "image": "/productos/huesoConsomePicado.webp"
-      },
-      {
-        "id": "res-15",
-        "name": "Hueso Pescuezo Entero",
-        "description": "",
-        "category": "Carnes de Res",
-        "image": "/productos/huesoPescuezoEnteroRevisarNoExistePdf.webp"
       },
       {
         "id": "res-16",
@@ -206,7 +192,7 @@
         "name": "Posta Pecho",
         "description": "Corte con mayor contenido de grasa, aporta jugosidad en preparaciones largas.",
         "category": "Carnes de Res",
-        "image": "/productos/postaPecho.webp"
+        "image": "/productos/pechoRes.webp"
       },
       {
         "id": "res-36",
@@ -237,25 +223,18 @@
         "image": "/productos/rinonesRes.webp"
       },
       {
-        "id": "res-40",
-        "name": "Solomo",
-        "description": "Corte perfecto para hacer tacos y carne mechada.",
-        "category": "Carnes de Res",
-        "image": "/productos/solomo.webp"
-      },
-      {
-        "id": "res-41",
-        "name": "Tortas de Hamburguesa",
-        "description": "",
-        "category": "Carnes de Res",
-        "image": "/productos/tortasHamburguesa.webp"
-      },
-      {
         "id": "res-42",
         "name": "Trocitos de Res",
         "description": "Carne en cubos lista para guisos, estofados o salteados.",
         "category": "Carnes de Res",
         "image": "/productos/trocitosRes.webp"
+      },
+      {
+        "id": "res-50",
+        "name": "Punta de Solomo",
+        "description": "Corte perfecto para hacer tacos y carne mechada.",
+        "category": "Carnes de Res",
+        "image": "/productos/solomo.webp"
       }
     ]
   },
@@ -324,7 +303,7 @@
       {
         "id": "cerdo-11",
         "name": "Costilla de Cerdo Ahumada Picada",
-        "description": "",
+        "description": "Porciones listas para facilitar su cocción y servicio.",
         "category": "Carnes de Cerdo",
         "image": "/productos/costillaCerdoAhumadaPicada.webp"
       },
@@ -364,13 +343,6 @@
         "image": "/productos/papada.webp"
       },
       {
-        "id": "cerdo-19",
-        "name": "Pecho de Res",
-        "description": "",
-        "category": "Carnes de Cerdo",
-        "image": "/productos/pechoRes.webp"
-      },
-      {
         "id": "cerdo-20",
         "name": "Pellejo de Cerdo",
         "description": "Piel de cerdo, utilizada para fritura o como base en preparaciones tradicionales.",
@@ -399,13 +371,6 @@
         "image": "/productos/postaCerdo.webp"
       },
       {
-        "id": "cerdo-26",
-        "name": "Punta de Solomo",
-        "description": "",
-        "category": "Carnes de Cerdo",
-        "image": "/productos/solomo.webp"
-      },
-      {
         "id": "cerdo-27",
         "name": "Tripa de Cerdo",
         "description": "Producto limpio y listo para uso en la elaboración de embutidos.",
@@ -418,6 +383,13 @@
         "description": "Carne en cubos lista para guisos, estofados o salteados.",
         "category": "Carnes de Cerdo",
         "image": "/productos/trocitosCerdo.webp"
+      },
+      {
+        "id": "cerdo-29",
+        "name": "Costilla de Cerdo Picada",
+        "description": "Costilla troceada para preparación rápida en parrilla o sopas.",
+        "category": "Carnes de Cerdo",
+        "image": "/productos/costillaCerdopicada.webp"
       }
     ]
   },
@@ -507,7 +479,7 @@
       {
         "id": "pollo-16",
         "name": "Pollo Entero",
-        "description": "",
+        "description": "Pieza completa, versátil para asar, hornear o despresar según necesidad.",
         "category": "Pollo",
         "image": "/productos/polloEntero.webp"
       },
@@ -598,20 +570,6 @@
         "image": "/productos/anilloSalchichon.webp"
       },
       {
-        "id": "embutidos-2",
-        "name": "Chorizo con Chile",
-        "description": "",
-        "category": "Embutidos",
-        "image": "/productos/chorizoConChile.webp"
-      },
-      {
-        "id": "embutidos-3",
-        "name": "Chorizo Criollo",
-        "description": "",
-        "category": "Embutidos",
-        "image": "/productos/chorizoCriollo.webp"
-      },
-      {
         "id": "embutidos-4",
         "name": "Chorizo de Cerdo con Chile",
         "description": "Embutido con toque picante, de sabor marcado. Apto para parrilla o sartén.",
@@ -631,20 +589,6 @@
         "description": "Embutido elaborado con carne de cerdo y mezcla de especias seleccionadas. Sabor equilibrado y textura firme.",
         "category": "Embutidos",
         "image": "/productos/chorizoEspecial.webp"
-      },
-      {
-        "id": "embutidos-7",
-        "name": "Chorizo Especial",
-        "description": "",
-        "category": "Embutidos",
-        "image": "/productos/chorizoEspecial.webp"
-      },
-      {
-        "id": "embutidos-8",
-        "name": "Hueso Pescuezo Picado",
-        "description": "",
-        "category": "Embutidos",
-        "image": "/productos/huesoPescuezoPicadoRevisarNoExistePdf.webp"
       },
       {
         "id": "embutidos-9",
@@ -775,7 +719,7 @@
       },
       {
         "id": "paqueteria-10",
-        "name": "Torta Res Hamburguesas Unidad",
+        "name": "Tortas Hamburguesas Unidad",
         "description": "Porciones individuales listas para cocinar, ideales para preparar hamburguesas caseras jugosas y llenas de sabor. Perfectas para una comida rápida y deliciosa.",
         "category": "Paquetería",
         "image": "/productos/tortasHamburguesa.webp"
@@ -885,7 +829,7 @@
         "name": "Chuleta de Cerdo Adobada",
         "description": "Sazonada con una mezcla especial de especias que realza su sabor y jugosidad. Ideal para freír, asar o cocinar a la plancha de forma rápida y deliciosa.",
         "category": "Carnitas Adobadas",
-        "image": "/productos/chuletaCabezaEntera.webp"
+        "image": "/productos/revisar.webp"
       },
       {
         "id": "carnitas-4",
@@ -903,7 +847,7 @@
       },
       {
         "id": "carnitas-6",
-        "name": "Pechuga Filet Adobada",
+        "name": "Pechuga Pollo Adobada",
         "description": "Sazonada con una mezcla especial de especias que realza su sabor y jugosidad. Ideal para cocinar a la plancha, asar u hornear y disfrutar de una comida práctica y deliciosa.",
         "category": "Carnitas Adobadas",
         "image": "/productos/pechugaFiletAdobada.webp"
