@@ -51,6 +51,7 @@ export default function RootLayout({
         }}
       >
         {/* 2. Envolver Navbar porque suele manejar la búsqueda/URL */}
+
         <Navbar />
         <Suspense fallback={<div style={{ height: "65px" }} />}>
           <main
