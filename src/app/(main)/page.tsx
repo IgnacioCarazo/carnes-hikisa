@@ -20,7 +20,7 @@ export default function Home() {
           flexDirection: "column",
         }}
       >
-        <LandingVideo src="/video/landing.webm" />
+        <LandingVideo src="https://res.cloudinary.com/dfh4b2nlw/video/upload/v1780978885/landing_onrao2.webm" />
         <SectionHeader
           title="Productos"
           description="Descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa."
