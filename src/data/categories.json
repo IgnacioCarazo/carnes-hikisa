@@ -132,13 +132,6 @@
         "image": "/productos/manoPiedraAhumada.webp"
       },
       {
-        "id": "res-22",
-        "name": "Menudos",
-        "description": "",
-        "category": "Carnes de Res",
-        "image": "/productos/menudos.webp"
-      },
-      {
         "id": "res-23",
         "name": "Molida de Res Especial",
         "description": "Carne molida balanceada en grasa, ideal para uso diario en múltiples preparaciones.",
@@ -467,7 +460,7 @@
         "name": "Menudos de Pollo",
         "description": "Incluyen partes como hígado, corazón y molleja, ideales para sopas, arroces y recetas tradicionales llenas de sabor.",
         "category": "Pollo",
-        "image": "/productos/revisar.webp"
+        "image": "/productos/menudos.webp"
       },
       {
         "id": "pollo-7",
@@ -498,20 +491,6 @@
         "image": "/productos/patasPollo.webp"
       },
       {
-        "id": "pollo-11",
-        "name": "Pechuga",
-        "description": "Corte magro de pollo, de textura suave y cocción rápida. Versátil para diferentes usos.",
-        "category": "Pollo",
-        "image": "/productos/pechugaEnterarevisar.webp"
-      },
-      {
-        "id": "pollo-12",
-        "name": "Pechuga con Hueso",
-        "description": "Corte que conserva el hueso para mayor jugosidad y sabor durante la cocción.",
-        "category": "Pollo",
-        "image": "/productos/pechugaEnterarevisar.webp"
-      },
-      {
         "id": "pollo-13",
         "name": "Pechuga Deshuesada",
         "description": "Corte magro, sin hueso, de textura suave. Ideal para plancha, sartén o preparaciones saludables.",
@@ -521,7 +500,7 @@
       {
         "id": "pollo-14",
         "name": "Pechuga Entera",
-        "description": "",
+        "description": "Corte que conserva el hueso para mayor jugosidad y sabor durante la cocción.",
         "category": "Pollo",
         "image": "/productos/pechugaEntera.webp"
       },
