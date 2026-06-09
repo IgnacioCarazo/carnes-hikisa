@@ -41,9 +41,11 @@
   display: flex;
   flex-direction: column;
   flex-shrink: 0;
-  height: 100%;
+  height: calc(100% - 0.75rem);
+  min-height: 0;
   z-index: 20;
-  align-items: center;
+  align-items: stretch;
+  margin-bottom: 0.75rem;
 }
 
 .buttonCenterer {
@@ -251,8 +253,17 @@
   align-self: start;
 }
 
-/* Responsivo */
-@media (max-width: 1024px) {
+/* Ocultar el sidebar desktop y mostrar botón mobile en resoluciones ≤ 1366px */
+@media (max-width: 1366px) {
+  .sidebarArea {
+    display: none !important;
+  }
+
+  /* Mostrar botón mobile desde el primer paint */
+  .mobileFilterBtn {
+    display: flex !important;
+  }
+
   .pageWrapper {
     overflow: visible;
   }
@@ -286,5 +297,12 @@
   .filterCardsContainer {
     overflow-x: visible;
     flex-wrap: wrap;
+  }
+}
+
+/* En desktop (> 1366px), ocultar botón mobile por si JS lo muestra por error */
+@media (min-width: 1367px) {
+  .mobileFilterBtn {
+    display: none !important;
   }
 }
