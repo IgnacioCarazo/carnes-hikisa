@@ -32,7 +32,7 @@ const LandingVideo = ({ src, poster }: LandingVideoProps) => {
         muted
         loop
         playsInline
-        preload="auto"
+        preload="metadata"
         onCanPlayThrough={() => setLoaded(true)}
       />
     </div>

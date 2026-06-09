@@ -31,6 +31,14 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        <link
+          rel="preload"
+          href="https://res.cloudinary.com/dfh4b2nlw/video/upload/v1780978885/landing_onrao2.webm"
+          as="video"
+          type="video/webm"
+        />
+      </head>
       <body
         className={`layout-container ${inter.variable} ${beVietnam.variable}`}
         style={{
