@@ -3,6 +3,13 @@
   display: block;
 }
 
+.searchOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: transparent;
+}
+
 @media (max-width: 1024px) {
   .searchContainerDesktop {
     display: none;

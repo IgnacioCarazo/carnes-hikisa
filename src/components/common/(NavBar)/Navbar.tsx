@@ -39,6 +39,13 @@ const Navbar = () => {
 
           <div className={`${styles.navbarLinks} ${isOpen ? styles.show : ""}`}>
             <Link
+              href="/"
+              className={pathname === "/" ? styles.active : ""}
+              onClick={closeMenu}
+            >
+              Inicio
+            </Link>
+            <Link
               href="/catalogo"
               className={pathname.includes("/catalogo") ? styles.active : ""}
               onClick={closeMenu}

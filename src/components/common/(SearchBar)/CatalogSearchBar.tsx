@@ -11,13 +11,6 @@ const CatalogSearchBar = () => {
 
   const externalSearch = searchParams.get("search") || "";
   const [tempSearch, setTempSearch] = useState(externalSearch);
-  const [prevExternalSearch, setPrevExternalSearch] = useState(externalSearch);
-
-  if (externalSearch !== prevExternalSearch) {
-    setPrevExternalSearch(externalSearch);
-    setTempSearch(externalSearch);
-  }
-
   const lastPushedSearch = useRef(externalSearch);
 
   useEffect(() => {

@@ -13,3 +13,19 @@
 
   overflow: hidden;
 }
+
+@media (max-width: 1024px) {
+  .servicesSection {
+    padding: 15px;
+  }
+}
+@media (max-width: 768px) {
+  .servicesSection {
+    padding: 30px;
+  }
+}
+@media (max-width: 480px) {
+  .servicesSection {
+    padding: 30px 20px;
+  }
+}

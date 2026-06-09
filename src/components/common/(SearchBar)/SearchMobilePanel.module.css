@@ -40,3 +40,13 @@
   overflow-y: auto;
   height: calc(100% - 70px);
 }
+
+.noResultsMessage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #888;
+  font-size: 0.9rem;
+  flex: 1;
+}

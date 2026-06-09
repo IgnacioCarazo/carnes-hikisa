@@ -96,6 +96,16 @@
   background: #ffffff;
 }
 
+@media (max-width: 1024px) {
+  .spotlightCarousel {
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+  .arrowButton {
+    display: none;
+  }
+}
+
 @media (max-width: 768px) {
   .spotlightCarousel {
     min-height: 600px; /* Estabilizado sin 100dvh para evitar saltos */

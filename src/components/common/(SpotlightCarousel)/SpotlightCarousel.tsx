@@ -24,26 +24,52 @@ interface Category {
 
 const categoriesData = categoriesDataRaw as Category[];
 
+const SPOTLIGHT_PRODUCTS: Record<string, string[]> = {
+  res: ["res-33", "res-35", "res-32"],
+  cerdo: ["cerdo-20", "cerdo-22", "cerdo-4"],
+  pollo: ["pollo-10", "pollo-12", "pollo-15"],
+  mar: ["mar-1", "mar-6", "mar-7"],
+  embutidos: ["embutidos-1", "embutidos-8", "embutidos-10"],
+  paqueteria: ["paqueteria-1", "paqueteria-10", "paqueteria-13"],
+  lacteos: ["lacteos-1", "lacteos-4", "lacteos-5"],
+  carnitas: ["carnitas-2", "carnitas-3", "carnitas-6"],
+};
+
 const TRANSITION_TIME = 300;
 
 const SpotlightCarousel = () => {
   const router = useRouter();
 
-  // 1. Extraer los primeros 3 productos de cada categoría dinámicamente
   const items = useMemo(() => {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    const extracted: any[] = [];
+    const extracted: {
+      title: string;
+      description: string;
+      image: string;
+      categoryId: string;
+    }[] = [];
+
     categoriesData.forEach((category) => {
-      const topProducts = category.products?.slice(0, 3) || [];
-      topProducts.forEach((product) => {
+      const spotlightIds = SPOTLIGHT_PRODUCTS[category.id] || [];
+
+      spotlightIds.forEach((productId) => {
+        const product = category.products.find((p) => p.id === productId);
+
+        if (!product) {
+          console.warn(
+            `Producto ${productId} no encontrado en categoría ${category.id}`,
+          );
+          return;
+        }
+
         extracted.push({
           title: product.name,
           description: product.description,
           image: product.image,
-          categoryId: category.id, // Guardamos esto para el filtro del catálogo
+          categoryId: category.id,
         });
       });
     });
+
     return extracted;
   }, []);
 
