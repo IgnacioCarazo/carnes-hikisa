@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Filter, X } from "lucide-react";
 import Image from "next/image";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
-import { useState, useMemo, Suspense } from "react";
+import { useState, useMemo, Suspense, useEffect, useRef } from "react";
 
 import FilterSidebar from "@/components/common/(FilterSidebar)/FilterSidebar";
 import ProductGrid from "@/components/common/(ProductGrid)/ProductGrid";
@@ -25,9 +25,12 @@ function CatalogoContent() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
-  const isMobile = useIsMobile(1024);
+  const isMobile = useIsMobile(1366);
 
   const [isOpen, setIsOpen] = useState(false);
+
+  // --- REF PARA SCROLL DEL GRID ---
+  const gridRef = useRef<HTMLDivElement>(null);
 
   // --- ESTADO PARA EL MODAL ---
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
@@ -72,6 +75,10 @@ function CatalogoContent() {
 
   const filteredCategories = useCatalogSearch(searchQuery, activeCategories);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className={styles.contentLayoutFull}>
       <div className={styles.contentLayout}>
@@ -85,6 +92,7 @@ function CatalogoContent() {
               {isOpen ? (
                 <motion.div
                   key="sidebar-open"
+                  className="h-full min-h-0 flex flex-col"
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
@@ -149,17 +157,16 @@ function CatalogoContent() {
           </AnimatePresence>
         )}
 
-        <motion.div layout className={styles.mainContent}>
-          {isMobile && (
-            <button
-              className={styles.mobileFilterBtn}
-              onClick={() => setIsOpen(true)}
-            >
-              <Filter size={20} /> Filtrar Categorías
-            </button>
-          )}
+        <div className={styles.mainContent}>
+          <button
+            className={styles.mobileFilterBtn}
+            onClick={() => setIsOpen(true)}
+          >
+            <Filter size={20} /> Filtrar Categorías
+          </button>
 
           <ProductGrid
+            ref={gridRef}
             categoryTitle={
               <div className={styles.filterHeaderWrapper}>
                 <div className={styles.leftFilterContent}>
@@ -172,11 +179,10 @@ function CatalogoContent() {
                         Limpiar todo
                       </button>
                       <div className={styles.filterCardsContainer}>
-                        <AnimatePresence mode="popLayout" initial={false}>
+                        <AnimatePresence initial={false}>
                           {searchQuery && (
                             <motion.div
                               key="search-pill-static"
-                              layout
                               initial={{ opacity: 0, scale: 0.8 }}
                               animate={{ opacity: 1, scale: 1 }}
                               exit={{ opacity: 0, scale: 0.8 }}
@@ -205,7 +211,6 @@ function CatalogoContent() {
                             return (
                               <motion.div
                                 key={id}
-                                layout
                                 initial={{ opacity: 0, scale: 0.8 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 exit={{ opacity: 0, scale: 0.8 }}
@@ -244,26 +249,23 @@ function CatalogoContent() {
               </div>
             }
           >
-            <AnimatePresence mode="popLayout">
-              {filteredCategories.length > 0 ? (
-                <ProductsCards
-                  key="list-container"
-                  categories={filteredCategories}
-                  onProductClick={setSelectedProduct}
-                />
-              ) : (
-                <motion.div
-                  key="empty-msg"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  className={styles.emptyMessage}
-                >
-                  No se encontraron productos que coincidan con tu búsqueda.
-                </motion.div>
-              )}
-            </AnimatePresence>
+            {filteredCategories.length > 0 ? (
+              <ProductsCards
+                categories={filteredCategories}
+                onProductClick={setSelectedProduct}
+              />
+            ) : (
+              <motion.div
+                key="empty-msg"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className={styles.emptyMessage}
+              >
+                No se encontraron productos que coincidan con tu búsqueda.
+              </motion.div>
+            )}
           </ProductGrid>
-        </motion.div>
+        </div>
       </div>
 
       <ProductModal

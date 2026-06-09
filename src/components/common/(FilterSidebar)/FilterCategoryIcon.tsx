@@ -14,6 +14,7 @@ const FilterCategoryIcon = ({ src, alt }: IconProps) => (
       alt={alt}
       width={30}
       height={30}
+      loading="eager"
     />
   </div>
 );

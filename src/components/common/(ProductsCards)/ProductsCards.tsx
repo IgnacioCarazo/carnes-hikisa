@@ -68,9 +68,8 @@ const ProductsCards: React.FC<ProductsCardsProps> = ({
         return (
           <motion.div
             key={product.id}
-            layout="position" // ← Solo reordena con transforms (GPU), sin FLIP costoso
-            variants={cardVariants} // ← Hereda el staggerChildren del padre (ProductGrid)
-            className={`${styles.card} will-change-transform`}
+            variants={cardVariants}
+            className={styles.card}
             onClick={() => onProductClick(product)}
           >
             <div className={styles.imageContainer}>
@@ -88,12 +87,12 @@ const ProductsCards: React.FC<ProductsCardsProps> = ({
             <div className={styles.footer}>
               <div className={styles.info}>
                 <h3 className={styles.title}>{product.name}</h3>
-                <span className={styles.category}>{product.category}</span>
+                <span className={styles.category}>{category.name}</span>
               </div>
 
               <button
                 className={styles.viewButton}
-                aria-label={`Ver ${product.category}`}
+                aria-label={`Ver ${category.name}`}
               >
                 <Image
                   src={`/icons/categoryIcons/${category.image}`}
@@ -101,6 +100,7 @@ const ProductsCards: React.FC<ProductsCardsProps> = ({
                   width={22}
                   height={22}
                   className={styles.buttonIcon}
+                  loading="eager"
                 />
               </button>
             </div>
