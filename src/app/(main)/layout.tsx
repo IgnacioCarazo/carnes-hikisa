@@ -53,22 +53,21 @@ export default function RootLayout({
         {/* 2. Envolver Navbar porque suele manejar la búsqueda/URL */}
         <Suspense fallback={<div style={{ height: "65px" }} />}>
           <Navbar />
+          <main
+            className="main-content"
+            style={{
+              flex: 1,
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+              minHeight: 0,
+              overflow: "hidden auto",
+            }}
+          >
+            {children}
+            <ConditionalFooter />
+          </main>
         </Suspense>
-
-        <main
-          className="main-content"
-          style={{
-            flex: 1,
-            display: "flex",
-            flexDirection: "column",
-            width: "100%",
-            minHeight: 0,
-            overflow: "hidden auto",
-          }}
-        >
-          {children}
-          <ConditionalFooter />
-        </main>
 
         {/* 3. Envolver FloatingActions por si acaso dependen de la URL */}
         <div className="floating-actions-wrapper">
