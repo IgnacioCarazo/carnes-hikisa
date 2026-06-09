@@ -1,3 +1,10 @@
+.contactPageWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .contentLayout {
   min-height: 50vh;
 
@@ -49,6 +56,7 @@
 .socials {
   display: flex;
   gap: 1rem;
+  margin-bottom: 20px;
 }
 
 .socialIcon img {
@@ -79,8 +87,32 @@
   height: auto;
 }
 
-/* ===== MOBILE ===== */
-@media (max-width: 468px) {
+@media (max-width: 1024px) {
+  .contentLayout {
+    margin-top: 60px;
+  }
+  .content strong {
+    font-size: 1.15rem;
+  }
+  .content p {
+    margin-bottom: 1rem;
+    font-size: 1rem;
+  }
+
+  .group {
+    flex-direction: column;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .content strong {
+    font-size: 1.1rem;
+  }
+  .content p {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+  }
   .group {
     flex-direction: column;
     gap: 2rem;
@@ -88,7 +120,27 @@
 
   .mapWrapper {
     width: 100%;
-    max-width: 300px;
+    height: auto;
+  }
+}
+
+@media (max-width: 468px) {
+  .contentLayout {
+    margin-top: 40px;
+  }
+  .content strong {
+    font-size: 0.95em;
+  }
+  .content p {
+    font-size: 0.9rem;
+  }
+  .group {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .mapWrapper {
+    width: 100%;
   }
 
   /* swap de imagen */

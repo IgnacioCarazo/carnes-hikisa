@@ -24,7 +24,6 @@
 .modalContent {
   position: relative;
   background: #000000;
-  border: 1px solid #272727;
   border-radius: 12px;
   width: 100%;
   max-width: 900px;
@@ -119,7 +118,16 @@
   background: #333;
 }
 
+@media (max-width: 1024px) {
+  .overlay {
+    padding: 60px;
+  }
+}
+
 @media (max-width: 768px) {
+  .overlay {
+    padding: 60px;
+  }
   .contentLayout {
     flex-direction: column;
     height: auto;
@@ -139,6 +147,33 @@
   }
   .modalTextContent h2 {
     font-size: 1.8rem;
+  }
+
+  .modalTextContent p {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .overlay {
+    padding: 15px;
+  }
+  .contentLayout {
+    padding: 50px 20px;
+  }
+
+  .modalImage {
+    width: 250px;
+    height: 250px;
+  }
+
+  .modalTextContent {
+    width: 100%;
+    padding: 10px;
+    gap: 20px;
+  }
+  .modalTextContent h2 {
+    font-size: 1.5rem;
   }
 
   .modalTextContent p {

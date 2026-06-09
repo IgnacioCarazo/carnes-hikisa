@@ -1,3 +1,5 @@
+"use client";
+
 import { Suspense } from "react"; // 1. Importar Suspense de React
 
 import CategoriesCarousel from "@/components/common/(CategoriesCarousel)/CategoriesCarousel";

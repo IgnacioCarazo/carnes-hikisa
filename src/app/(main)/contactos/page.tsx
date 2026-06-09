@@ -38,7 +38,7 @@ const item: Variants = {
 
 function ContactContent() {
   return (
-    <main className={styles.pageWrapper}>
+    <main className={styles.contactPageWrapper}>
       <SectionHeader
         title="¿Cómo y donde puede ponerse en contacto con nosotros?"
         color="black"
@@ -83,16 +83,14 @@ function ContactContent() {
 
             <div className={styles.socials}>
               <a href={SOCIAL_LINKS.facebook} target="_blank" rel="noreferrer">
-                <Image src={iconFb} alt="FB" width={20} height={20} />
+                <Image src={iconFb} alt="FB" width={25} height={25} />
               </a>
               <a href={SOCIAL_LINKS.instagram} target="_blank" rel="noreferrer">
-                <Image src={iconIg} alt="IG" width={20} height={20} />
+                <Image src={iconIg} alt="IG" width={25} height={25} />
               </a>
-              <a href={SOCIAL_LINKS.whatsapp} target="_blank" rel="noreferrer">
-                <Image src={iconWa} alt="WA" width={20} height={20} />
-              </a>
+
               <a href={SOCIAL_LINKS.tiktok} target="_blank" rel="noreferrer">
-                <Image src={iconTk} alt="TK" width={20} height={20} />
+                <Image src={iconTk} alt="TK" width={25} height={25} />
               </a>
             </div>
           </motion.div>

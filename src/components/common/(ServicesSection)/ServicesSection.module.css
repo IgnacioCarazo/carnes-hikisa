@@ -24,3 +24,8 @@
     padding: 30px;
   }
 }
+@media (max-width: 480px) {
+  .servicesSection {
+    padding: 30px 20px;
+  }
+}
