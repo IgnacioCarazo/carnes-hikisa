@@ -3,7 +3,8 @@
   width: 100%;
   overflow: hidden;
   height: 100vh;
-  min-height: 100vh;
+  margin-top: calc(-1 * var(--nav-height));
+  /* min-height: 100vh; */
 
   /* skeleton estructural (evita layout shift) */
   aspect-ratio: 16 / 9;
@@ -42,6 +43,8 @@
 /* MOBILE */
 @media (max-width: 480px) {
   .landingVideoContainer {
-    aspect-ratio: 8 / 16;
+    height: auto;
+    margin-top: 0;
+    aspect-ratio: 16 / 9;
   }
 }
