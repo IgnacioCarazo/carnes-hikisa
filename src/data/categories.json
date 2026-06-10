@@ -231,7 +231,7 @@
       },
       {
         "id": "res-50",
-        "name": "Punta de Solomo",
+        "name": "Solomo",
         "description": "Corte perfecto para hacer tacos y carne mechada.",
         "category": "Carnes de Res",
         "image": "/productos/solomo.webp"
@@ -626,13 +626,6 @@
         "image": "/productos/salchichaPollo.webp"
       },
       {
-        "id": "embutidos-16",
-        "name": "Salchichas de Res",
-        "description": "",
-        "category": "Embutidos",
-        "image": "/productos/salchichaRes.webp"
-      },
-      {
         "id": "embutidos-17",
         "name": "Salchichón Campesino",
         "description": "Producto de estilo tradicional, con mezcla de carnes y especias. Sabor robusto.",
@@ -829,7 +822,7 @@
         "name": "Chuleta de Cerdo Adobada",
         "description": "Sazonada con una mezcla especial de especias que realza su sabor y jugosidad. Ideal para freír, asar o cocinar a la plancha de forma rápida y deliciosa.",
         "category": "Carnitas Adobadas",
-        "image": "/productos/revisar.webp"
+        "image": "/productos/chuletaCerdoAdobada.webp"
       },
       {
         "id": "carnitas-4",
