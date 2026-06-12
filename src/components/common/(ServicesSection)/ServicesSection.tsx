@@ -8,7 +8,7 @@ const ServicesSection = () => {
     <div className={styles.servicesSection}>
       <ServiceItem
         title="Distribución especializada"
-        description="Realizamos el traslado de nuestros productos en unidades refrigeradas diseñadas para mantener la cadena de frío en todo momento. Las canales y cortes se transportan bajo condiciones controladas de temperatura, higiene y ventilación, preservando su frescura, calidad e inocuidad desde el origen hasta su destino."
+        description="Realizamos el traslado de nuestros productos en unidades refrigeradas diseñadas para mantener la cadena de frío en todo momento. Los cortes se transportan bajo condiciones controladas de temperatura, higiene y ventilación, preservando su frescura, calidad e inocuidad desde el origen hasta su destino."
         image="/images/services/distribucion.jpg"
         icon="/images/services/icons/delivery-icon.png"
       />
