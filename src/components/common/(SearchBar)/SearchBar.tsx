@@ -1,17 +1,16 @@
 "use client";
-import Fuse from "fuse.js";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useRef } from "react";
 
-import menuDataRaw from "@/data/categories.json";
-import { buildExtendedQuery } from "@/lib/search";
-import { Product, Category } from "@/types/product";
+import { searchProducts } from "@/lib/search";
+import { Product } from "@/types/product";
 
 import styles from "./SearchBar.module.css";
 import SearchDropdown from "./SearchDropdown";
 import SearchInput from "./SearchInput";
 import SearchMobilePanel from "./SearchMobilePanel";
 import SearchTriggerMobile from "./SearchTriggerMobile";
+
 const SearchBar = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -19,32 +18,22 @@ const SearchBar = () => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [tempSearch, setTempSearch] = useState(
-    searchParams.get("search") || "",
-  );
+  const externalSearch = searchParams.get("search") || "";
+  const [tempSearch, setTempSearch] = useState(externalSearch);
+  const lastPushedSearchRef = useRef(externalSearch);
+
+  // Sincronizar cuando la URL cambia externamente (ej: desde catálogo)
+  useEffect(() => {
+    if (
+      externalSearch !== tempSearch &&
+      externalSearch !== lastPushedSearchRef.current
+    ) {
+      setTempSearch(externalSearch);
+      lastPushedSearchRef.current = externalSearch;
+    }
+  }, [externalSearch]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const [results, setResults] = useState<Product[]>([]);
-
-  const allProducts = useMemo<Product[]>(() => {
-    const data = menuDataRaw as Category[];
-    return data.flatMap((cat: Category) =>
-      cat.products.map((p) => ({
-        ...p,
-        image: p.image,
-        categoryName: cat.name,
-      })),
-    );
-  }, []);
-
-  const fuse = useMemo(
-    () =>
-      new Fuse<Product>(allProducts, {
-        keys: ["name", "categoryName"],
-        threshold: 0.3,
-        useExtendedSearch: true,
-      }),
-    [allProducts],
-  );
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
@@ -53,15 +42,15 @@ const SearchBar = () => {
         setResults([]);
         setIsLoading(false);
       } else {
-        const extended = buildExtendedQuery(query);
-        const fuzzyResults = fuse.search(extended).map((r) => r.item);
-        setResults(fuzzyResults.slice(0, 4));
+        // Usa searchProducts con tolerancia a tipeos
+        const matched = searchProducts(query, 4);
+        setResults(matched);
         setIsLoading(false);
         setIsDropdownOpen(true);
       }
     }, 350);
     return () => clearTimeout(delayDebounceFn);
-  }, [tempSearch, fuse]);
+  }, [tempSearch]);
 
   const executeSearch = (name: string) => {
     const params = new URLSearchParams(searchParams.toString());

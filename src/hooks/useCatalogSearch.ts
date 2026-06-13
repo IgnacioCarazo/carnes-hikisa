@@ -1,19 +1,10 @@
-import Fuse from "fuse.js";
 import { useDeferredValue, useMemo } from "react";
 
 import categoriesDataRaw from "@/data/categories.json";
-import { buildExtendedQuery } from "@/lib/search";
-import { Product, Category } from "@/types/product";
+import { searchProducts } from "@/lib/search";
+import { Category } from "@/types/product";
 
 const categoriesData = categoriesDataRaw as Category[];
-
-/**
- * Producto extendido SOLO para búsqueda
- */
-type ProductIndexed = Product & {
-  categoryId: string;
-  categoryName: string;
-};
 
 export function useCatalogSearch(
   searchQuery: string,
@@ -22,35 +13,28 @@ export function useCatalogSearch(
   const deferredQuery = useDeferredValue(searchQuery);
   const isSearchStale = searchQuery !== deferredQuery;
 
-  const allProducts = useMemo<ProductIndexed[]>(() => {
-    return categoriesData.flatMap((cat) =>
-      cat.products.map((p) => ({
-        ...p,
-        image: p.image,
-        categoryId: cat.id,
-        categoryName: cat.name,
-      })),
-    );
-  }, []);
-
-  const fuse = useMemo(() => {
-    return new Fuse<ProductIndexed>(allProducts, {
-      keys: ["name", "categoryName"],
-      threshold: 0.3,
-      useExtendedSearch: true,
-    });
-  }, [allProducts]);
-
   const results = useMemo(() => {
     const hasSearch = deferredQuery.trim().length > 0;
     const hasFilters = activeCategories.length > 0;
 
-    let results: ProductIndexed[] = allProducts;
+    let results: (Category["products"][number] & {
+      categoryId: string;
+      categoryName: string;
+    })[] = [];
 
-    // 1. SEARCH GLOBAL (usa deferredQuery, no searchQuery)
+    // 1. SEARCH GLOBAL (usa searchProducts con tolerancia)
     if (hasSearch) {
-      const extended = buildExtendedQuery(deferredQuery);
-      results = fuse.search(extended).map((r) => r.item);
+      results = searchProducts(deferredQuery);
+    } else {
+      // Sin búsqueda, mostrar todos los productos
+      results = categoriesData.flatMap((cat) =>
+        cat.products.map((p) => ({
+          ...p,
+          image: p.image,
+          categoryId: cat.id,
+          categoryName: cat.name,
+        })),
+      );
     }
 
     // 2. FILTRO DE CATEGORÍAS
@@ -67,7 +51,7 @@ export function useCatalogSearch(
       .filter((cat) => cat.products.length > 0);
 
     return grouped;
-  }, [deferredQuery, activeCategories, fuse, allProducts]);
+  }, [deferredQuery, activeCategories]);
 
-  return results;
+  return { results, isSearchStale };
 }

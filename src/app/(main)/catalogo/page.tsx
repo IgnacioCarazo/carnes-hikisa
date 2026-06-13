@@ -73,7 +73,10 @@ function CatalogoContent() {
     router.push(`${pathname}?${params.toString()}`, { scroll: false });
   };
 
-  const filteredCategories = useCatalogSearch(searchQuery, activeCategories);
+  const { results: filteredCategories } = useCatalogSearch(
+    searchQuery,
+    activeCategories,
+  );
 
   useEffect(() => {
     window.scrollTo(0, 0);
