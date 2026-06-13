@@ -87,8 +87,6 @@ const SpotlightCarousel = () => {
       search: activeItem.title,
     });
 
-    console.log("Navegando a catálogo con query:", query.toString());
-
     router.push(`/catalogo?${query.toString()}`);
   }, [activeIndex, items, router]);
 
