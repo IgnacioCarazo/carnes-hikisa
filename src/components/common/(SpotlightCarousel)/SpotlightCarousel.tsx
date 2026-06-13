@@ -83,6 +83,7 @@ const SpotlightCarousel = () => {
 
     // Usamos 'search' para que el catálogo filtre por nombre (Fuse.js)
     // y 'categories' para activar el filtro de categoría en el sidebar.
+    // Hi
     const query = new URLSearchParams({
       search: activeItem.title,
     });
