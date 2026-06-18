@@ -13,6 +13,17 @@ const CatalogSearchBar = () => {
   const [tempSearch, setTempSearch] = useState(externalSearch);
   const lastPushedSearch = useRef(externalSearch);
 
+  // Sincronizar cuando la URL cambia externamente (ej: "Limpiar todo")
+  useEffect(() => {
+    if (
+      externalSearch !== tempSearch &&
+      externalSearch !== lastPushedSearch.current
+    ) {
+      setTempSearch(externalSearch);
+      lastPushedSearch.current = externalSearch;
+    }
+  }, [externalSearch]); // eslint-disable-line react-hooks/exhaustive-deps
+
   useEffect(() => {
     if (tempSearch === lastPushedSearch.current) return;
 
