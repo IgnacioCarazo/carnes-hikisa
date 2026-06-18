@@ -22,7 +22,6 @@ const SearchBar = () => {
   const [tempSearch, setTempSearch] = useState(externalSearch);
   const lastPushedSearchRef = useRef(externalSearch);
 
-  // Sincronizar cuando la URL cambia externamente (ej: desde catálogo)
   useEffect(() => {
     if (
       externalSearch !== tempSearch &&
