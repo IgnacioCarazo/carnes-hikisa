@@ -20,8 +20,41 @@ const beVietnam = Be_Vietnam_Pro({
 });
 
 export const metadata: Metadata = {
-  title: "Carnes Hikisa - Catálogo",
-  description: "Calidad premium en cortes de carne",
+  title: {
+    default: "Carnes Hikisa | Carnicería de Calidad en Costa Rica",
+    template: "%s | Carnes Hikisa",
+  },
+  description:
+    "Carnes de res, cerdo, pollo, embutidos, lácteos y más. Calidad premium con entrega a domicilio en Costa Rica. Visite nuestro catálogo en línea.",
+  openGraph: {
+    title: "Carnes Hikisa | Carnicería de Calidad en Costa Rica",
+    description:
+      "Carnes de res, cerdo, pollo, embutidos, lácteos y más. Calidad premium con entrega a domicilio en Costa Rica.",
+    url: "https://carnes-hikisa.vercel.app",
+    siteName: "Carnes Hikisa",
+    locale: "es_CR",
+    type: "website",
+    images: [
+      {
+        url: "/images/seo-preview-placeholder.webp",
+        width: 1200,
+        height: 630,
+        alt: "Carnes Hikisa - Carnicería de Calidad en Costa Rica",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Carnes Hikisa | Carnicería de Calidad en Costa Rica",
+    description:
+      "Carnes de res, cerdo, pollo, embutidos, lácteos y más. Calidad premium con entrega a domicilio en Costa Rica.",
+    images: [
+      {
+        url: "/images/seo-preview-placeholder.webp",
+        alt: "Carnes Hikisa - Carnicería de Calidad en Costa Rica",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({

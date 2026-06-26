@@ -134,7 +134,7 @@ const SpotlightCarousel = () => {
         <img
           src="/icons/chevron.svg"
           className={`${styles.arrowIcon} ${styles.left}`}
-          alt="prev"
+          alt="Anterior producto destacado"
         />
       </button>
 
@@ -164,7 +164,7 @@ const SpotlightCarousel = () => {
         <img
           src="/icons/chevron.svg"
           className={`${styles.arrowIcon} ${styles.right}`}
-          alt="next"
+          alt="Siguiente producto destacado"
         />
       </button>
 

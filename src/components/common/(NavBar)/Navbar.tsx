@@ -34,7 +34,12 @@ const Navbar = () => {
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Menu"
           >
-            <Image src={iconMenu} alt="Menu" width={28} height={28} />
+            <Image
+              src={iconMenu}
+              alt="Abrir menú de navegación"
+              width={28}
+              height={28}
+            />
           </button>
 
           <div className={`${styles.navbarLinks} ${isOpen ? styles.show : ""}`}>
@@ -66,7 +71,7 @@ const Navbar = () => {
           <Link href="/" onClick={closeMenu}>
             <Image
               src={logoHikisa}
-              alt="Logo Hikisa"
+              alt="Carnes Hikisa - Logotipo oficial"
               width={170}
               height={52}
               className={styles.logoImg}

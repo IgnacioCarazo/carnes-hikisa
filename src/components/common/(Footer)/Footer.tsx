@@ -27,7 +27,7 @@ const Footer = () => {
           <div className={styles.logoWrapper}>
             <Image
               src={logoHikisa}
-              alt="Carnes Hikisa"
+              alt="Carnes Hikisa - Logotipo oficial"
               width={160}
               height={60}
               priority
@@ -108,7 +108,12 @@ const Footer = () => {
               rel="noreferrer"
               className={styles.socialIcon}
             >
-              <Image src={iconFb} alt="FB" width={20} height={20} />
+              <Image
+                src={iconFb}
+                alt="Facebook de Carnes Hikisa"
+                width={20}
+                height={20}
+              />
             </a>
             <a
               href={SOCIAL_LINKS.instagram}
@@ -116,7 +121,12 @@ const Footer = () => {
               rel="noreferrer"
               className={styles.socialIcon}
             >
-              <Image src={iconIg} alt="IG" width={20} height={20} />
+              <Image
+                src={iconIg}
+                alt="Instagram de Carnes Hikisa"
+                width={20}
+                height={20}
+              />
             </a>
             <a
               href={SOCIAL_LINKS.whatsapp}
@@ -124,7 +134,12 @@ const Footer = () => {
               rel="noreferrer"
               className={styles.socialIcon}
             >
-              <Image src={iconWa} alt="WA" width={20} height={20} />
+              <Image
+                src={iconWa}
+                alt="WhatsApp de Carnes Hikisa"
+                width={20}
+                height={20}
+              />
             </a>
             <a
               href={SOCIAL_LINKS.tiktok}
@@ -132,7 +147,12 @@ const Footer = () => {
               rel="noreferrer"
               className={styles.socialIcon}
             >
-              <Image src={iconTk} alt="TK" width={20} height={20} />
+              <Image
+                src={iconTk}
+                alt="TikTok de Carnes Hikisa"
+                width={20}
+                height={20}
+              />
             </a>
           </div>
         </div>
