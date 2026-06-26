@@ -104,7 +104,7 @@ const CategoriesCarousel = () => {
           <Image
             src="/icons/chevron.svg"
             className={`${styles.arrowIcon} ${styles.left}`}
-            alt="prev"
+            alt="Anterior categoría"
             width={40}
             height={40}
           />
@@ -126,7 +126,7 @@ const CategoriesCarousel = () => {
           <Image
             src="/icons/chevron.svg"
             className={styles.arrowIcon}
-            alt="next"
+            alt="Siguiente categoría"
             width={40}
             height={40}
           />

@@ -7,7 +7,6 @@ import { SOCIAL_LINKS } from "@/constants/links";
 
 import styles from "./FloatingActions.module.css";
 
-
 const FloatingActions = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
 
@@ -41,7 +40,12 @@ const FloatingActions = () => {
         className={styles.whatsappBtn}
       >
         <div className={styles.tooltip}>¿En qué podemos ayudarte?</div>
-        <Image src={iconWaVerde} alt="WhatsApp" width={60} height={60} />
+        <Image
+          src={iconWaVerde}
+          alt="Contactar por WhatsApp"
+          width={60}
+          height={60}
+        />
       </a>
     </div>
   );

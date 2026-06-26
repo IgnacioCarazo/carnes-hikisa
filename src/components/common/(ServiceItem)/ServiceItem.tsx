@@ -30,6 +30,8 @@ const ServiceItem = ({
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
+      role="img"
+      aria-label={title}
     />
   );
 
