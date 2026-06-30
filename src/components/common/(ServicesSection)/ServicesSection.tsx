@@ -1,4 +1,3 @@
-"use client";
 import styles from "./ServicesSection.module.css";
 
 import ServiceItem from "../(ServiceItem)/ServiceItem";
