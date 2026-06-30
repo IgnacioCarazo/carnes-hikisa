@@ -25,36 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Carnes Hikisa",
   },
   description:
-    "Carnes de res, cerdo, pollo, embutidos, lácteos y más. Calidad premium con entrega a domicilio en Costa Rica. Visite nuestro catálogo en línea.",
-  openGraph: {
-    title: "Carnes Hikisa | Carnicería de Calidad en Costa Rica",
-    description:
-      "Carnes de res, cerdo, pollo, embutidos, lácteos y más. Calidad premium con entrega a domicilio en Costa Rica.",
-    url: "https://carnes-hikisa.vercel.app",
-    siteName: "Carnes Hikisa",
-    locale: "es_CR",
-    type: "website",
-    images: [
-      {
-        url: "/images/seo-preview-placeholder.webp",
-        width: 1200,
-        height: 630,
-        alt: "Carnes Hikisa - Carnicería de Calidad en Costa Rica",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Carnes Hikisa | Carnicería de Calidad en Costa Rica",
-    description:
-      "Carnes de res, cerdo, pollo, embutidos, lácteos y más. Calidad premium con entrega a domicilio en Costa Rica.",
-    images: [
-      {
-        url: "/images/seo-preview-placeholder.webp",
-        alt: "Carnes Hikisa - Carnicería de Calidad en Costa Rica",
-      },
-    ],
-  },
+    "1descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa.",
 };
 
 export default function RootLayout({
@@ -99,8 +70,8 @@ export default function RootLayout({
             }}
           >
             {children}
+            <ConditionalFooter />
           </main>
-          <ConditionalFooter />
         </Suspense>
 
         {/* 3. Envolver FloatingActions por si acaso dependen de la URL */}
