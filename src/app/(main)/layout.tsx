@@ -25,7 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Carnes Hikisa",
   },
   description:
-    "1descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa.",
+    "descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa.",
 };
 
 export default function RootLayout({
