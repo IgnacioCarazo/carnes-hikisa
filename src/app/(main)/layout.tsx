@@ -25,11 +25,7 @@ export const metadata: Metadata = {
     template: "%s | Carnes Hikisa",
   },
   description:
-    "Descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa.",
-  icons: {
-    icon: "/icons/seoCow.ico",
-    shortcut: "/icons/seoCow.ico",
-  },
+    "descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa.",
 };
 
 export default function RootLayout({
@@ -74,8 +70,8 @@ export default function RootLayout({
             }}
           >
             {children}
-            <ConditionalFooter />
           </main>
+          <ConditionalFooter />
         </Suspense>
 
         {/* 3. Envolver FloatingActions por si acaso dependen de la URL */}
