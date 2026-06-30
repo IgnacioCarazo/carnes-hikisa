@@ -25,7 +25,11 @@ export const metadata: Metadata = {
     template: "%s | Carnes Hikisa",
   },
   description:
-    "1descubra nuestra amplia variedad de productos. Desde carnes frescas y cortes seleccionados hasta lácteos, embutidos y pescado, cada opción cumple con estándares de calidad y frescura para su mesa.",
+    "Carnes de res, cerdo, pollo, embutidos, lácteos y más. Calidad premium con entrega a domicilio en Costa Rica. Visite nuestro catálogo en línea.",
+  icons: {
+    icon: "/icons/seoCow.ico",
+    shortcut: "/icons/seoCow.ico",
+  },
 };
 
 export default function RootLayout({
